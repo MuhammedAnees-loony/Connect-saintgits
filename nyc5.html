@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nakshatra 2025 - Masquerade of Elites. A premier technical and cultural fest at Saintgits College.">
+    <title>Nakshatra 2025 - Masquerade of Elites</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --primary-red: #DC2626;
+            --primary-black: #111111;
+            --text-white: #FFFFFF;
+            --text-gray: #A3A3A3;
+            --border-dark: #262626;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary-black);
+            color: var(--text-white);
+            line-height: 1.5;
+        }
+
+        .card-hover {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 20px rgba(220, 38, 38, 0.15);
+        }
+
+        .gradient-overlay {
+            background: linear-gradient(180deg, rgba(17, 17, 17, 0) 0%, rgba(17, 17, 17, 0.95) 100%);
+        }
+
+        .button-animation {
+            transition: all 0.3s ease;
+        }
+        
+        .button-animation:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25);
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary-red);
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            transition: top 0.3s;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        .department-card {
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-dark);
+        }
+
+        .department-card:hover {
+            border-color: var(--primary-red);
+            transform: translateY(-4px);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-red);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .social-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1);
+        }
+        
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="bg-black border-b border-neutral-800 sticky top-0 z-50" role="banner">
+        <nav class="container mx-auto px-4 py-6" role="navigation" aria-label="Main navigation">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-8">
+                    <a href="/" class="text-white text-xl font-bold hover:text-red-700 transition-colors" aria-label="Nakshatra 2025 Home">
+                        Nakshatra 2025
+                    </a>
+                    <div class="hidden md:flex space-x-8">
+                        <a href="/events" class="nav-link text-zinc-400 hover:text-white">Events</a>
+                        <a href="/departments" class="nav-link text-zinc-400 hover:text-white">Departments</a>
+                        <a href="/upload" class="nav-link text-zinc-400 hover:text-white">Upload</a>
+                        <a href="/about" class="nav-link text-zinc-400 hover:text-white">About & Services</a>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-6">
+                    <form role="search" class="relative">
+                        <label for="search" class="sr-only">Search</label>
+                        <input 
+                            type="search" 
+                            id="search"
+                            placeholder="Search events and departments..." 
+                            class="w-64 px-4 py-2 bg-neutral-800 border border-neutral-700 rounded-md text-zinc-400 focus:outline-none focus:ring-2 focus:ring-red-700 transition-all"
+                        >
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content" class="flex-grow" role="main">
+        <section class="py-20 lg:py-32" aria-labelledby="hero-title">
+            <div class="container mx-auto px-4">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-8">
+                        <h1 id="hero-title" class="text-4xl lg:text-6xl font-bold leading-tight">
+                            Unmask the Secrets,<br>
+                            Embrace the Elite!<br>
+                            <span class="text-red-700">Welcome to Nakshatra 2025 -</span><br>
+                            Masquerade of Elites!
+                        </h1>
+                        <p class="text-xl text-zinc-400">Join us for an unforgettable celebration of technology, innovation, and creativity.</p>
+                        <button 
+                            class="px-8 py-4 bg-transparent border-2 border-red-700 text-white hover:bg-red-700 button-animation rounded-md font-semibold text-lg"
+                            aria-label="Learn more about Nakshatra 2025"
+                        >
+                            Learn more
+                        </button>
+                    </div>
+                    <div class="relative h-[600px] rounded-lg overflow-hidden">
+                        <img 
+                            src="https://cdn.builder.io/api/v1/image/assets/TEMP/0c4950fd4f0545792a94f6e674d58b6b1bc6a1499b67b42dbb6548abc9a0052a?placeholderIfAbsent=true&apiKey=1928b447fa444db09e851f70903c3b51" 
+                            alt="Masquerade themed visual representation"
+                            class="absolute inset-0 w-full h-full object-cover"
+                            loading="lazy"
+                        >
+                        <div class="absolute inset-0 gradient-overlay"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-black" aria-labelledby="events-title">
+            <div class="container mx-auto px-4">
+                <h2 id="events-title" class="text-3xl lg:text-4xl font-bold mb-12">Featured Events</h2>
+                <div class="grid lg:grid-cols-3 gap-8">
+                    <article class="group relative overflow-hidden rounded-lg card-hover">
+                        <div class="aspect-w-16 aspect-h-9">
+                            <img 
+                                src="https://cdn.builder.io/api/v1/image/assets/TEMP/ba5b8c37f74d1bfe9c1437d8f41d4d5476768774b90e036192d9887a39a6775d?placeholderIfAbsent=true&apiKey=1928b447fa444db09e851f70903c3b51" 
+                                alt="Students working with robots during workshop"
+                                class="w-full h-full object-cover"
+                                loading="lazy"
+                            >
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-6 gradient-overlay">
+                            <h3 class="text-xl font-bold mb-2">One Day Robotics Workshop</h3>
+                            <p class="text-zinc-300 mb-4">World of Robotics</p>
+                            <button 
+                                class="px-6 py-2 bg-red-700 text-white rounded button-animation"
+                                aria-label="Learn more about Robotics Workshop"
+                            >
+                                Learn More
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="group relative overflow-hidden rounded-lg card-hover">
+                        <div class="aspect-w-16 aspect-h-9">
+                            <img 
+                                src="https://cdn.builder.io/api/v1/image/assets/TEMP/e8a2b64bd69c6dca4ee27f705eeb9d0e4a3b86484710d3f17c8ff05ac3b8c455?placeholderIfAbsent=true&apiKey=1928b447fa444db09e851f70903c3b51" 
+                                alt="Coding competition participants"
+                                class="w-full h-full object-cover"
+                                loading="lazy"
+                            >
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-6 gradient-overlay">
+                            <h3 class="text-xl font-bold mb-2">Coding Champion</h3>
+                            <p class="text-zinc-300 mb-4">Showoff Your Coding Skills</p>
+                            <button 
+                                class="px-6 py-2 bg-red-700 text-white rounded button-animation"
+                                aria-label="Learn more about Coding Champion competition"
+                            >
+                                Learn More
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="group relative overflow-hidden rounded-lg card-hover">
+                        <div class="aspect-w-16 aspect-h-9">
+                            <img 
+                                src="https://cdn.builder.io/api/v1/image/assets/TEMP/e0f06fdba282bb6a5760206ac72669ec31c1063fdf4ffa184edb4ff49ff460c3?placeholderIfAbsent=true&apiKey=1928b447fa444db09e851f70903c3b51" 
+                                alt="TEDxSaintgits event stage"
+                                class="w-full h-full object-cover"
+                                loading="lazy"
+                            >
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-6 gradient-overlay">
+                            <h3 class="text-xl font-bold mb-2">TEDxSaintgits</h3>
+                            <p class="text-zinc-300 mb-4">180° - Radical Redirections</p>
+                            <button 
+                                class="px-6 py-2 bg-red-700 text-white rounded button-animation"
+                                aria-label="Learn more about TEDxSaintgits"
+                            >
+                                Learn More
+                            </button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-black" aria-labelledby="departments-title">
+            <div class="container mx-auto px-4">
+                <div class="flex justify-between items-end mb-12">
+                    <h2 id="departments-title" class="text-3xl lg:text-4xl font-bold">
+                        Expressive, innovative, dynamic:<br>
+                        our college departments.
+                    </h2>
+                    <button class="px-6 py-3 border border-stone-500 text-white hover:border-red-700 hover:text-red-700 transition-colors rounded">
+                        Discover all departments
+                    </button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="department-card rounded-lg overflow-hidden">
+                        <img 
+                            src="https://cdn.builder.io/api/v1/image/assets/TEMP/efa18d5119f3c743e712b38744f8506fd034555122b65aea5d490e17ec042766?placeholderIfAbsent=true&apiKey=1928b447fa444db09e851f70903c3b51" 
+                            alt="Computer Science Department"
+                            class="w-full h-48 object-cover"
+                            loading="lazy"
+                        >
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Computer Science</h3>
+                            <p class="text-zinc-400">Exploring the frontiers of technology and innovation</p>
+                        </div>
+                    </div>
+
+                    <div class="department-card rounded-lg overflow-hidden">
+                        <img 
+                            src="https://cdn.builder.io/api/v1/image/assets/TEMP/87845fd3ab6fe2334759c571820872398452faeee1813fb9a092578c35267516?placeholderIfAbsent=true&apiKey=1928b447fa444db09e851f70903c3b51" 
+                            alt="Mechanical Engineering Department"
+                            class="w-full h-48 object-cover"
+                            loading="lazy"
+                        >
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Mechanical Engineering</h3>
+                            <p class="text-zinc-400">Building the future through engineering excellence</p>
+                        </div>
+                    </div>
+
+                    <div class="department-card rounded-lg overflow-hidden">
+                        <img 
+                            src="https://cdn.builder.io/api/v1/image/assets/TEMP/1a38786b0594254c316f6dd058d452ebc1f8a0b3c39903d05c9c06dfd5354a8a?placeholderIfAbsent=true&apiKey=1928b447fa444db09e851f70903c3b51" 
+                            alt="Electronics Department"
+                            class="w-full h-48 object-cover"
+                            loading="lazy"
+                        >
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Electronics</h3>
+                            <p class="text-zinc-400">Powering innovation through electronic systems</p>
+                        </div>
+                    </div>
+
+                    <div class="department-card rounded-lg overflow-hidden">
+                        <img 
+                            src="https://cdn.builder.io/api/v1/image/assets/TEMP/3d15daa7b59f7f1910818f1eb3cac403c4768dd34bdc27edec158f925822d58a?placeholderIfAbsent=true&apiKey=1928b447fa444db09e851f70903c3b51" 
+                            alt="Civil Engineering Department"
+                            class="w-full h-48 object-cover"
+                            loading="lazy"
+                        >
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Civil Engineering</h3>
+                            <p class="text-zinc-400">Building sustainable infrastructure for tomorrow</p>
+                        </div>
+                    </div>
+
+                    <div class="department-card rounded-lg overflow-hidden">
+                        <img 
+                            src="https://cdn.builder.io/api/v1/image/assets/TEMP/1bee7888f6eaa5e6e521c3c2d7177f777d8e3da40c24846f818bfa8c0eca4ecd?placeholderIfAbsent=true&apiKey=1928b447fa444db09e851f70903c3b51" 
+                            alt="Electrical Engineering Department"
+                            class="w-full h-48 object-cover"
+                            loading="lazy"
+                        >
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Electrical Engineering</h3>
+                            <p class="text-zinc-400">Energizing the future with innovative solutions</p>
+                        </div>
+                    </div>
+
+                    <div class="department-card rounded-lg overflow-hidden">
+                        <img 
+                            src="https://cdn.builder.io/api/v1/image/assets/TEMP/31941f95563b606c307e6e1cbbb07cb1f298164e18048d8767b749f521e85c39?placeholderIfAbsent=true&apiKey=1928b447fa444db09e851f70903c3b51" 
+                            alt="Applied Science Department"
+                            class="w-full h-48 object-cover"
+                            loading="lazy"
+                        >
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Applied Science</h3>
+                            <p class="text-zinc-400">Advancing knowledge through scientific research</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-black py-16 border-t border-neutral-800" role="contentinfo">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <nav aria-label="Website links">
+                    <h3 class="text-lg font-bold mb-6">Websites</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-zinc-400 hover:text-white transition-colors duration-200">Saintgits</a></li>
+                        <li><a href="#" class="text-zinc-400 hover:text-white transition-colors duration-200">Saintgits Engineering</a></li>
+                        <li><a href="#" class="text-zinc-400 hover:text-white transition-colors duration-200">Saintgits Linways</a></li>
+                    </ul>
+                </nav>
+
+                <nav aria-label="Event links">
+                    <h3 class="text-lg font-bold mb-6">Events</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-zinc-400 hover:text-white transition-colors duration-200">Nakshatra 2025</a></li>
+                        <li><a href="#" class="text-zinc-400 hover:text-white transition-colors duration-200">Pratitya 2025</a></li>
+                        <li><a href="#" class="text-zinc-400 hover:text-white transition-colors duration-200">Hackathon</a></li>
+                        <li><a href="#" class="text-zinc-400 hover:text-white transition-colors duration-200">Quiz</a></li>
+                        <li><a href="#" class="text-zinc-400 hover:text-white transition-colors duration-200">Talks</a></li>
+                    </ul>
+                </nav>
+
+                <nav aria-label="About links">
+                    <h3 class="text-lg font-bold mb-6">About Us</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-zinc-400 hover:text-white transition-colors duration-200">Kuriakose Philip</a></li>
+                        <li><a href="#" class="text-zinc-400 hover:text-white transition-colors duration-200">Mathews Reji</a></li>
+                        <li><a href="#" class="text-zinc-400 hover:text-white transition-colors duration-200">Muhammed Anees</a></li>
+                        <li><a href="#" class="text-zinc-400 hover:text-white transition-colors duration-200">Navya Prasad</a></li>
+                    </ul>
+                </nav>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Connect With Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="social-icon" aria-label="Visit our Facebook page">
+                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/5266a76eb35d45c623879fe11d81424f56c461f1b4e747c252d44c2f69959a66?placeholderIfAbsent=true&apiKey=1928b447fa444db09e851f70903c3b51" alt="" class="w-8 h-8">
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Visit our Instagram page">
+                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/cd0b3d660b614411edcc3a23a3558bb5a33772bf2ed724fb5e87ade1e531a2f2?placeholderIfAbsent=true&apiKey=1928b447fa444db09e851f70903c3b51" alt="" class="w-8 h-8">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 pt-8 border-t border-neutral-800 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-zinc-400">&copy; 2025 Connect@Saintgits. All rights reserved.</p>
+                <a href="#top" class="text-zinc-400 hover:text-white transition-colors duration-200 mt-4 md:mt-0">
+                    Back to top
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
