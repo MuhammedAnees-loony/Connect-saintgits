@@ -16,24 +16,7 @@
     <nav class="top-nav" aria-label="Utility navigation">
       <a href="#privacy" class="privacy-link">Privacy Policy/Provider</a>
       
-      <form class="search-wrapper" role="search">
-        <label for="search" class="visually-hidden">Search</label>
-        <div class="search-input-wrapper">
-          <input 
-            type="search" 
-            id="search" 
-            class="search-input"
-            placeholder="Your search term / Online…"
-            aria-label="Search site content"
-          >
-          <div class="search-divider">
-            <div class="vertical-line" aria-hidden="true"></div>
-            <button type="submit" class="search-button" aria-label="Submit search">
-              <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/3b5eb33ed6686f36187296624cbfc4f78bc68d0326687af4962d77fbfb251e61?placeholderIfAbsent=true&apiKey=1928b447fa444db09e851f70903c3b51" class="search-icon" alt="" aria-hidden="true">
-            </button>
-          </div>
-        </div>
-      </form>
+      
 
       <button class="profile-button" aria-label="View profile">
         <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/18f803f02aa25b30e54e7151f0619f8557fd4a7740c7c6a0d0e30850c5e04f7a?placeholderIfAbsent=true&apiKey=1928b447fa444db09e851f70903c3b51" class="profile-icon" alt="" aria-hidden="true">
@@ -87,9 +70,27 @@
         loading="lazy"
       >
     </section>
-
+    <form class="search-wrapper" role="search">
+      <label for="search" class="visually-hidden">Search</label>
+      <div class="search-input-wrapper">
+        <input 
+          type="search" 
+          id="search" 
+          class="search-input"
+          placeholder="Your search term / Online…"
+          aria-label="Search site content"
+        >
+        <div class="search-divider">
+          <div class="vertical-line" aria-hidden="true"></div>
+          <button type="submit" class="search-button" aria-label="Submit search">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/3b5eb33ed6686f36187296624cbfc4f78bc68d0326687af4962d77fbfb251e61?placeholderIfAbsent=true&apiKey=1928b447fa444db09e851f70903c3b51" class="search-icon" alt="" aria-hidden="true">
+          </button>
+        </div>
+      </div>
+    </form>
     <section class="features" aria-label="Featured events">
       <div class="features-grid">
+        
         <article class="feature-card">
           <img 
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/ba5b8c37f74d1bfe9c1437d8f41d4d5476768774b90e036192d9887a39a6775d?placeholderIfAbsent=true&apiKey=1928b447fa444db09e851f70903c3b51" 
@@ -193,6 +194,19 @@
               <img 
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/3d15daa7b59f7f1910818f1eb3cac403c4768dd34bdc27edec158f925822d58a?placeholderIfAbsent=true&apiKey=1928b447fa444db09e851f70903c3b51" 
               alt="Electrical Engineering department"
+              width="400"
+                height="300"
+                loading="lazy"
+                class="preview-image"
+              >
+              <div class="preview-overlay">
+                <h3 class="preview-title"></h3>
+              </div>
+            </div>
+            <div class="preview-card">
+              <img 
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/1bee7888f6eaa5e6e521c3c2d7177f777d8e3da40c24846f818bfa8c0eca4ecd?placeholderIfAbsent=true&apiKey=1928b447fa444db09e851f70903c3b51" 
+              alt="Electronics Engineering department"
               width="400"
                 height="300"
                 loading="lazy"
@@ -424,6 +438,8 @@ button:focus {
 .search-wrapper {
   flex: 1;
   max-width: 260px;
+  
+  margin-left: 70%;
 }
 
 .search-input-wrapper {
