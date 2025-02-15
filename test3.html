@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Split Page Layout</title>
+    <div class="bg"></div>
+<div class="bg bg2"></div>
+<div class="bg bg3"></div>
     <style>
         * {
             margin: 0;
@@ -16,6 +19,7 @@
             height: 100vh;
             display: flex;
             overflow: hidden;
+            background-color: black;
         }
 
         /* Main Container */
@@ -27,11 +31,13 @@
 
         /* Left Side - Blank */
         .left-container {
-            width: 100%;
-            background-color: black; /* Keeps it blank */
+            width: 50%;
+            
+            /* Keeps it blank */
         }
 
         /* Right Side - Background Image */
+        
         .right-container {
             width: 560px;
             height: 560px;
@@ -41,6 +47,8 @@
             align-items: center;
             justify-content: center;
             position: relative;
+            margin-left: 120px;
+            
         }
 
         /* Indicator Style */
@@ -283,10 +291,38 @@
         z-index: 60;
         background-color: #ecad29;
         }
+        .bg {
+            animation:slide 3s ease-in-out infinite alternate;
+            background-image: linear-gradient(-60deg, rgb(0, 0, 0) 50%, rgb(59, 57, 57) 50%);
+            bottom:0;
+            left:-50%;
+            opacity:.5;
+            position:fixed;
+            right:-50%;
+            top:0;
+            z-index:-1;
+            }
 
+        .bg2 {
+            animation-direction:alternate-reverse;
+            animation-duration:4s;
+            }
+
+        .bg3 {
+            animation-duration:5s;
+            }
+            @keyframes slide {
+            0% {
+                transform:translateX(-25%);
+            }
+            100% {
+                transform:translateX(25%);
+            }
+            }
         
     </style>
 </head>
+
 <body>
     
 
@@ -446,7 +482,7 @@ let detailsEven = true;
 let offsetTop = 200;
 let offsetLeft = 700;
 let cardWidth = 200;
-let cardHeight = 300;
+let cardHeight = 200;
 let gap = 40;
 let numberSize = 50;
 const ease = "sine.inOut";
@@ -456,8 +492,8 @@ function init() {
   const detailsActive = detailsEven ? "#details-even" : "#details-odd";
   const detailsInactive = detailsEven ? "#details-odd" : "#details-even";
   const { innerHeight: height, innerWidth: width } = window;
-  offsetTop = height - 430;
-  offsetLeft = width - 830;
+  offsetTop = height - 230;
+  offsetLeft = width - 530;
 
   gsap.set("#pagination", {
     top: offsetTop + 330,
