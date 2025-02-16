@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <ul class="background">
         <li></li>
@@ -213,7 +214,7 @@
 
         <nav class="main-nav" id="main-nav" aria-label="Main navigation">
             <ul class="nav-items">
-                <li class="nav-item"><a href="#events" class="nav-link">Events</a></li>
+                <li class="nav-item"><a href="#celeb" class="nav-link">Events</a></li>
                 <li class="nav-item"><a href="#departments" class="nav-link">Departments</a></li>
                 <li class="nav-item"><a href="#upload" class="nav-link">Upload</a></li>
                 <li class="nav-item"><a href="#about" class="nav-link">About & Services</a></li>
@@ -251,7 +252,7 @@
           </div>
         </div>
       </form>
-      <section class="celeb-section">
+      <section class="celeb-section" id="celeb">
         <h2 class="line-title">Ongoing Events</h2>
         <div class="carousel-container">
             <button class="nav-btn left-btn">&#10094;</button>
@@ -317,9 +318,11 @@
         }
 
         body {
-            background: linear-gradient(132deg, #0e0e0e,#ffffff, #000000,#000dff,#000000,#ffffff);
+            background: linear-gradient(132deg, #0e0e0e,#979797, #000000,#000dff,#000000,#ffffff);
             background-size: 400% 400%;
-            animation: BackgroundGradient 50s ease infinite;
+            animation: BackgroundGradient 20s ease infinite;
+            
+
         }
         @keyframes BackgroundGradient {
              0% {background-position: 0% 50%;}
@@ -364,16 +367,16 @@
             
             position: relative;
             color: transparent;
-            background-image: repeating-linear-gradient(45deg, #000000 0px, #f1f1f1 144px, rgb(0, 0, 0) 144px, rgb(4, 0, 253) 288px, #000000 288px, #bebebe 432px);
+            background-image: repeating-linear-gradient(45deg, #000000 0px, #f1f1f1 144px, rgb(0, 0, 0) 144px, rgb(155, 155, 159) 288px, #000000 288px, #bebebe 432px);
             background-size: 250%;
             background-position: 0%;
             -webkit-background-clip: text;
             background-clip: text;
-            -webkit-animation: stripeAnimation 3s linear infinite;
-            animation: stripeAnimation 3s linear infinite;
+            -webkit-animation: stripeAnimation 10s linear infinite;
+            animation: stripeAnimation 10s linear infinite;
             animation-play-state: running;
             -webkit-animation-play-state: paused;
-            animation-play-state: paused;
+            animation-play-state: running;
         }
 
         @keyframes stripeAnimation {
@@ -992,7 +995,12 @@
         });
     });
     
-    
+    document.addEventListener("DOMContentLoaded", () => {
+    if (performance.navigation.type === 1) { // Detects if page was reloaded
+        window.location.href = "index.html"; // Redirect back to the animation page
+    }
+});
+
 
     </script>
 

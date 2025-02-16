@@ -21,7 +21,7 @@
             height: 100vh;
             display: flex;
             overflow: hidden;
-            background-color: rgb(2, 40, 255);
+            background-color: rgb(253, 253, 253);
         }
 
         
@@ -303,7 +303,7 @@
         }
         .bg {
             animation:slide 10s ease-in-out infinite alternate;
-            background-image: linear-gradient(-60deg, rgb(0, 0, 0) 50%, rgb(60, 60, 62) 50%);
+            background-image: linear-gradient(-60deg, rgb(0, 0, 0) 50%, rgb(100, 100, 103) 50%);
             bottom:0;
             left:-50%;
             opacity:.5;
@@ -346,12 +346,81 @@
             background-color: rgba(120, 115, 115, 0.9);
         }
 
+/* Header Styles */
+header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #0d0c0c;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 2px solid #f3f6fa;
+            height: 70px; ;
+        }
+        .logo-container {
+            display: flexbox;
+            align-items: center; /* Align vertically */
+            gap: 1px; /* Adjust spacing between logo and text */
+            text-decoration: none;
+        }
+        .header-logo {
+            height: 110px; /* Adjust size as needed */
+            margin-right: 1px;
+        }
 
+       
+        .logo {
+            font-size: 2.56vw;
+            
+            font-weight: bold;
+            font-family: sans-serif;
+            text-decoration: none;
+            margin-right: 560px;
+            position: center;
+            color: transparent;
+            background-image: repeating-linear-gradient(45deg, #000000 0px, #f1f1f1 144px, rgb(0, 0, 0) 144px, rgb(234, 234, 234) 288px, #000000 288px, #bebebe 432px);
+            background-size: 250%;
+            background-position: 0%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-animation: stripeAnimation 5s linear infinite;
+            animation: stripeAnimation 5s linear infinite;
+            animation-play-state: running;
+            -webkit-animation-play-state: paused;
+            animation-play-state: running;
+        }
+
+        @keyframes stripeAnimation {
+            100% {
+                background-position: 165%;
+            }
+        }
+        
+
+        .logo:hover {
+            
+            -webkit-animation-play-state: running;
+            animation-play-state: running;
+        }
+
+        
     </style>
 </head>
 
 <body>
+  <header>
+    <a href="#" class="logo-container">
+        <img src="logo5.svg" alt="Logo" class="header-logo">
+        <a href="#" class="logo">Connect@Saintgits</a>
+    </a>
     
+
+  </header>   
 
     
     <div class="left-container"></div>

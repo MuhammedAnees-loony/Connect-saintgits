@@ -25,7 +25,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+  background: linear-gradient(to right, #2c5364, #202943, #0f2027);
 
   height: 100%;
   width: 100%;
@@ -35,16 +35,18 @@ body {
   align-items: center;
   justify-content: center;
   color: #191654;
+  transition: opacity 10s ease-out;
 }
 
 #svg {
-  height: 150px;
-  width: 150px;
-  stroke: white;
+  height: 560px;
+  width: 560px;
+  stroke: rgb(8, 73, 179);
   fill-opacity: 0;
   stroke-width: 3px;
   stroke-dasharray: 4500;
-  animation: draw 8s ease;
+  animation: draw 30s ease;
+  
 }
 
 @keyframes draw {
