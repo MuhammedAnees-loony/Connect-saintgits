@@ -224,7 +224,7 @@
         <button class="button">
             <svg class="bell" viewBox="0 0 448 512"><path d="M224 0c-17.7 0-32 14.3-32 32V49.9C119.5 61.4 64 124.2 64 200v33.4c0 45.4-15.5 89.5-43.8 124.9L5.3 377c-5.8 7.2-6.9 17.1-2.9 25.4S14.8 416 24 416H424c9.2 0 17.6-5.3 21.6-13.6s2.9-18.2-2.9-25.4l-14.9-18.6C399.5 322.9 384 278.8 384 233.4V200c0-75.8-55.5-138.6-128-150.1V32c0-17.7-14.3-32-32-32zm0 96h8c57.4 0 104 46.6 104 104v33.4c0 47.9 13.9 94.6 39.7 134.6H72.3C98.1 328 112 281.3 112 233.4V200c0-57.4 46.6-104 104-104h8zm64 352H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7s18.7-28.3 18.7-45.3z"></path></svg>
            Notifications
-           <div class="arrow">›</div>
+           <div class="arrow"></div>
          </button>
     </header>
 
@@ -318,7 +318,7 @@
         }
 
         body {
-            background: linear-gradient(132deg, #0e0e0e,#979797, #000000,#000dff,#000000,#ffffff);
+            background: linear-gradient(132deg, #0e0e0e,#979797, #000000,#000000,#000000,#ffffff);
             background-size: 400% 400%;
             animation: BackgroundGradient 20s ease infinite;
             
@@ -716,235 +716,235 @@
         }
 
             /* Middle Section CSS Start */
-    .celeb-section {
-        padding: 60px 50px;
-    }
-    .celeb-section .owl-stage {
-        margin:  12 12;
-        display: flex;
-       
-    }
-    .celeb-section .item {
-        margin: 0 15px 60px;
-        width: 524px;
-        height: 560px;
-        display: flex;
-        align-items: flex-end;
-        background: #343434 no-repeat center center / cover;
-        border-radius: 16px;
-        overflow: hidden;
-        position: relative;
-        transition: all 0.4s ease-in-out;
-        cursor: pointer;
-    }
-    .celeb-section .item.active {
-        width: 500px;
-        box-shadow: 12px 40px 40px rgba(0, 0, 0, 0.25);
-    }
-    .celeb-section .item:after {
-        content: "";
-        display: block;
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        left: 0;
-        top: 0;
-        background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
-    }
-    .celeb-section .item-desc {
-        padding: 0 24px 24px;
-        color: #fff;
-        position: relative;
-        z-index: 1;
-        overflow: hidden;
-        transform: translateY(calc(100% - 80px));
-        transition: all 0.4s ease-in-out;
-    }
-    .celeb-section .item.active .item-desc {
-        transform: none;
-    }
-    .celeb-section .item-desc p {
-        opacity: 0;
-        transform: translateY(32px);
-        transition: all 0.4s ease-in-out 0.2s;
-    }
-    .celeb-section .item.active .item-desc p {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    .celeb-section .owl-theme.custom-carousel .owl-dots {
-        margin-top: -20px;
-        position: relative;
-        z-index: 5;
-    }
-    .carousel-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        overflow: hidden;
-        width: 100%;
-    }
-    .nav-btn {
-        background-color: rgba(148, 144, 144, 0.8);
-        border: none;
-        cursor: pointer;
-        font-size: 24px;
-        padding: 12px 18px;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 10;
-        border-radius: 50%;
-        transition: background 0.3s ease;
-        opacity: 1;
-        visibility: visible;
-    }
-    .nav-btn:hover {
-        background-color: rgb(52, 52, 52);
-    }
-    .left-btn {
-        left: 10px;
-    }
-    .right-btn {
-        right: 10px;
-    }
-    .custom-carousel {
-        display: flex;
-        scroll-behavior: smooth;
-        overflow-x: auto;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-    }
-    .custom-carousel::-webkit-scrollbar {
-        display: none;
-    }
-    .custom-carousel .item {
-        transition: transform 0.4s ease-in-out;
-        flex: 0 0 auto;
-        width: 300px;
-    }
-    /*mobile*/
-
-    @media (max-width: 768px) {
-    .custom-carousel {
-        display: flex;
-        overflow-x: auto;
-        scroll-behavior: smooth;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-        justify-content: center;
-        scroll-snap-type: x mandatory;
-        width: 100vw; /* Full screen width */
-        padding: 0 10px; /* Small padding on sides */
-    }
-
-    .custom-carousel::-webkit-scrollbar {
-        display: none;
-    }
-
-    .celeb-section {
-        padding: 20px 0; /* Less padding for better fit */
-    }
-
-    .celeb-section .item {
-        flex: 0 0 90vw; /* Card width nearly full screen */
-        max-width: 90vw;
-        height: 600px; /* Increase height */
-        margin: 0 auto; /* Center card */
-        transition: all 0.4s ease-in-out;
-        cursor: pointer;
-        position: relative;
-        scroll-snap-align: center;
-        border-radius: 16px;
-        overflow: hidden;
-        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    .celeb-section .item.active {
-        height: 650px; /* Slightly taller when active */
-        box-shadow: 12px 20px 30px rgba(0, 0, 0, 0.3);
-    }
-
-    .celeb-section .item-desc {
-        transform: translateY(calc(100% - 54px));
-        transition: all 0.4s ease-in-out;
-        opacity: 0;
-    }
-
-    .celeb-section .item.active .item-desc {
-        transform: none;
-        opacity: 1;
-    }
-
-    /* Navigation Buttons */
-    .nav-btn {
-        font-size: 24px;
-        padding: 14px;
-        top: 50%;
-        opacity: 0.9;
-        background-color: rgba(0, 0, 0, 0.5);
-        border: none;
-        cursor: pointer;
-        position: absolute;
-        transform: translateY(-50%);
-        border-radius: 50%;
-        transition: background 0.3s ease;
-        z-index: 10;
-    }
-
-    .nav-btn:hover {
-        background-color: rgba(0, 0, 0, 0.8);
-    }
-
-    .left-btn {
-        left: 5px;
-    }
-
-    .right-btn {
-        right: 5px;
-    }
-}
-
-    /* Middle Section CSS End */
-        
-   
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            header {
-                padding: 15px 20px;
+            .celeb-section {
+                padding: 60px 50px;
             }
-
-            .main-nav {
-                display: none;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background: rgb(217, 26, 26);
-                flex-direction: column;
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            }
-
-            .nav-items {
-                flex-direction: column;
-                text-align: center;
-                padding: 20px 0;
-            }
-
-            .nav-item a {
-                display: block;
-                padding: 12px;
-                font-size: 18px;
-            }
-
+            .celeb-section .owl-stage {
+                margin:  12 12;
+                display: flex;
             
+            }
+            .celeb-section .item {
+                margin: 0 15px 60px;
+                width: 524px;
+                height: 560px;
+                display: flex;
+                align-items: flex-end;
+                background: #343434 no-repeat center center / cover;
+                border-radius: 16px;
+                overflow: hidden;
+                position: relative;
+                transition: all 0.4s ease-in-out;
+                cursor: pointer;
+            }
+            .celeb-section .item.active {
+                width: 500px;
+                box-shadow: 12px 40px 40px rgba(0, 0, 0, 0.25);
+            }
+            .celeb-section .item:after {
+                content: "";
+                display: block;
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                left: 0;
+                top: 0;
+                background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+            }
+            .celeb-section .item-desc {
+                padding: 0 24px 24px;
+                color: #fff;
+                position: relative;
+                z-index: 1;
+                overflow: hidden;
+                transform: translateY(calc(100% - 80px));
+                transition: all 0.4s ease-in-out;
+            }
+            .celeb-section .item.active .item-desc {
+                transform: none;
+            }
+            .celeb-section .item-desc p {
+                opacity: 0;
+                transform: translateY(32px);
+                transition: all 0.4s ease-in-out 0.2s;
+            }
+            .celeb-section .item.active .item-desc p {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            .celeb-section .owl-theme.custom-carousel .owl-dots {
+                margin-top: -20px;
+                position: relative;
+                z-index: 5;
+            }
+            .carousel-container {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                overflow: hidden;
+                width: 100%;
+            }
+            .nav-btn {
+                background-color: rgba(148, 144, 144, 0.8);
+                border: none;
+                cursor: pointer;
+                font-size: 24px;
+                padding: 12px 18px;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 10;
+                border-radius: 50%;
+                transition: background 0.3s ease;
+                opacity: 1;
+                visibility: visible;
+            }
+            .nav-btn:hover {
+                background-color: rgb(52, 52, 52);
+            }
+            .left-btn {
+                left: 10px;
+            }
+            .right-btn {
+                right: 10px;
+            }
+            .custom-carousel {
+                display: flex;
+                scroll-behavior: smooth;
+                overflow-x: auto;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+            .custom-carousel::-webkit-scrollbar {
+                display: none;
+            }
+            .custom-carousel .item {
+                transition: transform 0.4s ease-in-out;
+                flex: 0 0 auto;
+                width: 300px;
+            }
+            /*mobile*/
 
-           
-            .video-container {
-                height: auto;
+            @media (max-width: 768px) {
+            .custom-carousel {
+                display: flex;
+                overflow-x: auto;
+                scroll-behavior: smooth;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                justify-content: center;
+                scroll-snap-type: x mandatory;
+                width: 100vw; /* Full screen width */
+                padding: 0 10px; /* Small padding on sides */
+            }
+
+            .custom-carousel::-webkit-scrollbar {
+                display: none;
+            }
+
+            .celeb-section {
+                padding: 20px 0; /* Less padding for better fit */
+            }
+
+            .celeb-section .item {
+                flex: 0 0 90vw; /* Card width nearly full screen */
+                max-width: 90vw;
+                height: 600px; /* Increase height */
+                margin: 0 auto; /* Center card */
+                transition: all 0.4s ease-in-out;
+                cursor: pointer;
+                position: relative;
+                scroll-snap-align: center;
+                border-radius: 16px;
+                overflow: hidden;
+                box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            }
+
+            .celeb-section .item.active {
+                height: 650px; /* Slightly taller when active */
+                box-shadow: 12px 20px 30px rgba(0, 0, 0, 0.3);
+            }
+
+            .celeb-section .item-desc {
+                transform: translateY(calc(100% - 54px));
+                transition: all 0.4s ease-in-out;
+                opacity: 0;
+            }
+
+            .celeb-section .item.active .item-desc {
+                transform: none;
+                opacity: 1;
+            }
+
+            /* Navigation Buttons */
+            .nav-btn {
+                font-size: 24px;
+                padding: 14px;
+                top: 50%;
+                opacity: 0.9;
+                background-color: rgba(0, 0, 0, 0.5);
+                border: none;
+                cursor: pointer;
+                position: absolute;
+                transform: translateY(-50%);
+                border-radius: 50%;
+                transition: background 0.3s ease;
+                z-index: 10;
+            }
+
+            .nav-btn:hover {
+                background-color: rgba(0, 0, 0, 0.8);
+            }
+
+            .left-btn {
+                left: 5px;
+            }
+
+            .right-btn {
+                right: 5px;
             }
         }
+
+            /* Middle Section CSS End */
+                
+        
+                /* Responsive Design */
+                @media (max-width: 768px) {
+                    header {
+                        padding: 15px 20px;
+                    }
+
+                    .main-nav {
+                        display: none;
+                        position: absolute;
+                        top: 70px;
+                        left: 0;
+                        width: 100%;
+                        background: rgb(217, 26, 26);
+                        flex-direction: column;
+                        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                    }
+
+                    .nav-items {
+                        flex-direction: column;
+                        text-align: center;
+                        padding: 20px 0;
+                    }
+
+                    .nav-item a {
+                        display: block;
+                        padding: 12px;
+                        font-size: 18px;
+                    }
+
+                    
+
+                
+                    .video-container {
+                        height: auto;
+                    }
+                }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
