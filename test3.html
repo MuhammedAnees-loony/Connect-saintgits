@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,19 +21,18 @@
             height: 100vh;
             display: flex;
             overflow: hidden;
-            background-color: black;
+            background-color: rgb(2, 40, 255);
         }
 
-        /* Main Container */
-        .container {
-            display: flex;
-            width: 100%;
-            height: 100vh; /* Full height */
-        }
+        
+        
 
         /* Left Side - Blank */
         .left-container {
             width: 50%;
+            scroll-behavior: smooth;
+            overflow-y: auto;
+            scrollbar-width: none;
             
             /* Keeps it blank */
         }
@@ -48,9 +49,18 @@
             justify-content: center;
             position: relative;
             margin-left: 120px;
+            margin-top: 10%;
+            padding-right: 10%;
+           
+            
             
         }
-
+        .r-container{
+          width:50%;
+          display:flex;
+          
+          
+        }
         /* Indicator Style */
         .indicator {
             position: absolute;
@@ -292,8 +302,8 @@
         background-color: #ecad29;
         }
         .bg {
-            animation:slide 3s ease-in-out infinite alternate;
-            background-image: linear-gradient(-60deg, rgb(0, 0, 0) 50%, rgb(59, 57, 57) 50%);
+            animation:slide 10s ease-in-out infinite alternate;
+            background-image: linear-gradient(-60deg, rgb(0, 0, 0) 50%, rgb(60, 60, 62) 50%);
             bottom:0;
             left:-50%;
             opacity:.5;
@@ -319,7 +329,24 @@
                 transform:translateX(25%);
             }
             }
-        
+        #pause-btn {
+          position: fixed; /* Keeps it positioned correctly */
+          background-color: rgba(129, 125, 125, 0.7);
+          color: white;
+          border: none;
+          padding: 8px 14px;
+          font-size: 14px;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          z-index: 1000; /* Ensures it stays on top */
+      }
+
+        #pause-btn:hover {
+            background-color: rgba(120, 115, 115, 0.9);
+        }
+
+
     </style>
 </head>
 
@@ -327,28 +354,30 @@
     
 
     
-
-    <div id="demo"></div>
-
-    <div class="details" id="details-even">
-      <div class="place-box">
-        <div class="text">Switzerland Alps</div>
+    <div class="left-container"></div>
+      <div id="demo"></div>
+        
+          <div class="details" id="details-even">
+            <div class="place-box">
+              <div class="text">Switzerland Alps</div>
+            </div>
+            <div class="title-box-1"><div class="title-1">SAINT</div></div>
+            <div class="title-box-2"><div class="title-2">ANTONIEN</div></div>
+            <div class="desc">
+              Tucked away in the Switzerland Alps, Saint Antönien offers an idyllic retreat for those seeking tranquility and adventure alike.      </div>
+          </div>
+      
+          <div class="details" id="details-odd">
+            <div class="place-box">
+              <div class="text">Switzerland Alps</div>
+            </div>
+            <div class="title-box-1"><div class="title-1">SAINT </div></div>
+            <div class="title-box-2"><div class="title-2">ANTONIEN</div></div>
+            <div class="desc">
+              Tucked away in the Switzerland Alps, Saint Antönien offers an idyllic retreat for those seeking tranquility and adventure alike.      </div>
+            </div>
       </div>
-      <div class="title-box-1"><div class="title-1">SAINT</div></div>
-      <div class="title-box-2"><div class="title-2">ANTONIEN</div></div>
-      <div class="desc">
-        Tucked away in the Switzerland Alps, Saint Antönien offers an idyllic retreat for those seeking tranquility and adventure alike.      </div>
-    </div>
-
-    <div class="details" id="details-odd">
-      <div class="place-box">
-        <div class="text">Switzerland Alps</div>
-      </div>
-      <div class="title-box-1"><div class="title-1">SAINT </div></div>
-      <div class="title-box-2"><div class="title-2">ANTONIEN</div></div>
-      <div class="desc">
-        Tucked away in the Switzerland Alps, Saint Antönien offers an idyllic retreat for those seeking tranquility and adventure alike.      </div>
-      </div>
+      
     </div>
 
     
@@ -356,29 +385,19 @@
     </div>
 
     
-    <div class="container">
-        <!-- Left Blank Container -->
-        <div class="left-container">
-            <!-- Left side is intentionally left empty -->
-        </div>
-        <div class="r-container">
-            <div class="right-container">
-                <div class="indicator"></div>
-                <nav>
-                    <div>
-                        <div class="svg-container">
-                            <!-- Placeholder for navigation content -->
-                            
-                        </div>
-                    </div>
-                </nav>
+    
+        
+        
+      <div class="r-container">
+        <button id="pause-btn"><i class="fas fa-pause"></i> <!-- Font Awesome icon --></button>
+        <div class="right-container">
                 
-            </div>
-            <!-- Left side is intentionally left empty -->
         </div>
+            
+      </div>
         <!-- Right Container with Image and Content -->
         
-    </div>
+    
 
     
 
@@ -447,7 +466,7 @@ const cardContents = data.map((i, index)=>`<div class="card-content" id="card-co
 
 const sildeNumbers = data.map((_, index)=>`<div class="item" id="slide-item-${index}" >${index+1}</div>`).join('')
 _('demo').innerHTML =  cards + cardContents
-_('slide-numbers').innerHTML =  sildeNumbers
+
 
 
 const range = (n) =>
@@ -504,11 +523,12 @@ function init() {
   });
   gsap.set("nav", { y: -200, opacity: 0 });
 
-  const rightContainer = document.querySelector(".right-container"); // Get right container size
+  const rightContainer = document.querySelector(".right-container");
+ // Get right container size
 
 gsap.set(getCard(active), {
     x: rightContainer.offsetLeft,  // Position inside right container
-    y: 0,
+    y: rightContainer.offsetTop,
     width: rightContainer.offsetWidth,  // Only fill right container width
     height: rightContainer.offsetHeight, // Only fill right container height
 });
@@ -652,7 +672,9 @@ function step() {
       ease,
     });
 
-    const rightContainer = document.querySelector(".right-container"); // Get right container
+const rightContainer = document.querySelector(".right-container"); // Get right container  
+const computedStyle = window.getComputedStyle(rightContainer);
+const rightContainerMarginTop = parseFloat(computedStyle.marginTop) || 0;
 
 gsap.to(getCard(active), {
     x: rightContainer.offsetLeft,  // Position inside right container
@@ -738,13 +760,7 @@ gsap.to(getCard(active), {
   });
 }
 
-async function loop() {
-  await animate(".indicator", 2, { x: 0 });
-  await animate(".indicator", 0.8, { x: window.innerWidth, delay: 0.3 });
-  set(".indicator", { x: -window.innerWidth });
-  await step();
-  loop();
-}
+
 
 async function loadImage(src) {
   return new Promise((resolve, reject) => {
@@ -769,5 +785,62 @@ async function start() {
   }
 }
 
-start()
+
+function positionPauseButton() {
+    const rightContainer = document.querySelector(".r-container");
+    const pauseBtn = document.getElementById("pause-btn");
+
+    if (rightContainer && pauseBtn) {
+        const rect = rightContainer.getBoundingClientRect();
+        pauseBtn.style.left = `${rect.left + 150}px`;  // 10px from left of right-container
+        pauseBtn.style.top = `${rect.bottom - 100}px`; // 40px above bottom of right-container
+    }
+}
+
+// Call the function on page load and when resizing
+window.addEventListener("load", positionPauseButton);
+window.addEventListener("resize", positionPauseButton);
+let isPaused = false;
+let isToggling = false; // Prevent multiple rapid clicks
+let autoSlide; // Store the loop interval
+
+document.getElementById("pause-btn").addEventListener("click", function() {
+    if (isToggling) return; // Prevent spam clicking
+    isToggling = true;
+
+    isPaused = !isPaused;
+    this.innerHTML = isPaused ? '<i class="fas fa-play"></i>' : '<i class="fas fa-pause"></i>';
+    
+    if (isPaused) {
+        gsap.globalTimeline.pause();
+        clearInterval(autoSlide); // Stop auto sliding
+    } else {
+        gsap.globalTimeline.resume();
+        startAutoSlide(); // Restart auto sliding
+    }
+
+    setTimeout(() => {
+        isToggling = false; // Unlock button after delay
+    }, 500);
+});
+
+// Function to start the automatic sliding
+function startAutoSlide() {
+    clearInterval(autoSlide); // Ensure no duplicate loops
+    autoSlide = setInterval(() => {
+        if (!isPaused) {
+            step(); // Slide the cards
+        }
+    }, 3000); // Adjust timing as needed (3 seconds)
+}
+
+// Start auto-sliding when the page loads
+startAutoSlide();
+
+
+// Start loop initially
+start().then(() => loop());
+
+
+
   </script>
