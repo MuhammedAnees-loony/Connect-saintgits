@@ -715,8 +715,8 @@
             background: #e73700;
         }
 
-            /* Middle Section CSS Start */
-            .celeb-section {
+        /* Middle Section CSS Start */
+        .celeb-section {
                 padding: 60px 50px;
             }
             .celeb-section .owl-stage {
@@ -784,6 +784,7 @@
                 position: relative;
                 overflow: hidden;
                 width: 100%;
+                
             }
             .nav-btn {
                 background-color: rgba(148, 144, 144, 0.8);
@@ -951,55 +952,54 @@
     <script>
         
         $(document).ready(function () {
-        var carousel = $(".custom-carousel").owlCarousel({
-            autoWidth: true,
-            loop: true,
-            items: 1,
-            margin: 10,
-            nav: false,
-            dots: false,
-            smartSpeed: 600,
-            mouseDrag: true,
-            touchDrag: true,
-            scrollbars:false,
-        });
-    
-        // Click Navigation
-        $(".left-btn").click(function () {
-            carousel.trigger("prev.owl.carousel");
-        });
-        $(".right-btn").click(function () {
-            carousel.trigger("next.owl.carousel");
-        });
-    
-        // **Smooth Scroll with OwlCarousel Navigation**
-        document.querySelector(".custom-carousel").addEventListener("wheel", function (event) {
-            event.preventDefault();
-            if (event.deltaY > 0) {
-                carousel.trigger("next.owl.carousel");
-            } else {
-                carousel.trigger("prev.owl.carousel");
-            }
-        });
-    
-        // **Fix Click Issues: Ensure Items Update Correctly**
-        carousel.on("translated.owl.carousel", function () {
-            $(".custom-carousel .item").removeClass("active");
-            $(".custom-carousel .center").addClass("active");
-        });
-    
-        // Click to Activate an Item
-        $(".custom-carousel .item").click(function () {
-            $(".custom-carousel .item").not($(this)).removeClass("active");
-            $(this).toggleClass("active");
-        });
+    var carousel = $(".custom-carousel").owlCarousel({
+        autoWidth: true,
+        items: 3,  // Adjust this to match the number of visible items
+        margin: 10,
+        nav: false,
+        dots: false,
+        smartSpeed: 600,
+        loop: true,  // Enables smooth infinite scrolling
+        autoplay: true,
+        autoplayTimeout: 2000,
+        autoplayHoverPause: false,
+        slideBy: 1,  // Moves only 1 item at a time to prevent multiple-card jumps
+        center: false, // Ensures proper alignment
+        stagePadding: 50, // Adds padding to prevent clipping at edges
     });
-    
-    document.addEventListener("DOMContentLoaded", () => {
-    if (performance.navigation.type === 1) { // Detects if page was reloaded
-        window.location.href = "index.html"; // Redirect back to the animation page
-    }
+
+    // Click Navigation (Prev/Next)
+    $(".left-btn").click(function () {
+        carousel.trigger("prev.owl.carousel");
+    });
+
+    $(".right-btn").click(function () {
+        carousel.trigger("next.owl.carousel");
+    });
+
+    // **Smooth Scroll with Mouse Wheel**
+    $(".custom-carousel").on("wheel", function (event) {
+        event.preventDefault();
+        if (event.originalEvent.deltaY > 0) {
+            carousel.trigger("next.owl.carousel");
+        } else {
+            carousel.trigger("prev.owl.carousel");
+        }
+    });
+
+    // **Fix Click Issues: Ensure Items Update Correctly**
+    carousel.on("translated.owl.carousel", function () {
+        $(".custom-carousel .item").removeClass("active");
+        $(".custom-carousel .center").addClass("active");
+    });
+
+    // Click to Activate an Item
+    $(".custom-carousel .item").click(function () {
+        $(".custom-carousel .item").not($(this)).removeClass("active");
+        $(this).toggleClass("active");
+    });
 });
+
 
 
     </script>
