@@ -10,6 +10,7 @@
 <div class="bg bg2"></div>
 <div class="bg bg3"></div>
     <style>
+       @import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
         * {
             margin: 0;
             padding: 0;
@@ -17,7 +18,7 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: "Michroma", sans-serif;;
             height: 100vh;
             display: flex;
             overflow: hidden;
@@ -69,13 +70,6 @@
             width: 50px;
             height: 5px;
             background-color: white;
-        }
-
-        /* Navigation Style */
-        nav {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
         }
 
         .svg-container {
@@ -239,18 +233,7 @@
         text-transform: uppercase;
         }
 
-        nav {
-        position: fixed;
-        left: 0;
-        top: 0;
-        right: 0;
-        z-index: 50;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 20px 36px;
-        font-weight: 500;
-        }
+       
 
         nav svg {
         width: 20px;
@@ -303,7 +286,7 @@
         }
         .bg {
             animation:slide 10s ease-in-out infinite alternate;
-            background-image: linear-gradient(-60deg, rgb(0, 0, 0) 50%, rgb(100, 100, 103) 50%);
+            background-image: linear-gradient(132deg,#205295,#092635 ,#0A2647,#144272,#000000,#2C74B3);
             bottom:0;
             left:-50%;
             opacity:.5;
@@ -330,7 +313,7 @@
             }
             }
         #pause-btn {
-          position: fixed; /* Keeps it positioned correctly */
+          position: absolute; /* Keeps it positioned correctly */
           background-color: rgba(129, 125, 125, 0.7);
           color: white;
           border: none;
@@ -346,8 +329,8 @@
             background-color: rgba(120, 115, 115, 0.9);
         }
 
-/* Header Styles */
-header {
+         /* Header Styles */
+         header {
             position: fixed;
             top: 0;
             left: 0;
@@ -363,62 +346,192 @@ header {
             height: 70px; ;
         }
         .logo-container {
-            display: flexbox;
-            align-items: center; /* Align vertically */
-            gap: 1px; /* Adjust spacing between logo and text */
-            text-decoration: none;
+            display: flex; /* Enables flexbox for horizontal alignment */
+            align-items: center; /* Ensures vertical alignment */
+            text-decoration: none; /* Removes underline */
         }
+
         .header-logo {
-            height: 110px; /* Adjust size as needed */
-            margin-right: 1px;
+            height: 50px; /* Adjust as needed */
+            margin: 0; /* Remove unwanted margins */
+            padding: 0;
         }
 
-       
         .logo {
-            font-size: 2.56vw;
-            
-            font-weight: bold;
-            font-family: sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: "Michroma", sans-serif;
+            color: #f6f3f3;
+            margin: 0; /* Remove any default margin */
+            padding: 0;
+        } 
+        /* Navigation Menu */
+        .main-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-items {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-item a {
             text-decoration: none;
-            margin-right: 560px;
-            position: center;
-            color: transparent;
-            background-image: repeating-linear-gradient(45deg, #000000 0px, #f1f1f1 144px, rgb(0, 0, 0) 144px, rgb(234, 234, 234) 288px, #000000 288px, #bebebe 432px);
-            background-size: 250%;
-            background-position: 0%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-animation: stripeAnimation 5s linear infinite;
-            animation: stripeAnimation 5s linear infinite;
-            animation-play-state: running;
-            -webkit-animation-play-state: paused;
-            animation-play-state: running;
+            font-size: 16px;
+            font-family: "Michroma", sans-serif;
+            font-weight: 500;
+            color: #f0e4e4;
+            padding: 8px 12px;
+            transition: all 0.3s ease-in-out;
+            border-radius: 5px;
         }
 
-        @keyframes stripeAnimation {
-            100% {
-                background-position: 165%;
-            }
-        }
-        
-
-        .logo:hover {
-            
-            -webkit-animation-play-state: running;
-            animation-play-state: running;
+        .nav-item a:hover,
+        .nav-item a:focus {
+            background: #606265;
+            color: rgb(21, 18, 18);
         }
 
-        
+        /* Profile and Notification Button */
+        .notification-button {
+            background:transparent;
+            border: none;
+            font-family: "Michroma", sans-serif;
+            cursor: pointer;
+        }
+
+        .profile-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-icon:hover {
+            transform: scale(1.1);
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .menu-icon {
+            width: 30px;
+            height: 3px;
+            background: #e1d9d9;
+            display: block;
+            position: relative;
+        }
+
+        .menu-icon::before,
+        .menu-icon::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 3px;
+            background: #333;
+            transition: 0.3s;
+        }
+
+        .menu-icon::before {
+            top: -8px;
+        }
+
+        .menu-icon::after {
+            top: 8px;
+        }
+
+        /* Video Container */
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 1920px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        /* Video Styling */
+        .video-container video {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+        .button {
+        width: 200px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px;
+        padding: 0px 15px;
+        background-color: rgb(66, 66, 66);
+        border-radius: 10px;
+        font-family: "Michroma", sans-serif;
+        color: white;
+        border: none;
+        position: relative;
+        cursor: pointer;
+        transition-duration: .2s;
+        }
+
+        .bell {
+        width: 13px;
+        }
+
+        .bell path {
+        fill: rgb(0, 206, 62);
+        }
+
+        .arrow {
+        position: absolute;
+        right: 0;
+        width: 30px;
+        height: 100%;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        }
+
+        .button:hover {
+        background-color: rgb(77, 77, 77);
+        transition-duration: .2s;
+        }
+
+        .button:hover .arrow {
+        animation: slide-right .6s ease-out both;
+        }
+ 
     </style>
 </head>
 
 <body>
   <header>
     <a href="#" class="logo-container">
-        <img src="logo5.svg" alt="Logo" class="header-logo">
-        <a href="#" class="logo">Connect@Saintgits</a>
-    </a>
-    
+      <img src="logo5.svg" alt="Logo" class="header-logo">
+      <span class="logo">Connect@Saintgits</span>
+  </a>
+  <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+    <ul class="nav-items">
+        <li class="nav-item"><a href="#celeb" class="nav-link">Events</a></li>
+        <li class="nav-item"><a href="#departments" class="nav-link">Departments</a></li>
+        <li class="nav-item"><a href="#upload" class="nav-link">Upload</a></li>
+        <li class="nav-item"><a href="#about" class="nav-link">About & Services</a></li>
+    </ul>
+</nav>
+
+<button class="button">
+    <svg class="bell" viewBox="0 0 448 512"><path d="M224 0c-17.7 0-32 14.3-32 32V49.9C119.5 61.4 64 124.2 64 200v33.4c0 45.4-15.5 89.5-43.8 124.9L5.3 377c-5.8 7.2-6.9 17.1-2.9 25.4S14.8 416 24 416H424c9.2 0 17.6-5.3 21.6-13.6s2.9-18.2-2.9-25.4l-14.9-18.6C399.5 322.9 384 278.8 384 233.4V200c0-75.8-55.5-138.6-128-150.1V32c0-17.7-14.3-32-32-32zm0 96h8c57.4 0 104 46.6 104 104v33.4c0 47.9 13.9 94.6 39.7 134.6H72.3C98.1 328 112 281.3 112 233.4V200c0-57.4 46.6-104 104-104h8zm64 352H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7s18.7-28.3 18.7-45.3z"></path></svg>
+   Notifications
+   <div class="arrow"></div>
+ </button>
 
   </header>   
 
