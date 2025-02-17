@@ -977,15 +977,7 @@
         carousel.trigger("next.owl.carousel");
     });
 
-    // **Smooth Scroll with Mouse Wheel**
-    $(".custom-carousel").on("wheel", function (event) {
-        event.preventDefault();
-        if (event.originalEvent.deltaY > 0) {
-            carousel.trigger("next.owl.carousel");
-        } else {
-            carousel.trigger("prev.owl.carousel");
-        }
-    });
+    
 
     // **Fix Click Issues: Ensure Items Update Correctly**
     carousel.on("translated.owl.carousel", function () {
