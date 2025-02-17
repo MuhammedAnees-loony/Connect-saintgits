@@ -208,10 +208,9 @@
     <header>
         <a href="#" class="logo-container">
             <img src="logo5.svg" alt="Logo" class="header-logo">
-            <a href="#" class="logo">Connect@Saintgits</a>
+            <span class="logo">Connect@Saintgits</span>
         </a>
         
-
         <nav class="main-nav" id="main-nav" aria-label="Main navigation">
             <ul class="nav-items">
                 <li class="nav-item"><a href="#celeb" class="nav-link">Events</a></li>
@@ -307,7 +306,7 @@
     </script>
     <style>
         /* Import Google Fonts */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        @import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
 
         /* General Styles */
         * {
@@ -318,7 +317,7 @@
         }
 
         body {
-            background: linear-gradient(132deg, #0e0e0e,#979797, #000000,#000000,#000000,#ffffff);
+            background: linear-gradient(132deg,#205295,#092635 ,#0A2647,#144272,#000000,#2C74B3);
             background-size: 400% 400%;
             animation: BackgroundGradient 20s ease infinite;
             
@@ -347,50 +346,26 @@
             height: 70px; ;
         }
         .logo-container {
-            display: flexbox;
-            align-items: center; /* Align vertically */
-            gap: 1px; /* Adjust spacing between logo and text */
-            text-decoration: none;
+            display: flex; /* Enables flexbox for horizontal alignment */
+            align-items: center; /* Ensures vertical alignment */
+            text-decoration: none; /* Removes underline */
         }
+
         .header-logo {
-            height: 110px; /* Adjust size as needed */
-            margin-right: 1px;
+            height: 50px; /* Adjust as needed */
+            margin: 0; /* Remove unwanted margins */
+            padding: 0;
         }
 
-       
         .logo {
-            font-size: 2.56vw;
-            
-            font-weight: bold;
-            font-family: sans-serif;
-            text-decoration: none;
-            
-            position: relative;
-            color: transparent;
-            background-image: repeating-linear-gradient(45deg, #000000 0px, #f1f1f1 144px, rgb(0, 0, 0) 144px, rgb(155, 155, 159) 288px, #000000 288px, #bebebe 432px);
-            background-size: 250%;
-            background-position: 0%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-animation: stripeAnimation 10s linear infinite;
-            animation: stripeAnimation 10s linear infinite;
-            animation-play-state: running;
-            -webkit-animation-play-state: paused;
-            animation-play-state: running;
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: "Michroma", sans-serif;
+            color: #f6f3f3;
+            margin: 0; /* Remove any default margin */
+            padding: 0;
         }
 
-        @keyframes stripeAnimation {
-            100% {
-                background-position: 165%;
-            }
-        }
-        
-
-        .logo:hover {
-            
-            -webkit-animation-play-state: running;
-            animation-play-state: running;
-        }
 
 
         /* Navigation Menu */
@@ -408,6 +383,7 @@
         .nav-item a {
             text-decoration: none;
             font-size: 16px;
+            font-family: "Michroma", sans-serif;
             font-weight: 500;
             color: #f0e4e4;
             padding: 8px 12px;
@@ -425,6 +401,7 @@
         .notification-button {
             background:transparent;
             border: none;
+            font-family: "Michroma", sans-serif;
             cursor: pointer;
         }
 
@@ -499,6 +476,7 @@
         padding: 0px 15px;
         background-color: rgb(66, 66, 66);
         border-radius: 10px;
+        font-family: "Michroma", sans-serif;
         color: white;
         border: none;
         position: relative;
@@ -643,7 +621,7 @@
             padding: 0;
         }
         body {
-            font-family: "Roboto", sans-serif;
+            font-family: "Lucida Console", "Courier New", monospace;
             font-size: 16px;
             background-color: black;
         }
@@ -715,8 +693,8 @@
             background: #e73700;
         }
 
-        /* Middle Section CSS Start */
-        .celeb-section {
+            /* Middle Section CSS Start */
+            .celeb-section {
                 padding: 60px 50px;
             }
             .celeb-section .owl-stage {
@@ -784,13 +762,13 @@
                 position: relative;
                 overflow: hidden;
                 width: 100%;
-                
             }
             .nav-btn {
                 background-color: rgba(148, 144, 144, 0.8);
                 border: none;
                 cursor: pointer;
                 font-size: 24px;
+                font-family: "Lucida Console", "Courier New", monospace;
                 padding: 12px 18px;
                 position: absolute;
                 top: 50%;
@@ -952,46 +930,47 @@
     <script>
         
         $(document).ready(function () {
-    var carousel = $(".custom-carousel").owlCarousel({
-        autoWidth: true,
-        items: 3,  // Adjust this to match the number of visible items
-        margin: 10,
-        nav: false,
-        dots: false,
-        smartSpeed: 600,
-        loop: true,  // Enables smooth infinite scrolling
-        autoplay: true,
-        autoplayTimeout: 2000,
-        autoplayHoverPause: false,
-        slideBy: 1,  // Moves only 1 item at a time to prevent multiple-card jumps
-        center: false, // Ensures proper alignment
-        stagePadding: 50, // Adds padding to prevent clipping at edges
-    });
-
-    // Click Navigation (Prev/Next)
-    $(".left-btn").click(function () {
-        carousel.trigger("prev.owl.carousel");
-    });
-
-    $(".right-btn").click(function () {
-        carousel.trigger("next.owl.carousel");
-    });
-
+        var carousel = $(".custom-carousel").owlCarousel({
+            autoWidth: true,
+            loop: true,
+            items: 1,
+            margin: 10,
+            nav: false,
+            dots: false,
+            smartSpeed: 600,
+            mouseDrag: false,
+            touchDrag: true,
+            scrollbars:false,
+        });
     
-
-    // **Fix Click Issues: Ensure Items Update Correctly**
-    carousel.on("translated.owl.carousel", function () {
-        $(".custom-carousel .item").removeClass("active");
-        $(".custom-carousel .center").addClass("active");
+        // Click Navigation
+        $(".left-btn").click(function () {
+            carousel.trigger("prev.owl.carousel");
+        });
+        $(".right-btn").click(function () {
+            carousel.trigger("next.owl.carousel");
+        });
+    
+        
+    
+        // **Fix Click Issues: Ensure Items Update Correctly**
+        carousel.on("translated.owl.carousel", function () {
+            $(".custom-carousel .item").removeClass("active");
+            $(".custom-carousel .center").addClass("active");
+        });
+    
+        // Click to Activate an Item
+        $(".custom-carousel .item").click(function () {
+            $(".custom-carousel .item").not($(this)).removeClass("active");
+            $(this).toggleClass("active");
+        });
     });
-
-    // Click to Activate an Item
-    $(".custom-carousel .item").click(function () {
-        $(".custom-carousel .item").not($(this)).removeClass("active");
-        $(this).toggleClass("active");
-    });
+    
+    document.addEventListener("DOMContentLoaded", () => {
+    if (performance.navigation.type === 1) { // Detects if page was reloaded
+        window.location.href = "index.html"; // Redirect back to the animation page
+    }
 });
-
 
 
     </script>
