@@ -1012,53 +1012,53 @@
     <script>
         
         $(document).ready(function () {
-    var carousel = $(".custom-carousel").owlCarousel({
-        autoWidth: true,
-        items: 3,  // Adjust this to match the number of visible items
-        margin: 10,
-        nav: false,
-        dots: false,
-        smartSpeed: 600,
-        loop: true,  // Enables smooth infinite scrolling
-        autoplay: true,
-        autoplayTimeout: 2000,
-        autoplayHoverPause: false,
-        slideBy: 1,  // Moves only 1 item at a time to prevent multiple-card jumps
-        center: false, // Ensures proper alignment
-        stagePadding: 50, // Adds padding to prevent clipping at edges
-    });
+        var carousel = $(".custom-carousel").owlCarousel({
+            autoWidth: true,
+            items: 3,  // Adjust this to match the number of visible items
+            margin: 10,
+            nav: false,
+            dots: false,
+            smartSpeed: 600,
+            loop: true,  // Enables smooth infinite scrolling
+            autoplay: true,
+            autoplayTimeout: 2000,
+            autoplayHoverPause: false,
+            slideBy: 1,  // Moves only 1 item at a time to prevent multiple-card jumps
+            center: false, // Ensures proper alignment
+            stagePadding: 50, // Adds padding to prevent clipping at edges
+        });
 
-    // Click Navigation (Prev/Next)
-    $(".left-btn").click(function () {
-        carousel.trigger("prev.owl.carousel");
-    });
-
-    $(".right-btn").click(function () {
-        carousel.trigger("next.owl.carousel");
-    });
-
-    // **Smooth Scroll with Mouse Wheel**
-    $(".custom-carousel").on("wheel", function (event) {
-        event.preventDefault();
-        if (event.originalEvent.deltaY > 0) {
-            carousel.trigger("next.owl.carousel");
-        } else {
+        // Click Navigation (Prev/Next)
+        $(".left-btn").click(function () {
             carousel.trigger("prev.owl.carousel");
-        }
-    });
+        });
 
-    // **Fix Click Issues: Ensure Items Update Correctly**
-    carousel.on("translated.owl.carousel", function () {
-        $(".custom-carousel .item").removeClass("active");
-        $(".custom-carousel .center").addClass("active");
-    });
+        $(".right-btn").click(function () {
+            carousel.trigger("next.owl.carousel");
+        });
 
-    // Click to Activate an Item
-    $(".custom-carousel .item").click(function () {
-        $(".custom-carousel .item").not($(this)).removeClass("active");
-        $(this).toggleClass("active");
-    });
-});
+        // **Smooth Scroll with Mouse Wheel**
+        $(".custom-carousel").on("wheel", function (event) {
+            event.preventDefault();
+            if (event.originalEvent.deltaY > 0) {
+                carousel.trigger("next.owl.carousel");
+            } else {
+                carousel.trigger("prev.owl.carousel");
+            }
+        });
+
+        // **Fix Click Issues: Ensure Items Update Correctly**
+        carousel.on("translated.owl.carousel", function () {
+            $(".custom-carousel .item").removeClass("active");
+            $(".custom-carousel .center").addClass("active");
+        });
+
+        // Click to Activate an Item
+        $(".custom-carousel .item").click(function () {
+            $(".custom-carousel .item").not($(this)).removeClass("active");
+            $(this).toggleClass("active");
+        });
+        });
 
 
 
