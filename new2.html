@@ -1,0 +1,237 @@
+
+<div class="container">
+  <input type="radio" name="slider" id="item-1" checked>
+  <input type="radio" name="slider" id="item-2">
+  <input type="radio" name="slider" id="item-3">
+  <input type="radio" name="slider" id="item-4">
+  <input type="radio" name="slider" id="item-5">
+  <input type="radio" name="slider" id="item-6">
+  <div class="cards">
+    <label class="card" for="item-1" id="song-1">
+      <img src="https://images.unsplash.com/photo-1530651788726-1dbf58eeef1f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=882&q=80" alt="song">
+    </label>
+    <label class="card" for="item-2" id="song-2">
+      <img src="https://images.unsplash.com/photo-1559386484-97dfc0e15539?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80" alt="song">
+    </label>
+    <label class="card" for="item-3" id="song-3">
+      <img src="https://images.unsplash.com/photo-1533461502717-83546f485d24?ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60" alt="song">
+    </label>
+    <label class="card" for="item-4" id="song-4">
+      <img src="https://images.unsplash.com/photo-1533461502717-83546f485d24?ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60" alt="song">
+    </label>
+    <label class="card" for="item-5" id="song-5">
+      <img src="https://images.unsplash.com/photo-1533461502717-83546f485d24?ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60" alt="song">
+    </label>
+    <label class="card" for="item-6" id="song-6">
+      <img src="https://images.unsplash.com/photo-1533461502717-83546f485d24?ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60" alt="song">
+    </label>
+  </div>
+<div>
+<script>
+$('input').on('change', function() {
+  $('body').toggleClass('blue');
+});
+</script>
+<style>
+    @import url("https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap");
+
+        
+
+        html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        }
+
+        body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 30px 10px;
+        font-family: 'DM Sans', sans-serif;
+        transition: background .4s ease-in;
+        background: transparent;
+        
+        &.blue {
+            background-color: #428aa6;
+        }
+        }
+
+        input[type=radio] {
+        display: none;
+        }
+
+        .card {
+        position: absolute;
+        width: 60%;
+        height: 50%;
+        left: 0;
+        right: 0;
+        margin: auto;
+        transition: transform .4s ease;
+        cursor: pointer;
+        }
+
+        .container {
+        width: 100%;
+        max-width: 800px;
+        max-height: 600px;
+        height: 100%;
+        transform-style: preserve-3d;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        }
+
+        .cards {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        margin-bottom: 20px;
+        }
+        input[type=radio] {
+        display: none;
+        }
+        img {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        object-fit: cover;
+        }
+        
+#item-1:checked ~ .cards #song-1 { transform: translateX(0) scale(1); z-index: 3; opacity: 1; }
+#item-1:checked ~ .cards #song-2 { transform: translateX(50%) scale(0.8); z-index: 2; opacity: 0.5; }
+#item-1:checked ~ .cards #song-6 { transform: translateX(-50%) scale(0.8); z-index: 2; opacity: 0.5; }
+
+/* Hide others */
+#item-1:checked ~ .cards #song-3,
+#item-1:checked ~ .cards #song-4,
+#item-1:checked ~ .cards #song-5 {
+    opacity: 0;
+    z-index: -1;
+}
+
+/* Positions when item-2 is selected */
+#item-2:checked ~ .cards #song-2 { transform: translateX(0) scale(1); z-index: 3; opacity: 1; }
+#item-2:checked ~ .cards #song-3 { transform: translateX(50%) scale(0.8); z-index: 2; opacity: 0.5; }
+#item-2:checked ~ .cards #song-1 { transform: translateX(-50%) scale(0.8); z-index: 2; opacity: 0.5; }
+
+/* Hide others */
+#item-2:checked ~ .cards #song-4,
+#item-2:checked ~ .cards #song-5,
+#item-2:checked ~ .cards #song-6 {
+    opacity: 0;
+    z-index: -1;
+}
+
+/* Positions when item-3 is selected */
+#item-3:checked ~ .cards #song-3 { transform: translateX(0) scale(1); z-index: 3; opacity: 1; }
+#item-3:checked ~ .cards #song-4 { transform: translateX(50%) scale(0.8); z-index: 2; opacity: 0.5; }
+#item-3:checked ~ .cards #song-2 { transform: translateX(-50%) scale(0.8); z-index: 2; opacity: 0.5; }
+
+/* Hide others */
+#item-3:checked ~ .cards #song-1,
+#item-3:checked ~ .cards #song-5,
+#item-3:checked ~ .cards #song-6 {
+    opacity: 0;
+    z-index: -1;
+}
+
+/* Positions when item-4 is selected */
+#item-4:checked ~ .cards #song-4 { transform: translateX(0) scale(1); z-index: 3; opacity: 1; }
+#item-4:checked ~ .cards #song-5 { transform: translateX(50%) scale(0.8); z-index: 2; opacity: 0.5; }
+#item-4:checked ~ .cards #song-3 { transform: translateX(-50%) scale(0.8); z-index: 2; opacity: 0.5; }
+
+/* Hide others */
+#item-4:checked ~ .cards #song-1,
+#item-4:checked ~ .cards #song-2,
+#item-4:checked ~ .cards #song-6 {
+    opacity: 0;
+    z-index: -1;
+}
+
+/* Positions when item-5 is selected */
+#item-5:checked ~ .cards #song-5 { transform: translateX(0) scale(1); z-index: 3; opacity: 1; }
+#item-5:checked ~ .cards #song-6 { transform: translateX(50%) scale(0.8); z-index: 2; opacity: 0.5; }
+#item-5:checked ~ .cards #song-4 { transform: translateX(-50%) scale(0.8); z-index: 2; opacity: 0.5; }
+
+/* Hide others */
+#item-5:checked ~ .cards #song-1,
+#item-5:checked ~ .cards #song-2,
+#item-5:checked ~ .cards #song-3 {
+    opacity: 0;
+    z-index: -1;
+}
+
+/* Positions when item-6 is selected */
+#item-6:checked ~ .cards #song-6 { transform: translateX(0) scale(1); z-index: 3; opacity: 1; }
+#item-6:checked ~ .cards #song-1 { transform: translateX(50%) scale(0.8); z-index: 2; opacity: 0.5; }
+#item-6:checked ~ .cards #song-5 { transform: translateX(-50%) scale(0.8); z-index: 2; opacity: 0.5; }
+
+/* Hide others */
+#item-6:checked ~ .cards #song-2,
+#item-6:checked ~ .cards #song-3,
+#item-6:checked ~ .cards #song-4 {
+    opacity: 0;
+    z-index: -1;
+}
+
+        
+        .upper-part {
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+        height: 36px;
+        overflow: hidden;
+        }
+
+        .sub-line {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        }
+
+        .subtitle, .time {
+        font-size: 12px;
+        line-height: 16px;
+        color: #c6c5c6;
+        }
+
+        .time {
+        font-size: 12px;
+        line-height: 16px;
+        color: #a5a5a5;
+        font-weight: 500;
+        margin-left: auto;
+        }
+
+        .progress-bar {
+        height: 3px;
+        width: 100%;
+        background-color: #e9efff;
+        border-radius: 2px;
+        overflow: hidden;
+        }
+
+        .progress {
+        display: block;
+        position: relative;
+        width: 60%;
+        height: 100%;
+        background-color: #2992dc;
+        border-radius: 6px;
+        }
+
+        .info-area {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 30px;
+        transition: transform .4s ease-in;
+        }
+
+        
+</style>

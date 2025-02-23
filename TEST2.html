@@ -34,204 +34,197 @@
      </ul>
     <style>
         @keyframes animate {
-        0%{
-            transform: translateY(0) rotate(0deg);
-            opacity: 1;
-            border-radius: 0;
+            0%{
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+                border-radius: 0;
+            }
+            100%{
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+                border-radius: 50%;
+            }
         }
-        100%{
-            transform: translateY(-1000px) rotate(720deg);
-            opacity: 0;
-            border-radius: 50%;
-        }
-    }
     
-    .background {
-        position: fixed;
-        width: 100vw;
-        height: 100vh;
-        top: 0;
-        left: 0;
-        margin: 0;
-        padding: 0;
+        .background {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            margin: 0;
+            padding: 0;
+            
+            overflow: hidden;
+        }
+        .background li {
+            position: absolute;
+            display: block;
+            list-style: none;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            animation: animate 19s linear infinite;
+        }
         
-        overflow: hidden;
-    }
-    .background li {
-        position: absolute;
-        display: block;
-        list-style: none;
-        width: 20px;
-        height: 20px;
-        background: rgba(255, 255, 255, 0.2);
-        animation: animate 19s linear infinite;
-    }
+        
+        
+        
     
-    
-    
-    
-   
-    .background li:nth-child(1) {
-        left: 53%;
-        width: 118px;
-        height: 118px;
-        bottom: -118px;
-        animation-delay: 5s;
-    }
-    .background li:nth-child(2) {
-        left: 38%;
-        width: 139px;
-        height: 139px;
-        bottom: -139px;
-        animation-delay: 6s;
-    }
-    .background li:nth-child(3) {
-        left: 23%;
-        width: 156px;
-        height: 156px;
-        bottom: -156px;
-        animation-delay: 13s;
-    }
-    .background li:nth-child(4) {
-        left: 77%;
-        width: 115px;
-        height: 115px;
-        bottom: -115px;
-        animation-delay: 4s;
-    }
-    .background li:nth-child(5) {
-        left: 47%;
-        width: 124px;
-        height: 124px;
-        bottom: -124px;
-        animation-delay: 23s;
-    }
-    .background li:nth-child(6) {
-        left: 87%;
-        width: 158px;
-        height: 158px;
-        bottom: -158px;
-        animation-delay: 8s;
-    }
-    .background li:nth-child(7) {
-        left: 35%;
-        width: 126px;
-        height: 126px;
-        bottom: -126px;
-        animation-delay: 33s;
-    }
-    .background li:nth-child(8) {
-        left: 74%;
-        width: 155px;
-        height: 155px;
-        bottom: -155px;
-        animation-delay: 39s;
-    }
-    .background li:nth-child(9) {
-        left: 72%;
-        width: 120px;
-        height: 120px;
-        bottom: -120px;
-        animation-delay: 38s;
-    }
-    .background li:nth-child(10) {
-        left: 28%;
-        width: 144px;
-        height: 144px;
-        bottom: -144px;
-        animation-delay: 1s;
-    }
-    .background li:nth-child(11) {
-        left: 53%;
-        width: 118px;
-        height: 118px;
-        bottom: -118px;
-        animation-delay: 5s;
-    }
-    .background li:nth-child(12) {
-        left: 38%;
-        width: 139px;
-        height: 139px;
-        bottom: -139px;
-        animation-delay: 6s;
-    }
-    .background li:nth-child(13) {
-        left: 23%;
-        width: 156px;
-        height: 156px;
-        bottom: -156px;
-        animation-delay: 13s;
-    }
-    .background li:nth-child(14) {
-        left: 77%;
-        width: 115px;
-        height: 115px;
-        bottom: -115px;
-        animation-delay: 4s;
-    }
-    .background li:nth-child(15) {
-        left: 47%;
-        width: 124px;
-        height: 124px;
-        bottom: -124px;
-        animation-delay: 23s;
-    }
-    .background li:nth-child(16) {
-        left: 87%;
-        width: 158px;
-        height: 158px;
-        bottom: -158px;
-        animation-delay: 8s;
-    }
-    .background li:nth-child(17) {
-        left: 35%;
-        width: 126px;
-        height: 126px;
-        bottom: -126px;
-        animation-delay: 33s;
-    }
-    .background li:nth-child(18) {
-        left: 74%;
-        width: 155px;
-        height: 155px;
-        bottom: -155px;
-        animation-delay: 39s;
-    }
-    .background li:nth-child(19) {
-        left: 72%;
-        width: 120px;
-        height: 120px;
-        bottom: -120px;
-        animation-delay: 38s;
-    }
+        .background li:nth-child(1) {
+            left: 53%;
+            width: 118px;
+            height: 118px;
+            bottom: -118px;
+            animation-delay: 5s;
+        }
+        .background li:nth-child(2) {
+            left: 38%;
+            width: 139px;
+            height: 139px;
+            bottom: -139px;
+            animation-delay: 6s;
+        }
+        .background li:nth-child(3) {
+            left: 23%;
+            width: 156px;
+            height: 156px;
+            bottom: -156px;
+            animation-delay: 13s;
+        }
+        .background li:nth-child(4) {
+            left: 77%;
+            width: 115px;
+            height: 115px;
+            bottom: -115px;
+            animation-delay: 4s;
+        }
+        .background li:nth-child(5) {
+            left: 47%;
+            width: 124px;
+            height: 124px;
+            bottom: -124px;
+            animation-delay: 23s;
+        }
+        .background li:nth-child(6) {
+            left: 87%;
+            width: 158px;
+            height: 158px;
+            bottom: -158px;
+            animation-delay: 8s;
+        }
+        .background li:nth-child(7) {
+            left: 35%;
+            width: 126px;
+            height: 126px;
+            bottom: -126px;
+            animation-delay: 33s;
+        }
+        .background li:nth-child(8) {
+            left: 74%;
+            width: 155px;
+            height: 155px;
+            bottom: -155px;
+            animation-delay: 39s;
+        }
+        .background li:nth-child(9) {
+            left: 72%;
+            width: 120px;
+            height: 120px;
+            bottom: -120px;
+            animation-delay: 38s;
+        }
+        .background li:nth-child(10) {
+            left: 28%;
+            width: 144px;
+            height: 144px;
+            bottom: -144px;
+            animation-delay: 1s;
+        }
+        .background li:nth-child(11) {
+            left: 53%;
+            width: 118px;
+            height: 118px;
+            bottom: -118px;
+            animation-delay: 5s;
+        }
+        .background li:nth-child(12) {
+            left: 38%;
+            width: 139px;
+            height: 139px;
+            bottom: -139px;
+            animation-delay: 6s;
+        }
+        .background li:nth-child(13) {
+            left: 23%;
+            width: 156px;
+            height: 156px;
+            bottom: -156px;
+            animation-delay: 13s;
+        }
+        .background li:nth-child(14) {
+            left: 77%;
+            width: 115px;
+            height: 115px;
+            bottom: -115px;
+            animation-delay: 4s;
+        }
+        .background li:nth-child(15) {
+            left: 47%;
+            width: 124px;
+            height: 124px;
+            bottom: -124px;
+            animation-delay: 23s;
+        }
+        .background li:nth-child(16) {
+            left: 87%;
+            width: 158px;
+            height: 158px;
+            bottom: -158px;
+            animation-delay: 8s;
+        }
+        .background li:nth-child(17) {
+            left: 35%;
+            width: 126px;
+            height: 126px;
+            bottom: -126px;
+            animation-delay: 33s;
+        }
+        .background li:nth-child(18) {
+            left: 74%;
+            width: 155px;
+            height: 155px;
+            bottom: -155px;
+            animation-delay: 39s;
+        }
+        .background li:nth-child(19) {
+            left: 72%;
+            width: 120px;
+            height: 120px;
+            bottom: -120px;
+            animation-delay: 38s;
+        }
     </style>
     <header>
         <a href="#" class="logo-container">
             <img src="logo5.svg" alt="Logo" class="header-logo">
-            <a href="#" class="logo">Connect@Saintgits</a>
+            <span class="logo">Connect@Saintgits</span>
         </a>
         
-
-        <nav class="main-nav">
-            <!-- Hamburger Menu -->
-            <button class="hamburger" id="hamburger">
-                <div></div>
-                <div></div>
-                <div></div>
-            </button>
-        
-            <!-- Navigation Links -->
-            <ul class="nav-items" id="nav-items">
-                <li class="nav-item"><a href="#celeb">Events</a></li>
-                <li class="nav-item"><a href="#departments">Departments</a></li>
-                <li class="nav-item"><a href="#upload">Upload</a></li>
-                <li class="nav-item"><a href="#about">About & Services</a></li>
-                
+        <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+            <ul class="nav-items">
+                <li class="nav-item"><a href="#celeb" class="nav-link">Events</a></li>
+                <li class="nav-item"><a href="#departments" class="nav-link">Departments</a></li>
+                <li class="nav-item"><a href="#upload" class="nav-link">Upload</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">About & Services</a></li>
             </ul>
         </nav>
-        
 
-        
+        <button class="button">
+            <svg class="bell" viewBox="0 0 448 512"><path d="M224 0c-17.7 0-32 14.3-32 32V49.9C119.5 61.4 64 124.2 64 200v33.4c0 45.4-15.5 89.5-43.8 124.9L5.3 377c-5.8 7.2-6.9 17.1-2.9 25.4S14.8 416 24 416H424c9.2 0 17.6-5.3 21.6-13.6s2.9-18.2-2.9-25.4l-14.9-18.6C399.5 322.9 384 278.8 384 233.4V200c0-75.8-55.5-138.6-128-150.1V32c0-17.7-14.3-32-32-32zm0 96h8c57.4 0 104 46.6 104 104v33.4c0 47.9 13.9 94.6 39.7 134.6H72.3C98.1 328 112 281.3 112 233.4V200c0-57.4 46.6-104 104-104h8zm64 352H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7s18.7-28.3 18.7-45.3z"></path></svg>
+           Notifications
+           <div class="arrow"></div>
+         </button>
     </header>
 
     <div class="video-container">
@@ -257,8 +250,8 @@
             </button>
           </div>
         </div>
-      </form>
-      <section class="celeb-section" id="celeb">
+    </form>
+    <section class="celeb-section" id="celeb">
         <h2 class="line-title">Ongoing Events</h2>
         <div class="carousel-container">
             <button class="nav-btn left-btn">&#10094;</button>
@@ -293,61 +286,266 @@
                         <p>Chris Hemsworth is best known for his role as Thor in the Marvel Cinematic Universe and is a prominent figure in Hollywood.</p>
                     </div>
                 </div>
-                <div class="item active" style="background-image: url('events/AT_Bots.jpg');">
-                    <div class="item-desc">
-                        <h3>AT Bots</h3>
-                        <p>Leonardo DiCaprio is an acclaimed actor and environmental activist known for his roles in films like "Titanic" and "Inception."</p>
-                    </div>
-                </div>
-                <div class="item" style="background-image: url('events/Code__Saintgits.jpg');">
-                    <div class="item-desc">
-                        <h3>Coding champion</h3>
-                        <p>Scarlett Johansson is a versatile actress famous for her roles in "Lost in Translation" and the Marvel Cinematic Universe as Black Widow.</p>
-                    </div>
-                </div>
-                <div class="item" style="background-image: url('events/Literary_Club.jpg');">
-                    <div class="item-desc">
-                        <h3>Whisperers Of Heart</h3>
-                        <p>Dwayne "The Rock" Johnson is a former professional wrestler turned actor, known for his roles in action films and comedies.</p>
-                    </div>
-                </div>
-                <div class="item" style="background-image: url('events/TedX.jpg');">
-                    <div class="item-desc">
-                        <h3>Tedx</h3>
-                        <p>Jennifer Lawrence is an Academy Award-winning actress known for her performances in "The Hunger Games" series and "Silver Linings Playbook."</p>
-                    </div>
-                </div>
-                <div class="item" style="background-image: url('events/IEDC_1.jpg');">
-                    <div class="item-desc">
-                        <h3>IEDC Workshop</h3>
-                        <p>Chris Hemsworth is best known for his role as Thor in the Marvel Cinematic Universe and is a prominent figure in Hollywood.</p>
-                    </div>
-                </div>
+                
             </div>
             <button class="nav-btn right-btn">&#10095;</button>
         </div>
     </section>
+    <div class="card-slider-section">
+        <h2 class="line-title">Departments</h2>
+        <div class="card-slider-container">
+            <input type="radio" name="slider" id="item-1" checked>
+            <input type="radio" name="slider" id="item-2">
+            <input type="radio" name="slider" id="item-3">
+            <input type="radio" name="slider" id="item-4">
+            <input type="radio" name="slider" id="item-5">
+            <input type="radio" name="slider" id="item-6">
+            
+            <div class="cards">
+                <label class="card" for="item-1" id="song-1">
+                    <img src="https://images.unsplash.com/photo-1530651788726-1dbf58eeef1f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=882&q=80" alt="song">
+                </label>
+                <label class="card" for="item-2" id="song-2">
+                    <img src="https://images.unsplash.com/photo-1559386484-97dfc0e15539?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80" alt="song">
+                </label>
+                <label class="card" for="item-3" id="song-3">
+                    <img src="https://images.unsplash.com/photo-1533461502717-83546f485d24?ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60" alt="song">
+                </label>
+                <label class="card" for="item-4" id="song-4">
+                    <img src="https://images.unsplash.com/photo-1460574283810-2aab119d8511?q=80&w=2063&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="song">
+                </label>
+                <label class="card" for="item-5" id="song-5">
+                    <img src="https://images.unsplash.com/photo-1571076372988-88e6190eedbd?ixid=eyJhcHBfaWQiOjEyMDd9&ixlib=rb-1.2.1&q=80&w=1000" alt="song">
+                </label>
+                <label class="card" for="item-6" id="song-6">
+                    <img src="https://images.unsplash.com/photo-1727363490322-4854e6a2eaf4?q=80&w=2000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="song">
+                </label>
+            </div>
+        </div>
+    </div>
+    
 
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const hamburger = document.getElementById("hamburger");
-            const navItems = document.getElementById("nav-items");
+        // Toggle Menu for Mobile
+        const menuToggle = document.querySelector(".menu-toggle");
+        const nav = document.querySelector(".main-nav");
 
-            if (hamburger && navItems) {
-                hamburger.addEventListener("click", function () {
-                    navItems.classList.toggle("show");
-                });
-            } else {
-                console.error("Hamburger menu or nav items not found!");
-            }
+        menuToggle.addEventListener("click", () => {
+            const expanded = menuToggle.getAttribute("aria-expanded") === "true" || false;
+            menuToggle.setAttribute("aria-expanded", !expanded);
+            nav.style.display = expanded ? "none" : "flex";
         });
-
-
+        $('input').on('change', function() {
+        $('body').toggleClass('blue');
+        });
     </script>
     <style>
+        @import url("https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap");
+        
+        /* Section: Card Slider */
+            .card-slider-section {
+                width: 100%;
+                padding: 60px 10px;
+                text-align: center;
+                
+                /* Darker section background */
+                 /* Space between sections */
+            }
+
+            .card-slider-container {
+                max-width: 800px;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            /* Card Slider */
+            .cards {
+                position: relative;
+                width: 1100px;
+                height: 300px;
+                margin-bottom: 20px;
+            }
+
+            .card {
+                position: absolute;
+                width: 60%;
+                height: 80%;
+                left: 0;
+                right: 0;
+                margin: auto;
+                transition: transform 0.4s ease, opacity 0.4s ease;
+                cursor: pointer;
+                border-radius: 16px;
+                overflow: hidden;
+                box-shadow: 0px 10px 30px rgba(255, 255, 255, 0.1);
+            }
+
+            /* Image Styling */
+            .card img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 16px;
+                box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.2);
+            }
+            input[type="radio"] {
+                display: none;
+                }
+            /* Card Animations */
+            #item-1:checked ~ .cards #song-1 { transform: translateX(0) scale(1); z-index: 3; opacity: 1; }
+                #item-1:checked ~ .cards #song-2 { transform: translateX(50%) scale(0.8); z-index: 2; opacity: 0.5; }
+                #item-1:checked ~ .cards #song-6 { transform: translateX(-50%) scale(0.8); z-index: 2; opacity: 0.5; }
+
+                /* Hide others */
+                #item-1:checked ~ .cards #song-3,
+                #item-1:checked ~ .cards #song-4,
+                #item-1:checked ~ .cards #song-5 {
+                    opacity: 0;
+                    z-index: -1;
+                }
+
+                /* Positions when item-2 is selected */
+                #item-2:checked ~ .cards #song-2 { transform: translateX(0) scale(1); z-index: 3; opacity: 1; }
+                #item-2:checked ~ .cards #song-3 { transform: translateX(50%) scale(0.8); z-index: 2; opacity: 0.5; }
+                #item-2:checked ~ .cards #song-1 { transform: translateX(-50%) scale(0.8); z-index: 2; opacity: 0.5; }
+
+                /* Hide others */
+                #item-2:checked ~ .cards #song-4,
+                #item-2:checked ~ .cards #song-5,
+                #item-2:checked ~ .cards #song-6 {
+                    opacity: 0;
+                    z-index: -1;
+                }
+
+                /* Positions when item-3 is selected */
+                #item-3:checked ~ .cards #song-3 { transform: translateX(0) scale(1); z-index: 3; opacity: 1; }
+                #item-3:checked ~ .cards #song-4 { transform: translateX(50%) scale(0.8); z-index: 2; opacity: 0.5; }
+                #item-3:checked ~ .cards #song-2 { transform: translateX(-50%) scale(0.8); z-index: 2; opacity: 0.5; }
+
+                /* Hide others */
+                #item-3:checked ~ .cards #song-1,
+                #item-3:checked ~ .cards #song-5,
+                #item-3:checked ~ .cards #song-6 {
+                    opacity: 0;
+                    z-index: -1;
+                }
+
+                /* Positions when item-4 is selected */
+                #item-4:checked ~ .cards #song-4 { transform: translateX(0) scale(1); z-index: 3; opacity: 1; }
+                #item-4:checked ~ .cards #song-5 { transform: translateX(50%) scale(0.8); z-index: 2; opacity: 0.5; }
+                #item-4:checked ~ .cards #song-3 { transform: translateX(-50%) scale(0.8); z-index: 2; opacity: 0.5; }
+
+                /* Hide others */
+                #item-4:checked ~ .cards #song-1,
+                #item-4:checked ~ .cards #song-2,
+                #item-4:checked ~ .cards #song-6 {
+                    opacity: 0;
+                    z-index: -1;
+                }
+
+                /* Positions when item-5 is selected */
+                #item-5:checked ~ .cards #song-5 { transform: translateX(0) scale(1); z-index: 3; opacity: 1; }
+                #item-5:checked ~ .cards #song-6 { transform: translateX(50%) scale(0.8); z-index: 2; opacity: 0.5; }
+                #item-5:checked ~ .cards #song-4 { transform: translateX(-50%) scale(0.8); z-index: 2; opacity: 0.5; }
+
+                /* Hide others */
+                #item-5:checked ~ .cards #song-1,
+                #item-5:checked ~ .cards #song-2,
+                #item-5:checked ~ .cards #song-3 {
+                    opacity: 0;
+                    z-index: -1;
+                }
+
+                /* Positions when item-6 is selected */
+                #item-6:checked ~ .cards #song-6 { transform: translateX(0) scale(1); z-index: 3; opacity: 1; }
+                #item-6:checked ~ .cards #song-1 { transform: translateX(50%) scale(0.8); z-index: 2; opacity: 0.5; }
+                #item-6:checked ~ .cards #song-5 { transform: translateX(-50%) scale(0.8); z-index: 2; opacity: 0.5; }
+
+                /* Hide others */
+                #item-6:checked ~ .cards #song-2,
+                #item-6:checked ~ .cards #song-3,
+                #item-6:checked ~ .cards #song-4 {
+                    opacity: 0;
+                    z-index: -1;
+                }
+
+            /* Progress Bar */
+            .progress-bar {
+                height: 3px;
+                width: 100%;
+                background-color: #3a3a3a;
+                border-radius: 2px;
+                overflow: hidden;
+            }
+
+            .progress {
+                display: block;
+                position: relative;
+                width: 60%;
+                height: 100%;
+                background-color: #e73700;
+                border-radius: 6px;
+            }
+
+            /* Additional Info Section */
+            .upper-part {
+                position: relative;
+                display: flex;
+                align-items: center;
+                margin-bottom: 12px;
+                height: 36px;
+                overflow: hidden;
+            }
+
+            .sub-line {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+            }
+
+            .subtitle, .time {
+                font-size: 12px;
+                line-height: 16px;
+                color: #c6c5c6;
+            }
+
+            .time {
+                font-size: 12px;
+                line-height: 16px;
+                color: #a5a5a5;
+                font-weight: 500;
+                margin-left: auto;
+            }
+
+            /* Mobile Responsive */
+            @media (max-width: 768px) {
+                .cards {
+                    height: 350px;
+                }
+
+                .card {
+                    width: 90%;
+                    height: 70%;
+                }
+
+                #item-1:checked ~ .cards #song-3,
+                #item-2:checked ~ .cards #song-1,
+                #item-3:checked ~ .cards #song-2 {
+                    transform: translateX(-30%) scale(0.85);
+                }
+
+                #item-1:checked ~ .cards #song-2,
+                #item-2:checked ~ .cards #song-3,
+                #item-3:checked ~ .cards #song-1 {
+                    transform: translateX(30%) scale(0.85);
+                }
+            }
+        
         /* Import Google Fonts */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        @import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
 
         /* General Styles */
         * {
@@ -358,9 +556,10 @@
         }
 
         body {
-            background: linear-gradient(132deg, #0e0e0e,#979797, #000000,#000000,#000000,#ffffff);
+            background: linear-gradient(132deg,#205295,#092635 ,#0A2647,#144272,#000000,#2C74B3);
             background-size: 400% 400%;
             animation: BackgroundGradient 20s ease infinite;
+            
             
 
         }
@@ -387,76 +586,44 @@
             height: 70px; ;
         }
         .logo-container {
-            display: flexbox;
-            align-items: center; /* Align vertically */
-            gap: 1px; /* Adjust spacing between logo and text */
-            text-decoration: none;
+            display: flex; /* Enables flexbox for horizontal alignment */
+            align-items: center; /* Ensures vertical alignment */
+            text-decoration: none; /* Removes underline */
         }
+
         .header-logo {
-            height: 110px; /* Adjust size as needed */
-            margin-right: 1px;
+            height: 50px; /* Adjust as needed */
+            margin: 0; /* Remove unwanted margins */
+            padding: 0;
         }
 
-       
         .logo {
-            font-size: 2.56vw;
-            
-            font-weight: bold;
-            font-family: sans-serif;
-            text-decoration: none;
-            
-            position: absolute;
-            color: transparent;
-            background-image: repeating-linear-gradient(45deg, #000000 0px, #f1f1f1 144px, rgb(0, 0, 0) 144px, rgb(155, 155, 159) 288px, #000000 288px, #bebebe 432px);
-            background-size: 250%;
-            background-position: 0%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-animation: stripeAnimation 10s linear infinite;
-            animation: stripeAnimation 10s linear infinite;
-            animation-play-state: running;
-            -webkit-animation-play-state: paused;
-            animation-play-state: running;
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: "Michroma", sans-serif;
+            color: #f6f3f3;
+            margin: 0; /* Remove any default margin */
+            padding: 0;
         }
 
-        @keyframes stripeAnimation {
-            100% {
-                background-position: 165%;
-            }
-        }
-        
-
-        .logo:hover {
-            
-            -webkit-animation-play-state: running;
-            animation-play-state: running;
-        }
 
 
         /* Navigation Menu */
-        /* Navigation Bar */
         .main-nav {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 10px 20px;
-            
-            position: relative;
         }
 
-        /* Default Navigation Items */
         .nav-items {
             list-style: none;
             display: flex;
             gap: 20px;
-            align-items: center;
-            margin: 0;
-            padding: 0;
         }
 
         .nav-item a {
             text-decoration: none;
             font-size: 16px;
+            font-family: "Michroma", sans-serif;
             font-weight: 500;
             color: #f0e4e4;
             padding: 8px 12px;
@@ -470,68 +637,58 @@
             color: rgb(21, 18, 18);
         }
 
-        
-
-        /* ✅ Ensure hamburger menu is visible and correctly aligned */
-        @media (max-width: 768px) {
-            .hamburger {
-                display: flex !important; /* ✅ Force it to show */
-                flex-direction: column;
-                    gap: 5px;
-                    background: none;
-                    border: none;
-                    cursor: pointer;
-                    position: absolute;
-                    right: 20px; /* ✅ Push it to the right */
-                    top: 50%;
-                    transform: translateY(-50%); /* ✅ Center vertically */
-                    z-index: 1001; /* Make sure it's above other elements */
-            }
-
-                /* ✅ Hamburger Menu Bars */
-                .hamburger div {
-                    width: 30px;
-                    height: 4px;
-                    background: white;
-                    transition: 0.3s;
-                }
-
-                /* ✅ Hide nav items initially */
-                .nav-items {
-                    display: none;
-                    flex-direction: column;
-                    position: absolute;
-                    top: 70px;
-                    right: 0;
-                    width: 100%;
-                    background: #333;
-                    padding: 10px 0;
-                    text-align: center;
-                    z-index: 1000;
-                }
-
-                /* ✅ Show menu when toggled */
-                .nav-items.show {
-                    display: flex !important;
-                }
-        }
-
-
-
-
         /* Profile and Notification Button */
         .notification-button {
             background:transparent;
             border: none;
+            font-family: "Michroma", sans-serif;
             cursor: pointer;
         }
 
-     
-        /* Hamburger Menu */
-        .hamburger {
-            display: none;
+        .profile-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
         }
-                
+
+        .profile-icon:hover {
+            transform: scale(1.1);
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .menu-icon {
+            width: 30px;
+            height: 3px;
+            background: #e1d9d9;
+            display: block;
+            position: relative;
+        }
+
+        .menu-icon::before,
+        .menu-icon::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 3px;
+            background: #333;
+            transition: 0.3s;
+        }
+
+        .menu-icon::before {
+            top: -8px;
+        }
+
+        .menu-icon::after {
+            top: 8px;
+        }
 
         /* Video Container */
         .video-container {
@@ -559,6 +716,7 @@
         padding: 0px 15px;
         background-color: rgb(66, 66, 66);
         border-radius: 10px;
+        font-family: "Michroma", sans-serif;
         color: white;
         border: none;
         position: relative;
@@ -703,7 +861,7 @@
             padding: 0;
         }
         body {
-            font-family: "Roboto", sans-serif;
+            font-family: "Lucida Console", "Courier New", monospace;
             font-size: 16px;
             background-color: black;
         }
@@ -740,6 +898,7 @@
             font-weight: 700;
             position: relative;
             text-transform: capitalize;
+            
         }
         h3 {
             margin: 0 0 10px;
@@ -844,13 +1003,13 @@
                 position: relative;
                 overflow: hidden;
                 width: 100%;
-                
             }
             .nav-btn {
                 background-color: rgba(148, 144, 144, 0.8);
                 border: none;
                 cursor: pointer;
                 font-size: 24px;
+                font-family: "Lucida Console", "Courier New", monospace;
                 padding: 12px 18px;
                 position: absolute;
                 top: 50%;
