@@ -29,7 +29,7 @@ gsap.fromTo(
         loadingPage.style.opacity = "0"; 
 
         setTimeout(() => {
-            window.location.href = "home2.html"; // Redirect after fade-out
+            window.location.href = "new2.html"; // Redirect after fade-out
         }, 0); // Wait for fade-out effect
     }, 4000); // Adjust time to match animation duration
 });
