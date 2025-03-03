@@ -66,11 +66,6 @@
         background: rgba(255, 255, 255, 0.2);
         animation: animate 19s linear infinite;
     }
-    
-    
-    
-    
-   
     .background li:nth-child(1) {
         left: 53%;
         width: 118px;
@@ -241,8 +236,7 @@
             id="search" 
             class="search-input"
             placeholder="Your search term / Online…"
-            aria-label="Search site content"
-          >
+            aria-label="Search site content">
           <div class="search-divider">
             <div class="vertical-line" aria-hidden="true"></div>
             <button type="submit" class="search-button" aria-label="Submit search">
@@ -250,8 +244,8 @@
             </button>
           </div>
         </div>
-      </form>
-      <section class="celeb-section" id="celeb">
+    </form>
+    <section class="celeb-section" id="celeb">
         <h2 class="line-title">Ongoing Events</h2>
         <div class="carousel-container">
             <button class="nav-btn left-btn">&#10094;</button>
@@ -291,7 +285,38 @@
             <button class="nav-btn right-btn">&#10095;</button>
         </div>
     </section>
-
+    <div class="card-slider-section">
+        <h2 class="line-title">Departments</h2>
+        <div class="card-slider-container">
+            <input type="radio" name="slider" id="item-1" checked>
+            <input type="radio" name="slider" id="item-2">
+            <input type="radio" name="slider" id="item-3">
+            <input type="radio" name="slider" id="item-4">
+            <input type="radio" name="slider" id="item-5">
+            <input type="radio" name="slider" id="item-6">
+            
+            <div class="cards">
+                <label class="card" for="item-1" id="song-1">
+                    <img src="https://images.unsplash.com/photo-1530651788726-1dbf58eeef1f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=882&q=80" alt="song">
+                </label>
+                <label class="card" for="item-2" id="song-2">
+                    <img src="https://images.unsplash.com/photo-1559386484-97dfc0e15539?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80" alt="song">
+                </label>
+                <label class="card" for="item-3" id="song-3">
+                    <img src="https://images.unsplash.com/photo-1533461502717-83546f485d24?ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60" alt="song">
+                </label>
+                <label class="card" for="item-4" id="song-4">
+                    <img src="https://images.unsplash.com/photo-1460574283810-2aab119d8511?q=80&w=2063&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="song">
+                </label>
+                <label class="card" for="item-5" id="song-5">
+                    <img src="https://images.unsplash.com/photo-1571076372988-88e6190eedbd?ixid=eyJhcHBfaWQiOjEyMDd9&ixlib=rb-1.2.1&q=80&w=1000" alt="song">
+                </label>
+                <label class="card" for="item-6" id="song-6">
+                    <img src="https://images.unsplash.com/photo-1727363490322-4854e6a2eaf4?q=80&w=2000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="song">
+                </label>
+            </div>
+        </div>
+    </div>
 
     <script>
         // Toggle Menu for Mobile
@@ -305,6 +330,7 @@
         });
     </script>
     <style>
+        
         /* Import Google Fonts */
         @import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
 
@@ -532,7 +558,206 @@
             }
         }
 
+        /* Section: department slider */
+        .card-slider-section {
+                width: 100%;
+                padding: 60px 10px;
+                text-align: center;
+                
+                /* Darker section background */
+                 /* Space between sections */
+            }
 
+            .card-slider-container {
+                max-width: 800px;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            /* Card Slider */
+            .cards {
+                position: relative;
+                width: 1100px;
+                height: 300px;
+                margin-bottom: 20px;
+            }
+
+            .card {
+                position: absolute;
+                width: 60%;
+                height: 80%;
+                left: 0;
+                right: 0;
+                margin: auto;
+                transition: transform 0.4s ease, opacity 0.4s ease;
+                cursor: pointer;
+                border-radius: 16px;
+                overflow: hidden;
+                box-shadow: 0px 10px 30px rgba(255, 255, 255, 0.1);
+            }
+
+            /* Image Styling */
+            .card img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 16px;
+                box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.2);
+            }
+            input[type="radio"] {
+                display: none;
+                }
+            /* Card Animations */
+            #item-1:checked ~ .cards #song-1 { transform: translateX(0) scale(1); z-index: 3; opacity: 1; }
+                #item-1:checked ~ .cards #song-2 { transform: translateX(50%) scale(0.8); z-index: 2; opacity: 0.5; }
+                #item-1:checked ~ .cards #song-6 { transform: translateX(-50%) scale(0.8); z-index: 2; opacity: 0.5; }
+
+                /* Hide others */
+                #item-1:checked ~ .cards #song-3,
+                #item-1:checked ~ .cards #song-4,
+                #item-1:checked ~ .cards #song-5 {
+                    opacity: 0;
+                    z-index: -1;
+                }
+
+                /* Positions when item-2 is selected */
+                #item-2:checked ~ .cards #song-2 { transform: translateX(0) scale(1); z-index: 3; opacity: 1; }
+                #item-2:checked ~ .cards #song-3 { transform: translateX(50%) scale(0.8); z-index: 2; opacity: 0.5; }
+                #item-2:checked ~ .cards #song-1 { transform: translateX(-50%) scale(0.8); z-index: 2; opacity: 0.5; }
+
+                /* Hide others */
+                #item-2:checked ~ .cards #song-4,
+                #item-2:checked ~ .cards #song-5,
+                #item-2:checked ~ .cards #song-6 {
+                    opacity: 0;
+                    z-index: -1;
+                }
+
+                /* Positions when item-3 is selected */
+                #item-3:checked ~ .cards #song-3 { transform: translateX(0) scale(1); z-index: 3; opacity: 1; }
+                #item-3:checked ~ .cards #song-4 { transform: translateX(50%) scale(0.8); z-index: 2; opacity: 0.5; }
+                #item-3:checked ~ .cards #song-2 { transform: translateX(-50%) scale(0.8); z-index: 2; opacity: 0.5; }
+
+                /* Hide others */
+                #item-3:checked ~ .cards #song-1,
+                #item-3:checked ~ .cards #song-5,
+                #item-3:checked ~ .cards #song-6 {
+                    opacity: 0;
+                    z-index: -1;
+                }
+
+                /* Positions when item-4 is selected */
+                #item-4:checked ~ .cards #song-4 { transform: translateX(0) scale(1); z-index: 3; opacity: 1; }
+                #item-4:checked ~ .cards #song-5 { transform: translateX(50%) scale(0.8); z-index: 2; opacity: 0.5; }
+                #item-4:checked ~ .cards #song-3 { transform: translateX(-50%) scale(0.8); z-index: 2; opacity: 0.5; }
+
+                /* Hide others */
+                #item-4:checked ~ .cards #song-1,
+                #item-4:checked ~ .cards #song-2,
+                #item-4:checked ~ .cards #song-6 {
+                    opacity: 0;
+                    z-index: -1;
+                }
+
+                /* Positions when item-5 is selected */
+                #item-5:checked ~ .cards #song-5 { transform: translateX(0) scale(1); z-index: 3; opacity: 1; }
+                #item-5:checked ~ .cards #song-6 { transform: translateX(50%) scale(0.8); z-index: 2; opacity: 0.5; }
+                #item-5:checked ~ .cards #song-4 { transform: translateX(-50%) scale(0.8); z-index: 2; opacity: 0.5; }
+
+                /* Hide others */
+                #item-5:checked ~ .cards #song-1,
+                #item-5:checked ~ .cards #song-2,
+                #item-5:checked ~ .cards #song-3 {
+                    opacity: 0;
+                    z-index: -1;
+                }
+
+                /* Positions when item-6 is selected */
+                #item-6:checked ~ .cards #song-6 { transform: translateX(0) scale(1); z-index: 3; opacity: 1; }
+                #item-6:checked ~ .cards #song-1 { transform: translateX(50%) scale(0.8); z-index: 2; opacity: 0.5; }
+                #item-6:checked ~ .cards #song-5 { transform: translateX(-50%) scale(0.8); z-index: 2; opacity: 0.5; }
+
+                /* Hide others */
+                #item-6:checked ~ .cards #song-2,
+                #item-6:checked ~ .cards #song-3,
+                #item-6:checked ~ .cards #song-4 {
+                    opacity: 0;
+                    z-index: -1;
+                }
+
+            /* Progress Bar */
+            .progress-bar {
+                height: 3px;
+                width: 100%;
+                background-color: #3a3a3a;
+                border-radius: 2px;
+                overflow: hidden;
+            }
+
+            .progress {
+                display: block;
+                position: relative;
+                width: 60%;
+                height: 100%;
+                background-color: #e73700;
+                border-radius: 6px;
+            }
+
+            /* Additional Info Section */
+            .upper-part {
+                position: relative;
+                display: flex;
+                align-items: center;
+                margin-bottom: 12px;
+                height: 36px;
+                overflow: hidden;
+            }
+
+            .sub-line {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+            }
+
+            .subtitle, .time {
+                font-size: 12px;
+                line-height: 16px;
+                color: #c6c5c6;
+            }
+
+            .time {
+                font-size: 12px;
+                line-height: 16px;
+                color: #a5a5a5;
+                font-weight: 500;
+                margin-left: auto;
+            }
+
+            /* Mobile Responsive */
+            @media (max-width: 768px) {
+                .cards {
+                    height: 350px;
+                }
+
+                .card {
+                    width: 90%;
+                    height: 70%;
+                }
+
+                #item-1:checked ~ .cards #song-3,
+                #item-2:checked ~ .cards #song-1,
+                #item-3:checked ~ .cards #song-2 {
+                    transform: translateX(-30%) scale(0.85);
+                }
+
+                #item-1:checked ~ .cards #song-2,
+                #item-2:checked ~ .cards #song-3,
+                #item-3:checked ~ .cards #song-1 {
+                    transform: translateX(30%) scale(0.85);
+                }
+            }
         
 
         .search-input-wrapper {
@@ -932,7 +1157,7 @@
         $(document).ready(function () {
         var carousel = $(".custom-carousel").owlCarousel({
             autoWidth: true,
-            items: 3,  // Adjust this to match the number of visible items
+              // Adjust this to match the number of visible items
             margin: 10,
             nav: false,
             dots: false,
@@ -940,7 +1165,7 @@
             loop: true,  // Enables smooth infinite scrolling
             autoplay: true,
             autoplayTimeout: 2000,
-            autoplayHoverPause: false,
+            autoplayHoverPause: true,
             slideBy: 1,  // Moves only 1 item at a time to prevent multiple-card jumps
             center: false, // Ensures proper alignment
             stagePadding: 50, // Adds padding to prevent clipping at edges
