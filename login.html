@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
   <style media="screen">
+    @import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
     *,
     *:before,
     *:after {
@@ -18,7 +19,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: url('pexels-wildlittlethingsphoto-705792.jpg') no-repeat center center/cover;
+      background: url('https://github.com/MuhammedAnees-loony/Connect-saintgits/blob/anees/backgrounds/login.jpg?raw=true') no-repeat center center/cover;
       height: 100vh;
       flex-direction: column;
     }
@@ -27,7 +28,7 @@
       text-align: left;
       color: #ffffff;
       padding: 20px;
-      font-family: 'Poppins', sans-serif;
+      font-family: "Michroma", sans-serif;
       font-size: 24px;
       font-weight: bold;
       background-color: rgba(255, 255, 255, 0.1);
@@ -174,4 +175,12 @@
     </form>
   </div>
 </body>
+<script>
+  document.querySelector("button").addEventListener("click", function(event) {
+    event.preventDefault(); // Prevents form submission
+    alert("Login Successful");
+    window.location.href = "upload.html"; // Redirect to upload.html
+  });
+</script>
+
 </html>

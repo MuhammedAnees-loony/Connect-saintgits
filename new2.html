@@ -246,7 +246,7 @@
         </div>
     </form>
     <section class="celeb-section" id="celeb">
-        <h2 class="line-title">Ongoing Events</h2>
+        <h2 class="line-title" style="font-family: 'Michroma', sans-serif;">Ongoing Events</h2>
         <div class="carousel-container">
             <button class="nav-btn left-btn">&#10094;</button>
             <div class="owl-carousel custom-carousel owl-theme">
@@ -286,7 +286,7 @@
         </div>
     </section>
     <div class="card-slider-section">
-      <h2 class="line-title">Departments</h2>
+        <h2 class="line-title" style="font-family: 'Michroma', sans-serif;">Departments</h2>
       <div class="card-slider-container">
           <input type="radio" name="slider" id="item-1" checked>
           <input type="radio" name="slider" id="item-2">
@@ -298,38 +298,50 @@
           <div class="cards">
               <label class="card" for="item-1" id="song-1">
                   <div class="card-container">
+                    <a href="department.html">
                       <img src="https://raw.githubusercontent.com/MuhammedAnees-loony/Connect-saintgits/refs/heads/anees/dep_logos/CH.svg" alt="Department 1">
-                      <div class="card-text">Department 1</div>
+                    </a>
+                      <div class="card-text">Chemical Department</div>
                   </div>
               </label>
               <label class="card" for="item-2" id="song-2">
                   <div class="card-container">
+                    <a href="department.html">
                       <img src="https://raw.githubusercontent.com/MuhammedAnees-loony/Connect-saintgits/refs/heads/anees/dep_logos/cs.svg" alt="Department 2">
-                      <div class="card-text">Department 2</div>
+                    </a>  
+                      <div class="card-text">Computer Science Department</div>
                   </div>
               </label>
               <label class="card" for="item-3" id="song-3">
                   <div class="card-container">
+                    <a href="department.html">
                       <img src="https://raw.githubusercontent.com/MuhammedAnees-loony/Connect-saintgits/refs/heads/anees/dep_logos/civil.svg" alt="Department 3">
-                      <div class="card-text">Department 3</div>
+                    </a>
+                      <div class="card-text">Civil Department</div>
                   </div>
               </label>
               <label class="card" for="item-4" id="song-4">
                   <div class="card-container">
+                    <a href="department.html">
                       <img src="https://raw.githubusercontent.com/MuhammedAnees-loony/Connect-saintgits/refs/heads/anees/dep_logos/ec.svg" alt="Department 4">
-                      <div class="card-text">Department 4</div>
+                    </a>
+                      <div class="card-text">Electronics Department</div>
                   </div>
               </label>
               <label class="card" for="item-5" id="song-5">
                   <div class="card-container">
+                    <a href="department.html">
                       <img src="https://raw.githubusercontent.com/MuhammedAnees-loony/Connect-saintgits/refs/heads/anees/dep_logos/ft.svg" alt="Department 5">
-                      <div class="card-text">Department 5</div>
+                    </a>
+                      <div class="card-text">Food Technology</div>
                   </div>
               </label>
               <label class="card" for="item-6" id="song-6">
                   <div class="card-container">
+                    <a href="department.html">
                       <img src="https://raw.githubusercontent.com/MuhammedAnees-loony/Connect-saintgits/refs/heads/anees/dep_logos/mech.svg" alt="Department 6">
-                      <div class="card-text">Department 6</div>
+                    </a>  
+                      <div class="card-text">Mechanical Department</div>
                   </div>
               </label>
           </div>
@@ -646,6 +658,7 @@
 
                   width: 60%; /* Fill the remaining space */
                   font-size: 30px; /* Adjust font size */
+                  font-family: "Michroma", sans-serif;
                   font-weight: bold;
                   color: #ffffff; /* Change text color for visibility */
                   display: flex;
@@ -1206,9 +1219,37 @@
         });
 
         if (!sessionStorage.getItem("redirected")) {
-    sessionStorage.setItem("redirected", "true");
-    window.location.href = "index.html";
-  }
+            sessionStorage.setItem("redirected", "true");
+            window.location.href = "index.html";
+        }
+        //redirect to event details
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".item").forEach((card) => {  
+                let isRevealed = false; // Track whether the card has been clicked once
+
+                card.addEventListener("click", function () {
+                    if (!isRevealed) {
+                        // First click: Reveal minor details (toggle class)
+                        this.classList.add("revealed");
+                        isRevealed = true;
+                    } else {
+                        // Second click: Redirect to event details page
+                        let eventTitle = this.querySelector("h3").innerText;
+                        let eventImage = this.style.backgroundImage.slice(5, -2); // Extract URL
+
+                        window.location.href = `event-details.html?title=${encodeURIComponent(eventTitle)}&image=${encodeURIComponent(eventImage)}`;
+                    }
+                });
+
+                // Optional: Clicking elsewhere resets the revealed state
+                document.addEventListener("click", function (e) {
+                    if (!card.contains(e.target)) {
+                        card.classList.remove("revealed");
+                        isRevealed = false;
+                    }
+                });
+            });
+    });
 
     </script>
 

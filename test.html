@@ -1,62 +1,114 @@
-<div class="bg"></div>
-<div class="bg bg2"></div>
-<div class="bg bg3"></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>WiFi Loader Animation</title>
+  <style>
+    #wifi-loader {
+      --background: #62ABFF;
+      --front-color: #4F29F0; 
+      --back-color: #C3C8DE;
+      --text-color: #414856; 
+      width: 64px;
+      height: 64px;
+      border-radius: 50px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
+    #wifi-loader svg {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-</div>
-<style>
-html {
-  height:100%;
-}
+    #wifi-loader circle {
+      position: absolute;
+      fill: none;
+      stroke-width: 6px;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transform: rotate(-100deg);
+      transform-origin: center;
+    }
 
-body {
-  margin:0;
-}
+    #wifi-loader .back {
+      stroke: var(--back-color);
+    }
 
-.bg {
-  animation:slide 3s ease-in-out infinite alternate;
-  background-image: linear-gradient(-60deg, rgb(0, 0, 0) 50%, rgb(59, 57, 57) 50%);
-  bottom:0;
-  left:-50%;
-  opacity:.5;
-  position:fixed;
-  right:-50%;
-  top:0;
-  z-index:-1;
-}
+    #wifi-loader .front {
+      stroke: var(--front-color);
+    }
 
-.bg2 {
-  animation-direction:alternate-reverse;
-  animation-duration:4s;
-}
+    .circle-outer {
+      height: 86px;
+      width: 86px;
+    }
 
-.bg3 {
-  animation-duration:5s;
-}
+    .circle-outer circle {
+      stroke-dasharray: 62.75 188.25;
+    }
 
-.content {
-  background-color:rgba(255, 255, 255, 0.8);
-  border-radius:.25em;
-  box-shadow:0 0 .25em rgba(0,0,0,.25);
-  box-sizing:border-box;
-  left:50%;
-  padding:10vmin;
-  position:fixed;
-  text-align:center;
-  top:50%;
-  transform:translate(-50%, -50%);
-}
+    .circle-outer .back {
+      animation: circle-outer 1.8s ease infinite 0.3s;
+    }
 
-h1 {
-  font-family:monospace;
-}
+    .circle-outer .front {
+      animation: circle-outer 1.8s ease infinite 0.15s;
+    }
 
-@keyframes slide {
-  0% {
-    transform:translateX(-25%);
-  }
-  100% {
-    transform:translateX(25%);
-  }
-}
-</style>
+    .circle-middle {
+      height: 60px;
+      width: 60px;
+    }
+
+    .circle-middle circle {
+      stroke-dasharray: 42.5 127.5;
+    }
+
+    .circle-middle .back {
+      animation: circle-middle 1.8s ease infinite 0.25s;
+    }
+
+    .circle-middle .front {
+      animation: circle-middle 1.8s ease infinite 0.1s;
+    }
+
+    @keyframes circle-outer {
+      0% { stroke-dashoffset: 0; }
+      50% { stroke-dashoffset: 62.75; }
+      100% { stroke-dashoffset: 125.5; }
+    }
+
+    @keyframes circle-middle {
+      0% { stroke-dashoffset: 0; }
+      50% { stroke-dashoffset: 42.5; }
+      100% { stroke-dashoffset: 85; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="wifi-loader">
+    <svg class="circle-outer" viewBox="0 0 86 86">
+      <circle class="back" cx="43" cy="43" r="40"></circle>
+      <circle class="front" cx="43" cy="43" r="40"></circle>
+      <circle class="new" cx="43" cy="43" r="40"></circle>
+    </svg>
+    <svg class="circle-middle" viewBox="0 0 60 60">
+      <circle class="back" cx="30" cy="30" r="27"></circle>
+      <circle class="front" cx="30" cy="30" r="27"></circle>
+    </svg>
+    <svg class="circle-inner" viewBox="0 0 34 34">
+      <circle class="back" cx="17" cy="17" r="14"></circle>
+      <circle class="front" cx="17" cy="17" r="14"></circle>
+    </svg>
+    <div class="text" data-text="Searching"></div>
+  </div>
+  
+  
+  
+
+</body>

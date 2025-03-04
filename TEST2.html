@@ -1218,6 +1218,33 @@
             $(this).toggleClass("active");
         });
         });
+        document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".item").forEach((card) => {
+        let isRevealed = false; // Track whether the card has been clicked once
+
+        card.addEventListener("click", function () {
+            if (!isRevealed) {
+                // First click: Reveal minor details (toggle class)
+                this.classList.add("revealed");
+                isRevealed = true;
+            } else {
+                // Second click: Redirect to event details page
+                let eventTitle = this.querySelector("h3").innerText;
+                let eventImage = this.style.backgroundImage.slice(5, -2); // Extract URL
+
+                window.location.href = `event-details.html?title=${encodeURIComponent(eventTitle)}&image=${encodeURIComponent(eventImage)}`;
+            }
+        });
+
+        // Optional: Clicking elsewhere resets the revealed state
+        document.addEventListener("click", function (e) {
+            if (!card.contains(e.target)) {
+                card.classList.remove("revealed");
+                isRevealed = false;
+            }
+        });
+    });
+});
 
 
 
