@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
+        body {
+            font-family: 'Michroma', sans-serif;
+            margin: 0;
+            background: #121212;
+            color: white;
+        }
+        .navbar {
+            background: #1E1E1E;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .navbar h1 {
+            color: #4A90E2;
+            margin: 0;
+            font-weight: 600;
+            font-family: 'Michroma', sans-serif;
+        }
+        .header-container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .header-logo{
+            width: 100px;
+            height: auto;
+        }
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 15px 0;
+        }
+        .nav-links button {
+            background: #2A2A2A;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+            color: white;
+            font-size: 16px;
+            font-family: 'Michroma', sans-serif;
+        }
+        .nav-links button.active, .nav-links button:hover {
+            background: #4A90E2;
+        }
+        .main-content {
+            padding: 40px;
+            text-align: center;
+        }
+        .tabs span {
+            padding: 10px 15px;
+            cursor: pointer;
+            margin: 0 5px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .tabs span.active, .tabs span:hover {
+            background: #4A90E2;
+        }
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .card {
+            background: #1E1E1E;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 300px;
+            transition: 0.3s;
+            box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+        }
+        .card img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        .card .view-details {
+            background: #4A90E2;
+            color: white;
+            padding: 10px;
+            border: none;
+            width: 100%;
+            font-size: 14px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-family: 'Michroma', sans-serif;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .approve, .reject {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            width: 48%;
+            font-family: 'Michroma', sans-serif;
+        }
+        .approve {
+            background: #27AE60;
+            color: white;
+        }
+        .reject {
+            background: #E74C3C;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="header-container">
+            <img src="logo5.svg" alt="Logo" class="header-logo">
+            <h1>Connect@Saintgits</h1>
+        </div>
+        <div class="nav-links">
+            <button class="active">All</button>
+            <button>CH</button>
+            <button>CE</button>
+            <button>CSE</button>
+            <button>EEE</button>
+            <button>ECE</button>
+            <button>FT</button>
+            <button>ME</button>
+            <button>RB</button>
+            <button>Admin</button>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="tabs">
+            <span class="active">Requests</span>
+            <span>Approved</span>
+            <span>Rejected</span>
+        </div>
+        <div class="cards">
+            <div class="card">
+                <img src="Connect-saintgits\events\AT_Bots.jpg" alt="AT Bots">
+                <button class="view-details">View Details</button>
+                <div class="buttons">
+                    <button class="approve">Approve</button>
+                    <button class="reject">Reject</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="Connect-saintgits\events\Code__Saintgits.jpg" alt="Code@Saintgits">
+                <button class="view-details">View Details</button>
+                <div class="buttons">
+                    <button class="approve">Approve</button>
+                    <button class="reject">Reject</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="Connect-saintgits\events\TedX.jpg" alt="TedX">
+                <button class="view-details">View Details</button>
+                <div class="buttons">
+                    <button class="approve">Approve</button>
+                    <button class="reject">Reject</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
