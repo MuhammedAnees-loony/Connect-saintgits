@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Upload</title>
+</head>
+<body>
+    <ul class="background">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        
+  </ul>
+    <style>
+        @keyframes animate {
+        0%{
+            transform: translateY(0) rotate(0deg);
+            opacity: 1;
+            border-radius: 0;
+        }
+        100%{
+            transform: translateY(-1000px) rotate(720deg);
+            opacity: 0;
+            border-radius: 50%;
+        }
+    }
+    
+    .background {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        margin: 0;
+        padding: 0;
+        
+        overflow: hidden;
+    }
+    .background li {
+        position: absolute;
+        display: block;
+        list-style: none;
+        width: 20px;
+        height: 20px;
+        background: rgba(255, 255, 255, 0.2);
+        animation: animate 19s linear infinite;
+    }
+    .background li:nth-child(1) {
+        left: 53%;
+        width: 118px;
+        height: 118px;
+        bottom: -118px;
+        animation-delay: 5s;
+    }
+    .background li:nth-child(2) {
+        left: 38%;
+        width: 139px;
+        height: 139px;
+        bottom: -139px;
+        animation-delay: 6s;
+    }
+    .background li:nth-child(3) {
+        left: 23%;
+        width: 156px;
+        height: 156px;
+        bottom: -156px;
+        animation-delay: 13s;
+    }
+    .background li:nth-child(4) {
+        left: 77%;
+        width: 115px;
+        height: 115px;
+        bottom: -115px;
+        animation-delay: 4s;
+    }
+    .background li:nth-child(5) {
+        left: 47%;
+        width: 124px;
+        height: 124px;
+        bottom: -124px;
+        animation-delay: 23s;
+    }
+    .background li:nth-child(6) {
+        left: 87%;
+        width: 158px;
+        height: 158px;
+        bottom: -158px;
+        animation-delay: 8s;
+    }
+    .background li:nth-child(7) {
+        left: 35%;
+        width: 126px;
+        height: 126px;
+        bottom: -126px;
+        animation-delay: 33s;
+    }
+    .background li:nth-child(8) {
+        left: 74%;
+        width: 155px;
+        height: 155px;
+        bottom: -155px;
+        animation-delay: 39s;
+    }
+    .background li:nth-child(9) {
+        left: 72%;
+        width: 120px;
+        height: 120px;
+        bottom: -120px;
+        animation-delay: 38s;
+    }
+    .background li:nth-child(10) {
+        left: 28%;
+        width: 144px;
+        height: 144px;
+        bottom: -144px;
+        animation-delay: 1s;
+    }
+    .background li:nth-child(11) {
+        left: 53%;
+        width: 118px;
+        height: 118px;
+        bottom: -118px;
+        animation-delay: 5s;
+    }
+    .background li:nth-child(12) {
+        left: 38%;
+        width: 139px;
+        height: 139px;
+        bottom: -139px;
+        animation-delay: 6s;
+    }
+    .background li:nth-child(13) {
+        left: 23%;
+        width: 156px;
+        height: 156px;
+        bottom: -156px;
+        animation-delay: 13s;
+    }
+    .background li:nth-child(14) {
+        left: 77%;
+        width: 115px;
+        height: 115px;
+        bottom: -115px;
+        animation-delay: 4s;
+    }
+    .background li:nth-child(15) {
+        left: 47%;
+        width: 124px;
+        height: 124px;
+        bottom: -124px;
+        animation-delay: 23s;
+    }
+    .background li:nth-child(16) {
+        left: 87%;
+        width: 158px;
+        height: 158px;
+        bottom: -158px;
+        animation-delay: 8s;
+    }
+    .background li:nth-child(17) {
+        left: 35%;
+        width: 126px;
+        height: 126px;
+        bottom: -126px;
+        animation-delay: 33s;
+    }
+    .background li:nth-child(18) {
+        left: 74%;
+        width: 155px;
+        height: 155px;
+        bottom: -155px;
+        animation-delay: 39s;
+    }
+    .background li:nth-child(19) {
+        left: 72%;
+        width: 120px;
+        height: 120px;
+        bottom: -120px;
+        animation-delay: 38s;
+    }
+    </style>
+    <div class="container">
+        <div class="form-container">
+            <h1>Upload Event</h1>
+            <form id="upload-form" enctype="multipart/form-data">
+                <input type="text" name="eventName" placeholder="Event Name" required>
+                <input type="date" id="eventDate" name="eventDate" required>
+                <input type="time" name="eventTime" required>
+                <input type="text" name="eventVenue" placeholder="Event Venue" required>
+                <input type="text" name="organizer" placeholder="Organizer" required>
+                <select name="category" required>
+                    <option value="">Select Category</option>
+                    <option value="Department">Department</option>
+                    <option value="Club">Club</option>
+                </select>
+                <input type="text" name="deptOrClubName" placeholder="Enter Department/Club Name" required>
+                <textarea name="description" placeholder="Event Description" required></textarea>
+                <input type="url" name="registrationLink" placeholder="Registration Link (Optional)">
+                <input type="file" name="image" accept="image/*" required>
+                <button type="submit">Upload Event</button>
+            </form>
+        </div>
+        
+    </div>
+    <div class="notices-container">
+        <h2>Upcoming Events</h2>
+        <div id="notices-list"></div>
+    </div>
+    <style>
+    @import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
+    body {
+        font-family: 'Michroma', sans-serif;
+        background:linear-gradient(132deg,#205295,#092635 ,#0A2647,#144272,#000000,#2C74B3);
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        height: 100vh;
+        padding: 20px;
+        color: #333;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+        max-width: 1400px;
+        padding: 30px;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 16px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+    }
+
+    .form-container {
+        background:linear-gradient(132deg,#205295,#092635 ,#0A2647,#144272,#000000,#2C74B3);
+        width: 90%;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2 {
+        text-align: center;
+        color: #fff;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        color: #144272;
+    }
+
+    input, select, textarea {
+        padding: 12px;
+        border: 1px solid #2C74B3; /* Lightened border for visibility */
+        border-radius: 8px;
+        font-size: 14px;
+        background: rgba(255, 255, 255, 0.2);
+        color: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: 0.3s;
+    }
+    textarea {
+        resize: vertical;
+        height: 80px; /* Allows resizing but only vertically */
+    }
+
+    input::placeholder, textarea::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    button {
+        padding: 12px;
+        background: #3498db;
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: linear-gradient(90deg, #1a6fad, #483d8b);
+        box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
+    }
+
+    .notices-container {
+        background:linear-gradient(132deg,#205295,#092635 ,#0A2647,#144272,#000000,#2C74B3);
+        width: 60%;
+        max-height: 500px;
+        overflow-y: auto;
+        padding:20px;
+        border-radius: 10px;
+    }
+
+    #notices-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .notice-card {
+        background: #162798;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .notice-card img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+
+    .delete-btn {
+        margin-top: 10px;
+        padding: 8px;
+        background: #e74c3c;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .delete-btn:hover {
+        background: #301613;
+    }
+</style>
+    <script>
+        document.getElementById("eventDate").min = new Date().toISOString().split("T")[0];
+
+        document.getElementById("upload-form").addEventListener("submit", function (event) {
+            const eventDate = new Date(document.getElementById("eventDate").value);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            if (eventDate < today) {
+                event.preventDefault();
+                alert("Error: Event date cannot be in the past.");
+            }
+        });
+        async function fetchNotices() {
+            const response = await fetch("http://localhost:5004/api/notices");
+            const notices = await response.json();
+            const noticesList = document.getElementById("notices-list");
+
+            noticesList.innerHTML = "";
+
+            notices.forEach(notice => {
+                const noticeDiv = document.createElement("div");
+                noticeDiv.classList.add("notice-card");
+
+                const noticeName = document.createElement("h3");
+                noticeName.textContent = notice.eventName;
+
+                const noticeDate = document.createElement("p");
+                noticeDate.textContent = `📅 ${notice.eventDate} 🕒 ${notice.eventTime}`;
+
+                const noticeVenue = document.createElement("p");
+                noticeVenue.textContent = `📍 ${notice.eventVenue}`;
+
+                const noticeOrganizer = document.createElement("p");
+                noticeOrganizer.textContent = `🎤 Organized by: ${notice.organizer}`;
+
+                const noticeCategory = document.createElement("p");
+                noticeCategory.textContent = `🏢 Category: ${notice.category}`;
+
+                const noticeDescription = document.createElement("p");
+                noticeDescription.textContent = notice.description;
+
+                const noticeImage = document.createElement("img");
+                noticeImage.src = `data:image/jpeg;base64,${notice.image}`;
+                noticeImage.alt = notice.eventName;
+
+                if (notice.registrationLink) {
+                    const regLink = document.createElement("a");
+                    regLink.href = notice.registrationLink;
+                    regLink.textContent = "🔗 Register Here";
+                    regLink.target = "_blank";
+                    regLink.style.display = "block";
+                    regLink.style.marginTop = "10px";
+                    noticeDiv.appendChild(regLink);
+                }
+
+                const deleteButton = document.createElement("button");
+                deleteButton.textContent = "Delete";
+                deleteButton.classList.add("delete-btn");
+                deleteButton.addEventListener("click", async () => {
+                    await fetch(`http://localhost:5004/api/notices/${notice._id}`, { method: "DELETE" });
+                    fetchNotices();
+                });
+
+                noticeDiv.appendChild(noticeName);
+                noticeDiv.appendChild(noticeImage);
+                noticeDiv.appendChild(noticeDate);
+                noticeDiv.appendChild(noticeVenue);
+                noticeDiv.appendChild(noticeOrganizer);
+                noticeDiv.appendChild(noticeCategory);
+                noticeDiv.appendChild(noticeDescription);
+                noticeDiv.appendChild(deleteButton);
+                noticesList.appendChild(noticeDiv);
+            });
+        }
+
+        fetchNotices();
+
+        document.getElementById("upload-form").addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const formData = new FormData(this);
+
+    try {
+        const response = await fetch("http://localhost:5004/api/notices/upload", {
+            method: "POST",
+            body: formData,
+        });
+
+        if (!response.ok) {
+            throw new Error(`Server Error: ${response.status} - ${response.statusText}`);
+        }
+
+        const result = await response.json();
+        console.log("✅ Upload successful:", result);
+        alert(result.message);
+        fetchNotices();
+    } catch (error) {
+        console.error("❌ Upload failed:", error);
+        alert("Upload failed. Check console for details.");
+    }
+});
+
+    </script>
+</body>
+</html>
