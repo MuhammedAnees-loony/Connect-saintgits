@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Saintgits College of Engineering - Academic Excellence and Innovation">
+    <title>Saintgits College of Engineering</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <a href="#" class="logo-container">
+            <img src="logo5.svg" alt="Logo" class="header-logo">
+            <span class="logo">Connect@Saintgits</span>
+        </a>
+        
+        <button class="menu-toggle" aria-controls="main-nav" aria-expanded="false">
+            ☰
+        </button>
+        <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+            <ul class="nav-items">
+                <li class="nav-item"><a href="home.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="home.html" class="nav-link">Departments</a></li>
+                <li class="nav-item"><a href="login.html" class="nav-link">Upload</a></li>
+            </ul>
+            <button class="button">
+                <svg class="bell" viewBox="0 0 448 512"><path d="M224 0c-17.7 0-32 14.3-32 32V49.9C119.5 61.4 64 124.2 64 200v33.4c0 45.4-15.5 89.5-43.8 124.9L5.3 377c-5.8 7.2-6.9 17.1-2.9 25.4S14.8 416 24 416H424c9.2 0 17.6-5.3 21.6-13.6s2.9-18.2-2.9-25.4l-14.9-18.6C399.5 322.9 384 278.8 384 233.4V200c0-75.8-55.5-138.6-128-150.1V32c0-17.7-14.3-32-32-32zm0 96h8c57.4 0 104 46.6 104 104v33.4c0 47.9 13.9 94.6 39.7 134.6H72.3C98.1 328 112 281.3 112 233.4V200c0-57.4 46.6-104 104-104h8zm64 352H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7s18.7-28.3 18.7-45.3z"></path></svg>
+               Notifications
+               <div class="arrow"></div>
+             </button>
+            
+        </nav>
+        
+       
+    </header>
+    <div class="container" id="about">
+        <h1>About Connect@Saintgits</h1>
+        <p>
+            Connect@Saintgits is a centralized web-based platform designed to streamline the sharing of announcements, event updates, and essential information at Saintgits College. This platform ensures real-time updates, making them accessible to students, faculty, and administrators anytime and anywhere.
+
+        </p>
+        <p>
+            With role-based access control, faculty and administrators can efficiently manage notices, while students receive categorized updates relevant to their academic departments and interests.
+
+        </p>
+        <p>
+            The platform enhances communication efficiency by integrating search, filters, and notifications, ensuring that critical information is always accessible and never overlooked. 
+
+        </p>
+        <p>
+            Built on modern web technologies, Connect@Saintgits replaces traditional notice boards with a scalable, automated, and eco-friendly solution, fostering a more informed and connected academic community.
+            
+        </p>
+    </div>
+    <footer class="footer">
+        <!-- Saintgits Logo -->
+        <div class="footer-logo">
+            <img src="https://github.com/MuhammedAnees-loony/Connect-saintgits/blob/navya/Saintgits%20Logo.png?raw=true" alt="Saintgits Official Logo">
+        </div>
+    
+        <div class="footer-container">
+            <!-- Contact Information -->
+            <div class="footer-section">
+                <h4>Contact Information</h4>
+                <p>Email: <a href="mailto:support@saintgits.com">support@saintgits.com</a></p>
+                <p>Phone: <a href="tel:+1234567890">+1 234 567 890</a></p>
+                <p>Address: Saintgits College, Kottayam, Kerala, India</p>
+            </div>
+    
+            <!-- Quick Links -->
+            <div class="footer-section footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms-of-service.html">Terms of Service</a></li>
+                    <li><a href="faqs.html">FAQs</a></li>
+                </ul>
+            </div>
+    
+            <!-- Newsletter Signup -->
+            <div class="footer-section">
+                <h4>Stay Updated</h4>
+                <p>Subscribe to receive the latest updates and announcements.</p>
+                <form class="newsletter-form" action="#" method="post">
+                    <input type="email" placeholder="Enter your email" required class="newsletter-input">
+                    <button type="submit" class="newsletter-button">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    
+        <!-- Copyright & Credits -->
+        <div class="footer-bottom">
+            <p>&copy; 2025 Connect@Saintgits. All rights reserved.</p>
+            <p>Crafted and developed by Muhammed Anees, Mathews Reji, Kuriakose Philip, and Navya Prasad of the CSE 2022-26 batch.</p>
+        </div>
+    </footer>
+    <style>
+         @import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
+
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Michroma', sans-serif;
+}
+
+body {
+    background: linear-gradient(132deg,#205295,#092635 ,#0A2647,#144272,#000000,#2C74B3);
+    background-size: 400% 400%;
+    animation: BackgroundGradient 20s ease infinite;
+    
+
+}
+@keyframes BackgroundGradient {
+     0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+/* Base Header Styles */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #0d0c0c;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    border-bottom: 2px solid #f3f6fa;
+    height: 70px;
+}
+
+/* Logo and Branding */
+.logo-container {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.header-logo {
+    height: 50px;
+    transition: 0.3s ease-in-out;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: "Michroma", sans-serif;
+    color: #f6f3f3;
+    margin-left: 10px;
+    transition: 0.3s ease-in-out;
+}
+
+/* Navigation Menu */
+.main-nav {
+    display: flex;
+    align-items: center;
+}
+
+.nav-items {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-item a {
+    text-decoration: none;
+    font-size: 16px;
+    font-family: "Michroma", sans-serif;
+    font-weight: 500;
+    color: #f0e4e4;
+    padding: 8px 12px;
+    transition: all 0.3s ease-in-out;
+    border-radius: 5px;
+}
+
+.nav-item a:hover,
+.nav-item a:focus {
+    background: #606265;
+    color: rgb(21, 18, 18);
+}
+
+/* Notifications Button */
+.button {
+    background: transparent;
+    border: none;
+    font-family: "Michroma", sans-serif;
+    cursor: pointer;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    padding: 8px 12px;
+    transition: 0.3s ease;
+}
+.bell {
+    width: 20px;
+    height: 20px;
+}
+.button:hover {
+    color: #f0e4e4;
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+}
+
+.menu-toggle .menu-icon {
+    width: 35px;
+    height: 3px;
+    background: #fff;
+    display: block;
+    position: relative;
+    border-radius: 3px;
+    transition: 0.3s ease-in-out;
+}
+
+.menu-toggle .menu-icon::before,
+.menu-toggle .menu-icon::after {
+    content: '';
+    position: absolute;
+    width: 35px;
+    height: 3px;
+    background: #fff;
+    border-radius: 3px;
+    transition: 0.3s ease-in-out;
+}
+
+.menu-toggle .menu-icon::before {
+    top: -10px;
+}
+
+.menu-toggle .menu-icon::after {
+    top: 10px;
+}
+
+/* Active State for Menu Toggle */
+.menu-toggle.active .menu-icon {
+    background: transparent;
+}
+
+.menu-toggle.active .menu-icon::before {
+    top: 0;
+    transform: rotate(45deg);
+}
+
+.menu-toggle.active .menu-icon::after {
+    top: 0;
+    transform: rotate(-45deg);
+}
+.button {
+        width: 200px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px;
+        padding: 0px 15px;
+        background-color: rgb(66, 66, 66);
+        border-radius: 10px;
+        font-family: "Michroma", sans-serif;
+        color: white;
+        border: none;
+        position: relative;
+        cursor: pointer;
+        transition-duration: .2s;
+        }
+
+        .bell {
+        width: 13px;
+        }
+
+        .bell path {
+        fill: rgb(0, 206, 62);
+        }
+
+        .arrow {
+        position: absolute;
+        right: 0;
+        width: 30px;
+        height: 100%;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        }
+
+        .button:hover {
+        background-color: rgb(77, 77, 77);
+        transition-duration: .2s;
+        }
+
+        .button:hover .arrow {
+        animation: slide-right .6s ease-out both;
+        }
+        .footer {
+            background-color: #0A2647;
+            color: #d1e6ff;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .footer h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .footer p, .footer a {
+            font-size: 14px;
+            color: #d1e6ff;
+            text-decoration: none;
+            line-height: 1.6;
+        }
+
+        .footer a:hover {
+            color: #2C74B3;
+            text-decoration: underline;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .newsletter-input {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            margin-bottom: 10px;
+            font-family: 'Michroma', sans-serif;
+        }
+
+        .newsletter-button {
+            padding: 10px;
+            background-color: #2C74B3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            font-family: 'Michroma', sans-serif;
+        }
+
+        .newsletter-button:hover {
+            background-color: #205295;
+        }
+
+        .footer-bottom {
+            margin-top: 10px;
+            font-size: 12px;
+            opacity: 0.8;
+            text-align: center;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .footer-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo img {
+            width: 150px;
+            height: auto;
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 40px auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        h1, h2 {
+            text-align: center;
+            color: #f0e4e4;
+        }
+
+        p {
+            font-size: 16px;
+            color: #d1bfbf;
+            line-height: 2;
+            text-align: justify;
+        }
+
+        @media (max-width: 480px) {
+            .footer {
+                padding: 30px 15px;
+            }
+
+            .footer h4 {
+                font-size: 16px;
+            }
+
+            .footer p, .footer a {
+                font-size: 13px;
+            }
+
+            .newsletter-input {
+                padding: 8px;
+            }
+
+            .newsletter-button {
+                padding: 8px;
+            }
+
+            .footer-logo img {
+                width: 100px;
+            }
+        }
+
+        /* Keyframes for fade-in and slide */
+        @keyframes fadeInSlide {
+            0% {
+                opacity: 0;
+                transform: translate(-50px, -50%);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(0, -50%);
+            }
+        }
+
+
+        /* Fade-in Animation */
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: scale(1.05); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes slide-right {
+        0% {
+            transform: translateX(-10px);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        }
+
+        .button:active {
+        transform: translate(1px , 1px);
+        transition-duration: .2s;
+        }
+
+        @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
+        /* Fonts Face CSS End */
+
+        /* Common Element CSS Start */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Michroma', sans-serif;
+            font-size: 16px;
+            background-color: black;
+            flex:auto ;
+        }
+        .clear {
+            clear: both;
+        }
+        img {
+            max-width: 100%;
+            border: 0;
+        }
+        ul,
+        ol {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+            outline: none;
+            transition: all 0.4s ease-in-out;
+        }
+        a:focus,
+        a:active,
+        a:visited,
+        a:hover {
+            text-decoration: none;
+            outline: none;
+        }
+       
+        h2 {
+            margin-bottom: 48px;
+            padding-bottom: 16px;
+            font-size: 20px;
+            line-height: 28px;
+            font-weight: 700;
+            position: relative;
+            text-transform: capitalize;
+        }
+        h3 {
+            margin: 0 0 10px;
+            font-size: 28px;
+            line-height: 36px;
+        }
+        button {
+            outline: none !important;
+        }
+
+/* Adjust Header for Mobile */
+@media (max-width: 768px) {
+    .logo-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 20%;
+        
+    }
+        .logo {
+        font-size: 1rem; /* Reduce font size */
+        white-space: nowrap; /* Prevent wrapping */
+    }
+
+    .header-logo {
+        height: 40px; /* Reduce logo size */
+    }
+    
+    .main-nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px; /* Adjust based on header height */
+        left: 0;
+        width: 100%;
+        background: rgb(226, 224, 224) !important; /* Force black */
+        color: rgb(253, 253, 253) !important; /* Ensure text is visible */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+        z-index: 1000;
+    }
+
+    .main-nav.active {
+        display: flex;
+    }
+
+    .nav-items {
+        flex-direction: column;
+        padding: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-item {
+        padding: 10px;
+    }
+
+    .nav-item a {
+        color: black !important; /* Change text color to black for visibility */
+    }
+
+    .nav-item a:hover,
+    .nav-item a:focus {
+        background: #606265;
+        color: white; /* Ensure hover effect is visible */
+    }
+
+    .button {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+        color: black !important; /* Change text color to black */
+    }
+
+    .menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: white;
+        position: relative;
+        right: 0;
+        margin-left: 200px;
+        z-index: 1001;
+         /* Ensure menu toggle icon is visible */
+    }
+}
+
+
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+         const menuToggle = document.querySelector(".menu-toggle");
+         const mainNav = document.querySelector(".main-nav");
+ 
+         menuToggle.addEventListener("click", function () {
+             mainNav.classList.toggle("active"); // Toggles menu visibility
+             menuToggle.classList.toggle("active"); // Changes menu icon
+         });
+ 
+         // Close menu when clicking outside
+         document.addEventListener("click", function (event) {
+             if (!menuToggle.contains(event.target) && !mainNav.contains(event.target)) {
+                 mainNav.classList.remove("active");
+                 menuToggle.classList.remove("active");
+             }
+         });
+     });
+     </script>
+</body>
+</html>
