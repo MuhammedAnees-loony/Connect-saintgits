@@ -220,8 +220,10 @@
                 <svg class="bell" viewBox="0 0 448 512"><path d="M224 0c-17.7 0-32 14.3-32 32V49.9C119.5 61.4 64 124.2 64 200v33.4c0 45.4-15.5 89.5-43.8 124.9L5.3 377c-5.8 7.2-6.9 17.1-2.9 25.4S14.8 416 24 416H424c9.2 0 17.6-5.3 21.6-13.6s2.9-18.2-2.9-25.4l-14.9-18.6C399.5 322.9 384 278.8 384 233.4V200c0-75.8-55.5-138.6-128-150.1V32c0-17.7-14.3-32-32-32zm0 96h8c57.4 0 104 46.6 104 104v33.4c0 47.9 13.9 94.6 39.7 134.6H72.3C98.1 328 112 281.3 112 233.4V200c0-57.4 46.6-104 104-104h8zm64 352H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7s18.7-28.3 18.7-45.3z"></path></svg>
                Notifications
                <div class="arrow"></div>
+               <span class="badge" id="notificationBadge">0</span>
              </button>
-            
+             <div class="dropdown" id="notificationDropdown"></div>
+
         </nav>
         
        
@@ -229,9 +231,14 @@
 
     <div class="video-container">
         <video autoplay loop muted playsinline>
-            <source src="Connect-saintgits\scroll.mp4" type="video/mp4">
+            <source src="videoplayback (1)_1.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
+        <div class="hero-overlay">
+            <h1 class="hero-title">Welcome to Connect@Saintgits</h1>
+            <p class="hero-subtitle">Bridging the gap between innovation and collaboration</p>
+            
+        </div>
     </div>
     <form class="search-wrapper" role="search">
         <label for="search" class="visually-hidden">Search</label>
@@ -347,11 +354,11 @@
     </div>
   </div>
   <div class="map-container">
-        <h2 class="line-title" style="font-family: 'Michroma', sans-serif;">Campus Map</h2>
-        <div class="map-wrapper">
-            <img src="https://raw.githubusercontent.com/MuhammedAnees-loony/Connect-saintgits/aa4c1afcacbfc87e0827385f8a31555e5c5c83b7/map.svg" alt="Campus Map" class="map-image">
-        </div>
+    <h2 class="line-title" style="font-family: 'Michroma', sans-serif;">Campus Map</h2>
+    <div class="map-wrapper">
+        <img src="https://github.com/MuhammedAnees-loony/Connect-saintgits/blob/main/map.jpg?raw=true" alt="Campus Map" class="map-image">
     </div>
+</div>
   <footer class="footer">
     <!-- Saintgits Logo -->
     <div class="footer-logo">
@@ -533,6 +540,93 @@
         .button:hover {
             color: #f0e4e4;
         }
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 40px;
+            right: 0;
+            background: #222;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            width: 250px;
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 1000;
+            padding: 10px;
+        }
+
+        .dropdown.active {
+            display: block;
+        }
+
+        .notification-item {
+            padding: 10px;
+            border-bottom: 1px solid #444;
+            color: white;
+            font-size: 12px;
+        }
+
+        .notification-item:last-child {
+            border-bottom: none;
+        }
+
+        .notification-item span {
+            font-weight: bold;
+            display: block;
+        }
+
+        /* Notification Badge */
+        .badge {
+            background: red;
+            color: white;
+            font-size: 10px;
+            border-radius: 50%;
+            padding: 4px 6px;
+            position: absolute;
+            top: 5px;
+            right: -5px;
+            display: none;
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 70px;
+            right: 10px;
+            background: rgb(7, 78, 137);
+            border-radius: 5px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            padding: 10px;
+            z-index: 1000;
+        }
+
+        .notification-item {
+            padding: 10px;
+            border-bottom: 1px solid #1b1a1a;
+            font-size: 14px;
+            color: #e7e5e5;
+        }
+        #notificationBadge {
+            background: rgb(0, 255, 17);
+            color: rgb(27, 27, 27);
+            font-size: 12px;
+            border-radius: 50%;
+            padding: 4px 8px;
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            display: none; /* Hide by default */
+        }
+
+        .notification-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Show dropdown when button is clicked */
+        .button:hover + .dropdown {
+            display: block;
+        }
+
 
         /* Mobile Menu Toggle */
         .menu-toggle {
@@ -690,6 +784,56 @@
             display: block;
             object-fit: cover;
         }
+
+        /* Gradient Overlay for Seamless Fade */
+        .video-container::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px; /* Adjust fade height as needed */
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #092635 80%, #0A2647 100%);
+            pointer-events: none; /* Allows interaction with video */
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.85); /* White with lower opacity */
+            font-family: "Michroma", sans-serif;
+            background: rgba(0, 0, 0, 0.3); /* Slightly transparent background */
+            padding: 30px 50px;
+            border-radius: 10px;
+        }
+
+        /* 3D Blue & White Font */
+        .hero-title {
+            font-size: 48px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #ffffff; /* White font */
+            text-shadow: 
+                -2px -2px 0px #1e3a8a, /* Dark Blue top-left */
+                2px 2px 0px #60a5fa,   /* Light Blue bottom-right */
+                4px 4px 8px rgba(0, 0, 255, 0.3); /* Soft blue glow */
+            opacity: 0.9;
+        }
+
+        /* Subtitle */
+        .hero-subtitle {
+            font-size: 22px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.85); /* White with lower opacity */
+            text-shadow: 
+                -1px -1px 0px #1e3a8a, /* Dark Blue top-left */
+                1px 1px 0px #60a5fa,   /* Light Blue bottom-right */
+                2px 2px 5px rgba(0, 0, 255, 0.3); /* Soft blue glow */
+            opacity: 0.85;
+        }
+
         .button {
         width: 200px;
         height: 40px;
@@ -741,7 +885,7 @@
             position: absolute;
             width: 350px;
             padding: 15px;
-            top:800px;
+            top:720px;
             right:70px;
             z-index:10;
             border-radius: 8px;
@@ -870,7 +1014,7 @@
             transition: transform 0.3s ease-in-out;
         }
         .map-image:hover {
-            transform: scale(4); /* Adjust zoom level */
+            transform: scale(15); /* Adjust zoom level */
             cursor: zoom-in;
         }
 
@@ -1933,6 +2077,53 @@
     }
 });
 
+//notification script
+document.addEventListener("DOMContentLoaded", async () => {
+    const notificationButton = document.querySelector(".button");
+    const notificationBadge = document.getElementById("notificationBadge");
+    const notificationDropdown = document.getElementById("notificationDropdown");
+
+    // Fetch notifications from backend
+    try {
+        const response = await fetch("http://localhost:5004/api/notifications");
+        const data = await response.json();
+
+        const notifications = data.notifications || [];
+        notificationBadge.textContent = notifications.length;
+        // Show the number of notifications in the badge (Only if there are notifications)
+        if (notifications.length > 0) {
+            notificationBadge.textContent = notifications.length;
+            notificationBadge.style.display = "inline-block"; // Show badge
+        } else {
+            notificationBadge.style.display = "none"; // Hide badge if no notifications
+        }
+
+        // Populate dropdown with notifications
+        if (notifications.length > 0) {
+            notificationDropdown.innerHTML = notifications.map(notification => 
+                `<div class="notification-item">${notification.message}</div>`
+            ).join("");
+        } else {
+            notificationDropdown.innerHTML = `<div class="notification-item">No new notifications</div>`;
+        }
+    } catch (error) {
+        console.error("❌ Error fetching notifications:", error);
+        notificationDropdown.innerHTML = `<div class="notification-item">Error loading notifications</div>`;
+    }
+
+    // Toggle dropdown when clicking the notification button
+    notificationButton.addEventListener("click", (event) => {
+        event.stopPropagation(); // Prevents click from bubbling
+        notificationDropdown.classList.toggle("show-dropdown");
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", (event) => {
+        if (!notificationButton.contains(event.target) && !notificationDropdown.contains(event.target)) {
+            notificationDropdown.classList.remove("show-dropdown");
+        }
+    });
+});
 
 
 
