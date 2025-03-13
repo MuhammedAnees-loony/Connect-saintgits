@@ -176,11 +176,37 @@
   </div>
 </body>
 <script>
-  document.querySelector("button").addEventListener("click", function(event) {
-    event.preventDefault(); // Prevents form submission
-    alert("Login Successful");
-    window.location.href = "upload.html"; // Redirect to upload.html
+  document.querySelector("button").addEventListener("click", async function(event) {
+    event.preventDefault(); // Prevents default form submission
+
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    if (!username || !password) {
+      alert("❌ Please enter both username and password.");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:5004/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user_id: username, password })
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert("✅ Login Successful!");
+        window.location.href = data.redirectUrl; // Redirects based on role
+      } else {
+        alert(data.message || "❌ Invalid credentials.");
+      }
+
+    } catch (error) {
+      console.error("❌ Login Error:", error);
+      alert("❌ Server error. Please try again later.");
+    }
   });
 </script>
-
 </html>
