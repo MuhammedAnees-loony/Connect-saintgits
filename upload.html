@@ -838,6 +838,14 @@ header {
 
 </style>
 <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const token = localStorage.getItem("authToken");
+    if (!token) {
+        alert("❌ Unauthorized! Please log in.");
+        window.location.href = "login.html"; // Redirect back to login page
+    }
+});
+
     document.getElementById("eventDate").min = new Date().toISOString().split("T")[0];
     
     document.getElementById("upload-form").addEventListener("submit", function (event) {
