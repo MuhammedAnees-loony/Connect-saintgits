@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="logo5.svg">
     <title>Event Upload</title>
 </head>
 <body>
@@ -228,7 +229,6 @@
         <div class="form-container" style="color: #f0e4e4;">
             <h1>Upload Event</h1>
             <form id="upload-form" enctype="multipart/form-data">
-                <input type="hidden" name="status" value="Pending">
                 <input type="text" name="eventName" placeholder="Event Name" required>
                 <input type="date" id="eventDate" name="eventDate" required>
                 <input type="time" name="eventTime" required>
@@ -259,23 +259,6 @@
         <h2>Upcoming Events</h2>
         <div id="notices-list"></div>
     </div>
-    <div class="status-container">
-        <h2>Your Event Requests</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Event Name</th>
-                    <th>Category</th>
-                    <th>Event Type</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody id="event-status-list">
-                <!-- Events will be dynamically added here -->
-            </tbody>
-        </table>
-    </div>
-
     <style>
          @import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
 
@@ -780,7 +763,7 @@ header {
     }
 
     .notice-card {
-        background: #162798;
+        background: #e3e3e3;
         padding: 15px;
         border-radius: 10px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -808,44 +791,15 @@ header {
     .delete-btn:hover {
         background: #301613;
     }
-        .status-container {
-            width: 70%;
-            margin: 30px auto;
-            background: #1e1e1e;
-            padding: 20px;
-            border-radius: 10px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        th, td {
-            border: 1px solid #444;
-            padding: 10px;
-            text-align: center;
-        }
-
-        th {
-            background-color: #205295;
-            color: white;
-        }
-
-        .pending { color: orange; }
-        .granted { color: green; }
-        .rejected { color: red; }
-
 </style>
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function () {
     const token = localStorage.getItem("authToken");
     if (!token) {
         alert("❌ Unauthorized! Please log in.");
         window.location.href = "login.html"; // Redirect back to login page
     }
 });
-
     document.getElementById("eventDate").min = new Date().toISOString().split("T")[0];
     
     document.getElementById("upload-form").addEventListener("submit", function (event) {
@@ -935,7 +889,7 @@ header {
                 await fetch(`http://localhost:5004/api/notices/${notice._id}`, { method: "DELETE" });
                 fetchNotices();
             });
-    
+            
             noticeDiv.appendChild(noticeName);
             noticeDiv.appendChild(noticeImage);
             noticeDiv.appendChild(noticeDate);
@@ -954,6 +908,7 @@ header {
         event.preventDefault();
     
         const formData = new FormData(this);
+        
     
         try {
             const response = await fetch("http://localhost:5004/api/notices/upload", {
@@ -974,47 +929,6 @@ header {
             alert("Upload failed. Check console for details.");
         }
     });
-    document.getElementById("upload-form").addEventListener("submit", function(event) {
-            event.preventDefault();
-
-            const formData = new FormData(event.target);
-
-            const newEvent = {
-                eventName: formData.get("eventName"),
-                category: formData.get("category"),
-                eventType: formData.get("eventType"),
-                status: "Pending"
-            };
-
-            let events = JSON.parse(localStorage.getItem("events")) || [];
-            events.push(newEvent);
-            localStorage.setItem("events", JSON.stringify(events));
-
-            event.target.reset();
-            loadEvents();
-        });
-
-        function loadEvents() {
-            const eventList = document.getElementById("event-status-list");
-            eventList.innerHTML = "";
-
-            const events = JSON.parse(localStorage.getItem("events")) || [];
-
-            events.forEach(event => {
-                const row = document.createElement("tr");
-
-                row.innerHTML = `
-                    <td>${event.eventName}</td>
-                    <td>${event.category}</td>
-                    <td>${event.eventType}</td>
-                    <td class="${event.status.toLowerCase()}">${event.status}</td>
-                `;
-
-                eventList.appendChild(row);
-            });
-        }
-
-        document.addEventListener("DOMContentLoaded", loadEvents);
     </script>
     
 </body>
