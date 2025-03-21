@@ -38,12 +38,12 @@
             /* Keeps it blank */
         }
 
-        /* Right Side - Background Image */
+        
         
         .right-container {
             width: 560px;
             height: 560px;
-            background: url('events/AT_Bots.jpg') no-repeat center center/cover; 
+            
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -541,30 +541,36 @@
         
           <div class="details" id="details-even">
             <div class="place-box">
-              <div class="text">Switzerland Alps</div>
+              <div class="text"></div>
             </div>
-            <div class="title-box-1"><div class="title-1">SAINT</div></div>
-            <div class="title-box-2"><div class="title-2">ANTONIEN</div></div>
+            <div class="title-box-1"><div class="title-1">NO</div></div>
+            <div class="title-box-2"><div class="title-2">EVENTS</div></div>
             <div class="desc">
-              Tucked away in the Switzerland Alps, Saint Antönien offers an idyllic retreat for those seeking tranquility and adventure alike.      </div>
+              Their are no events for this department currently     </div>
           </div>
       
           <div class="details" id="details-odd">
             <div class="place-box">
-              <div class="text">Switzerland Alps</div>
+              <div class="text"></div>
             </div>
-            <div class="title-box-1"><div class="title-1">SAINT </div></div>
-            <div class="title-box-2"><div class="title-2">ANTONIEN</div></div>
+            <div class="title-box-1"><div class="title-1"></div></div>
+            <div class="title-box-2"><div class="title-2"></div></div>
             <div class="desc">
-              Tucked away in the Switzerland Alps, Saint Antönien offers an idyllic retreat for those seeking tranquility and adventure alike.      </div>
+              </div>
             </div>
+
+            
       </div>
       
     </div>
 
     
     <div class="slide-numbers" id="slide-numbers"></div>
-    </div> 
+    </div>
+
+    
+    
+        
         
       <div class="r-container">
         <button id="pause-btn"><i class="fas fa-pause"></i> <!-- Font Awesome icon --></button>
@@ -583,68 +589,141 @@
 </html>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script>
-    const data = [
-    {
-        place:'Switzerland Alps',
-        title:'SAINT',
-        title2:'ANTONIEN',
-        description:'Tucked away in the Switzerland Alps, Saint Antönien offers an idyllic retreat for those seeking tranquility and adventure alike. ',
-        image:'events/AT_Bots.jpg'
-    },
-    {
-        place:'Japan Alps',
-        title:'NANGANO',
-        title2:'PREFECTURE',
-        description:'Tucked away in the Switzerland Alps, Saint Antönien offers an idyllic retreat for those seeking tranquility and adventure alike. ',
-        image:'events/Code__Saintgits.jpg'
-    },
-    {
-        place:'Sahara Desert - Morocco',
-        title:'MARRAKECH',
-        title2:'MEROUGA',
-        description:'Tucked away in the Switzerland Alps, Saint Antönien offers an idyllic retreat for those seeking tranquility and adventure alike. ',
-        image:'events/IEDC_1.jpg'
-    },
-    {
-        place:'Sierra Nevada - USA',
-        title:'YOSEMITE',
-        title2:'NATIONAL PARAK',
-        description:'Tucked away in the Switzerland Alps, Saint Antönien offers an idyllic retreat for those seeking tranquility and adventure alike. ',
-        image:'events/TedX.jpg'
-    },
-    {
-        place:'Tarifa - Spain',
-        title:'LOS LANCES',
-        title2:'BEACH',
-        description:'Tucked away in the Switzerland Alps, Saint Antönien offers an idyllic retreat for those seeking tranquility and adventure alike. ',
-        image:'https://assets.codepen.io/3685267/timed-cards-5.jpg'
-    },
-    {
-        place:'Cappadocia - Turkey',
-        title:'Göreme',
-        title2:'Valley',
-        description:'Tucked away in the Switzerland Alps, Saint Antönien offers an idyllic retreat for those seeking tranquility and adventure alike. ',
-        image:'https://assets.codepen.io/3685267/timed-cards-6.jpg'
-    },
-]
+    // Function to get URL parameters
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
 
-const _ = (id)=>document.getElementById(id)
-const cards = data.map((i, index)=>`<div class="card" id="card${index}" style="background-image:url(${i.image})"  ></div>`).join('')
+// Get the department name from the URL
+const departmentName = getQueryParam("dept");
+console.log(departmentName)
+    
+let data = []; // ✅ Declare globally
+let detailsEven = true; // ✅ Track active details section
+let order = []; // ✅ Track order for cycling events
+
+document.addEventListener("DOMContentLoaded", () => {
+  let apiUrl = "http://localhost:5004/api/getEvents";
+    if (departmentName) {
+        apiUrl += `?department=${encodeURIComponent(departmentName)}`;
+    }
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(events => {
+            console.log("Fetched events from backend:", events);
+
+            if (!events || events.length === 0) {
+                console.warn("No events found. Slider will remain empty.");
+                return;
+            }
+
+            // 🔹 Format event data
+            data = events
+                .filter(event => event.status === 1 || event.status === undefined)
+                .map((event, index) => ({
+                    place: event.place || "Unknown Venue",
+                    title: event.title || `Event ${index + 1}`,
+                    title2: event.title2 || "Details",
+                    description: event.description || "No description available.",
+                    image: event.image 
+                        ? `data:image/jpeg;base64,${event.image}` 
+                        : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1qWAIpqePEAH-UPypnABjdT_eNu7hlLi54Q&s", 
+                    id: index
+                }));
+
+            order = data.map((_, i) => i); // ✅ Maintain event order
+            console.log("Formatted event data:", data);
+
+            if (data.length === 0) {
+                console.warn("No valid events passed to start(). Skipping image loading.");
+                return;
+            }
+
+            // 🔹 Populate first event details dynamically
+            updateDetails(order[0]);
+
+            // 🔹 Generate & Insert HTML for event cards
+            document.getElementById("demo").innerHTML = data.map(i =>
+                `<div class="card" id="card${i.id}" style="background-image:url('${i.image}')"></div>
+                 <div class="card-content" id="card-content-${i.id}">
+                     <div class="content-start"></div>
+                     <div class="content-place">${i.place}</div>
+                     <div class="content-title-1">${i.title}</div>
+                     <div class="content-title-2">${i.title2}</div>
+                 </div>`).join('');
+
+            // 🔹 Wait for Elements to be added before running GSAP
+            setTimeout(() => {
+                console.log("Waiting for elements to be added...");
+
+                let checkExist = setInterval(() => {
+                    let allElementsExist = data.every(i =>
+                        document.getElementById(`card${i.id}`) &&
+                        document.getElementById(`card-content-${i.id}`)
+                    );
+
+                    if (allElementsExist) {
+                        clearInterval(checkExist);
+                        console.log("All elements are now in the DOM. Reinitializing GSAP...");
+
+                        gsap.killTweensOf("*"); // Stop previous animations
+                        init(); // Start new animations
+                        startAutoSlide(); // Start slider animations
+
+                        console.log("Slider effects reinitialized.");
+                        initializePage(); // Load remaining scripts
+                    }
+                }, 100);
+            }, 300);
+        })
+        .catch(error => console.error("Error fetching events:", error));
+});
+
+// 🔹 Function to update details dynamically
+function updateDetails(index) {
+    detailsEven = !detailsEven;
+    
+    const detailsActive = detailsEven ? "#details-even" : "#details-odd";
+    const detailsInactive = detailsEven ? "#details-odd" : "#details-even";
+
+    // ✅ Update event details
+    document.querySelector(`${detailsActive} .place-box .text`).textContent = data[index].place;
+    document.querySelector(`${detailsActive} .title-1`).textContent = data[index].title;
+    document.querySelector(`${detailsActive} .title-2`).textContent = data[index].title2;
+    document.querySelector(`${detailsActive} .desc`).textContent = data[index].description;
+
+    // ✅ Animate transition between details sections
+    gsap.set(detailsActive, { zIndex: 22 });
+    gsap.to(detailsActive, { opacity: 1, delay: 0.4, ease: "power2.out" });
+    gsap.to(detailsInactive, { opacity: 0, ease: "power2.out" });
+
+    console.log(`Updated details for event: ${data[index].title}`);
+}
+
+// 🔹 Call `updateDetails` inside `step()` during slide transitions
+function step() {
+    return new Promise((resolve) => {
+        order.push(order.shift()); // Cycle events
+        updateDetails(order[0]); // ✅ Update details dynamically
+        resolve();
+    });
+}
 
 
 
-const cardContents = data.map((i, index)=>`<div class="card-content" id="card-content-${index}">
-<div class="content-start"></div>
-<div class="content-place">${i.place}</div>
-<div class="content-title-1">${i.title}</div>
-<div class="content-title-2">${i.title2}</div>
+// 🔥 Function to contain all remaining scripts
+function initializePage() {
+    console.log("All dynamic elements are loaded. Running remaining scripts...");
 
-</div>`).join('')
+    // Example: Reinitialize other features
+    if (document.querySelector("#someElement")) {
+        // Run some feature-related JS
+        console.log("Feature initialized.");
+    }
 
-
-const sildeNumbers = data.map((_, index)=>`<div class="item" id="slide-item-${index}" >${index+1}</div>`).join('')
-_('demo').innerHTML =  cards + cardContents
-
+    // Any additional scripts can go here
+}
 
 
 const range = (n) =>
@@ -673,21 +752,52 @@ function animate(target, duration, properties) {
   });
 }
 
-let order = [0, 1, 2, 3, 4, 5];
-let detailsEven = true;
 
-let offsetTop = 200;
-let offsetLeft = 700;
-let cardWidth = 200;
-let cardHeight = 200;
-let gap = 40;
-let numberSize = 50;
+
+document.addEventListener("DOMContentLoaded", function () {
+    function updateLayout() {
+        let screenWidth = window.innerWidth;
+
+        if (screenWidth <= 768) { // Mobile View
+            offsetTop = 100;
+            offsetLeft = 20;
+            cardWidth = 120;
+            cardHeight = 120;
+            gap = 15;
+            numberSize = 25;
+        } else { // Desktop View
+            offsetTop = 200;
+            offsetLeft = 700;
+            cardWidth = 200;
+            cardHeight = 200;
+            gap = 40;
+            numberSize = 50;
+        }
+
+        console.log("Updated Layout:", { offsetTop, offsetLeft, cardWidth, cardHeight, gap, numberSize });
+    }
+
+    // Run on page load
+    updateLayout();
+
+    // Update on window resize
+    window.addEventListener("resize", updateLayout);
+});
 const ease = "sine.inOut";
 
 function init() {
+  console.log("init called")
   const [active, ...rest] = order;
   const detailsActive = detailsEven ? "#details-even" : "#details-odd";
   const detailsInactive = detailsEven ? "#details-odd" : "#details-even";
+  console.log("detailsEven:", detailsEven);
+console.log("detailsActive:", detailsActive);
+console.log("detailsInactive:", detailsInactive);
+console.log("Order:", order);
+console.log("Is data available?", typeof data !== "undefined" ? "Yes" : "No");
+console.log("Data content:", data);
+
+
   const { innerHeight: height, innerWidth: width } = window;
   offsetTop = height - 230;
   offsetLeft = width - 530;
@@ -779,12 +889,15 @@ gsap.set(getCard(active), {
 let clicks = 0;
 
 function step() {
+  
   return new Promise((resolve) => {
     order.push(order.shift());
     detailsEven = !detailsEven;
+    
 
     const detailsActive = detailsEven ? "#details-even" : "#details-odd";
     const detailsInactive = detailsEven ? "#details-odd" : "#details-even";
+    
 
     document.querySelector(`${detailsActive} .place-box .text`).textContent =
       data[order[0]].place;
@@ -940,29 +1053,6 @@ gsap.to(getCard(active), {
 
 
 
-async function loadImage(src) {
-  return new Promise((resolve, reject) => {
-    let img = new Image();
-    img.onload = () => resolve(img);
-    img.onerror = reject;
-    img.src = src;
-  });
-}
-
-async function loadImages() {
-  const promises = data.map(({ image }) => loadImage(image));
-  return Promise.all(promises);
-}
-
-async function start() {
-  try {
-    await loadImages();
-    init();
-  } catch (error) {
-    console.error("One or more images failed to load", error);
-  }
-}
-
 
 function positionPauseButton() {
     const rightContainer = document.querySelector(".r-container");
@@ -1017,6 +1107,8 @@ startAutoSlide();
 
 
 // Start loop initially
-start().then(() => loop());
+
+
+
 
   </script>

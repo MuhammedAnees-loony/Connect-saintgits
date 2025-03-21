@@ -304,52 +304,54 @@
         <div class="cards">
             <label class="card" for="item-1" id="song-1">
                 <div class="card-container">
-                  <a href="department.html">
-                    <img src="https://raw.githubusercontent.com/MuhammedAnees-loony/Connect-saintgits/refs/heads/anees/dep_logos/CH.svg" alt="Department 1">
-                  </a>
+                    <a href="department.html?dept=Chemical Department">
+                        <img src="https://raw.githubusercontent.com/MuhammedAnees-loony/Connect-saintgits/refs/heads/anees/dep_logos/CH.svg" alt="Department 1">
+                    </a>
                     <div class="card-text">Chemical Department</div>
                 </div>
             </label>
             <label class="card" for="item-2" id="song-2">
                 <div class="card-container">
-                  <a href="department.html">
-                    <img src="https://raw.githubusercontent.com/MuhammedAnees-loony/Connect-saintgits/refs/heads/anees/dep_logos/cs.svg" alt="Department 2">
-                  </a>  
+                    <a href="department.html?dept=Computer Science Department">
+                        <img src="https://raw.githubusercontent.com/MuhammedAnees-loony/Connect-saintgits/refs/heads/anees/dep_logos/cs.svg" alt="Department 2">
+                    </a>
                     <div class="card-text">Computer Science Department</div>
                 </div>
             </label>
             <label class="card" for="item-3" id="song-3">
                 <div class="card-container">
-                  <a href="department.html">
-                    <img src="https://raw.githubusercontent.com/MuhammedAnees-loony/Connect-saintgits/refs/heads/anees/dep_logos/civil.svg" alt="Department 3">
-                  </a>
+                    <a href="department.html?dept=Civil Department">
+                        <img src="https://raw.githubusercontent.com/MuhammedAnees-loony/Connect-saintgits/refs/heads/anees/dep_logos/civil.svg" alt="Department 3">
+                    </a>
                     <div class="card-text">Civil Department</div>
                 </div>
             </label>
             <label class="card" for="item-4" id="song-4">
                 <div class="card-container">
-                  <a href="department.html">
-                    <img src="https://raw.githubusercontent.com/MuhammedAnees-loony/Connect-saintgits/refs/heads/anees/dep_logos/ec.svg" alt="Department 4">
-                  </a>
+                    <a href="department.html?dept=Electronics Department">
+                        <img src="https://raw.githubusercontent.com/MuhammedAnees-loony/Connect-saintgits/refs/heads/anees/dep_logos/ec.svg" alt="Department 4">
+                    </a>
                     <div class="card-text">Electronics Department</div>
                 </div>
             </label>
             <label class="card" for="item-5" id="song-5">
                 <div class="card-container">
-                  <a href="department.html">
-                    <img src="https://raw.githubusercontent.com/MuhammedAnees-loony/Connect-saintgits/refs/heads/anees/dep_logos/ft.svg" alt="Department 5">
-                  </a>
+                    <a href="department.html?dept=Food Technology">
+                        <img src="https://raw.githubusercontent.com/MuhammedAnees-loony/Connect-saintgits/refs/heads/anees/dep_logos/ft.svg" alt="Department 5">
+                    </a>
                     <div class="card-text">Food Technology</div>
                 </div>
             </label>
             <label class="card" for="item-6" id="song-6">
                 <div class="card-container">
-                  <a href="department.html">
-                    <img src="https://raw.githubusercontent.com/MuhammedAnees-loony/Connect-saintgits/refs/heads/anees/dep_logos/mech.svg" alt="Department 6">
-                  </a>  
+                    <a href="department.html?dept=Mechanical Department">
+                        <img src="https://raw.githubusercontent.com/MuhammedAnees-loony/Connect-saintgits/refs/heads/anees/dep_logos/mech.svg" alt="Department 6">
+                    </a>
                     <div class="card-text">Mechanical Department</div>
                 </div>
             </label>
+        </div>
+        
         </div>
     </div>
   </div>
@@ -804,7 +806,7 @@
             text-align: center;
             color: rgba(255, 255, 255, 0.85); /* White with lower opacity */
             font-family: "Michroma", sans-serif;
-            background: rgba(0, 0, 0, 0.3); /* Slightly transparent background */
+             /* Slightly transparent background */
             padding: 30px 50px;
             border-radius: 10px;
         }
@@ -2014,26 +2016,20 @@
                 event.stopPropagation(); // Prevents bubbling issues
 
                 if (!isRevealed) {
-                    this.classList.add("revealed");
-                    isRevealed = true;
-                } else {
-                    let eventTitle = this.querySelector("h3")?.innerText || "Event";
-                    let eventImageMatch = this.style.backgroundImage.match(/url\(["']?(.*?)["']?\)/);
-                    let eventImage = eventImageMatch ? eventImageMatch[1] : "";
+                this.classList.add("revealed");
+                isRevealed = true;
+            } else {
+                let eventId = this.getAttribute("data-event-id"); // Get event_id from data attribute
 
-                    if (eventImage) {
-                        eventImage = eventImage[1]; // Extract URL
-                    } else {
-                        console.error("❌ No valid image URL found.");
-                        return; 
-                    }
+                if (!eventId) {
+                    console.error("❌ Event ID not found.");
+                    return;
+                }
 
-                    let detailsURL = `event-details.html?title=${encodeURIComponent(eventTitle)}&image=${encodeURIComponent(eventImage)}`;
-                    console.log("🔗 Navigating to:", detailsURL);
-                    console.log("🔗 Sending to:", `event-details.html?title=${encodeURIComponent(eventTitle)}&image=${encodeURIComponent(eventImage)}`);
+                let detailsURL = `event-details.html?id=${encodeURIComponent(eventId)}`;
+                console.log("🔗 Navigating to:", detailsURL);
 
-
-                    window.location.href = detailsURL;
+                window.location.href = detailsURL;
                 
                 }
             });

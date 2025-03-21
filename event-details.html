@@ -106,11 +106,22 @@
         .event-info {
             flex: 1;
             padding: 20px;
+            color: #c3c6cb;
         }
 
         h2, h3 {
             color: #ffffff;
+            font-weight: bold;
+            
+            
         }
+        h2 {
+    font-size: 28px;  /* Increase size for h2 */
+}
+
+h3 {
+    font-size: 24px;  /* Increase size for h3 */
+}
 
         p, ul {
             font-size: 18px;
@@ -366,32 +377,84 @@
 
     <!-- JavaScript -->
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const params = new URLSearchParams(window.location.search);
+        document.addEventListener("DOMContentLoaded", function () {
+    console.log("🚀 Event details page loaded");
 
-            // Ensure the card appears only if there's data
+    const params = new URLSearchParams(window.location.search);
+    const eventId = params.get("id");
+
+    console.log("🔍 Extracted Event ID:", eventId);
+
+    if (!eventId) {
+        console.error("❌ No event ID found in URL.");
+        const eventContainer = document.getElementById("event-container");
+        if (eventContainer) eventContainer.style.display = "none";
+        return;
+    }
+
+    // Show a loading message
+    const eventTitle = document.getElementById("event-title");
+    if (eventTitle) eventTitle.textContent = "Loading event details...";
+
+    // Fetch event details from the backend
+    fetch(`http://localhost:5004/api/events/${eventId}`)
+        .then(response => response.json())
+        .then(event => {
+            console.log("✅ Event data received:", event);
+
+            if (!event || Object.keys(event).length === 0) {
+                console.error("❌ Event not found.");
+                const eventContainer = document.getElementById("event-container");
+                if (eventContainer) eventContainer.innerHTML = "<p>Event not found.</p>";
+                return;
+            }
+
+            // ✅ Safely update elements only if they exist
+            if (eventTitle) eventTitle.textContent = event.eventName || "Event Name";
+            
+            const eventDesc = document.getElementById("event-description");
+            if (eventDesc) eventDesc.textContent = event.description || "Event details here.";
+
+            const eventDate = document.getElementById("event-date");
+            if (eventDate) eventDate.textContent = `${event.eventDate || "TBA"} at ${event.eventTime || "TBA"}`;
+
+            const eventVenue = document.getElementById("event-location");
+            if (eventVenue) eventVenue.textContent = event.eventVenue || "Venue";
+
+            const eventPrizes = document.getElementById("event-prizes");
+            if (eventPrizes) eventPrizes.textContent = event.prizes || "No prizes listed.";
+
+            // ✅ Handle image safely
+            const eventImage = document.getElementById("event-image");
+            if (eventImage) {
+                if (event.image && event.image.startsWith("/9j/")) {
+                    eventImage.src = `data:image/jpeg;base64,${event.image}`;
+                } else {
+                    eventImage.src = event.image || "default.jpg";
+                }
+            }
+
+            // ✅ Handle organizers safely
+            const organizerList = document.getElementById("event-organizers");
+            if (organizerList) {
+                if (event.organizer) {
+                    organizerList.innerHTML = `<li>${event.organizer}</li>`;
+                } else {
+                    organizerList.innerHTML = "<li>No organizers listed</li>";
+                }
+            }
+
+            console.log("🎉 Event details updated on UI");
+        })
+        .catch(error => {
+            console.error("❌ Error fetching event details:", error);
             const eventContainer = document.getElementById("event-container");
-            if (!params.has("title") && !params.has("description")) {
-                eventContainer.style.display = "none"; // Hide if no data
-            }
-
-            document.getElementById("event-title").textContent = params.get("title") || "Event Name";
-            document.getElementById("event-image").src = params.get("image") || "default.jpg";
-            document.getElementById("event-description").textContent = params.get("description") || "Event details here.";
-            document.getElementById("event-date").textContent = params.get("date") || "TBA";
-            document.getElementById("event-location").textContent = params.get("location") || "Venue";
-
-            // Handle organizers as a comma-separated list
-            const organizers = params.get("organizers");
-            if (organizers) {
-                const organizerList = organizers.split(",").map(org => `<li>${org}</li>`).join("");
-                document.getElementById("event-organizers").innerHTML = organizerList;
-            } else {
-                document.getElementById("event-organizers").innerHTML = "<li>No organizers listed</li>";
-            }
-
-            document.getElementById("event-prizes").textContent = params.get("prizes") || "No prizes";
+            if (eventContainer) eventContainer.innerHTML = "<p>Failed to load event details. Please try again later.</p>";
         });
+});
+
+
+
     </script>
 
 </body>
