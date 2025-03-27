@@ -22,8 +22,10 @@
             font-family: "Michroma", sans-serif;;
             height: 100vh;
             display: flex;
-            overflow: hidden;
-            background-color: rgb(253, 253, 253);
+            overflow-x: hidden; /* Prevents horizontal scrolling */
+            overflow-y: auto;
+            background:linear-gradient(132deg,#205295,#092635 ,#0A2647,#144272,#000000,#2C74B3);
+            scrollbar-width: none;
         }
 
         
@@ -70,7 +72,7 @@
             left: 20px;
             width: 50px;
             height: 5px;
-            background-color: white;
+            background-color: rgb(255, 255, 255);
         }
 
         .svg-container {
@@ -87,7 +89,7 @@
         .content {
             text-align: center;
             color: white;
-            background-color: rgba(0, 0, 0, 0.5); /* Transparent Background */
+            background-color: rgba(220, 208, 208, 0.5); /* Transparent Background */
             padding: 20px;
             border-radius: 10px;
         }
@@ -113,7 +115,7 @@
         height: 2px;
         background-position: center;
         background-size: cover;
-        box-shadow: 6px 6px 10px 2px rgba(0, 0, 0, 0.6);
+        box-shadow: 6px 6px 10px 2px rgba(20, 19, 19, 0.6);
         }
 
         #btn {
@@ -137,25 +139,13 @@
         font-weight: 500;
         }
 
-        .content-title-1,
-        .content-title-2 {
-        font-weight: 600;
-        font-size: 20px;
-        font-family: "Oswald", sans-serif;
-        }
-
-        .content-start {
-        width: 30px;
-        height: 5px;
-        border-radius: 99px;
-        background-color: #FFFFFFDD;
-        }
         
         .details {
         z-index: 22;
         position: absolute;
         top: 240px;
         left: 60px;
+        color: #e1d9d9;
         }
 
         .details .place-box {
@@ -177,14 +167,14 @@
         width: 30px;
         height: 4px;
         border-radius: 99px;
-        background-color: white;
+        background-color: rgb(246, 242, 242);
         }
 
         .details .title-1,
         .details .title-2 {
         font-weight: 600;
         font-size: 72px;
-        font-family: "Oswald", sans-serif;
+        
         }
 
         .details .title-box-1,
@@ -196,7 +186,7 @@
 
         .details > .desc {
         margin-top: 16px;
-        width: 350px;
+        width: 650px;
         }
 
         .details > .cta {
@@ -285,34 +275,7 @@
         z-index: 60;
         background-color: #ecad29;
         }
-        .bg {
-            animation:slide 10s ease-in-out infinite alternate;
-            background-image: linear-gradient(132deg,#205295,#092635 ,#0A2647,#144272,#000000,#2C74B3);
-            bottom:0;
-            left:-50%;
-            opacity:.5;
-            position:fixed;
-            right:-50%;
-            top:0;
-            z-index:-1;
-            }
-
-        .bg2 {
-            animation-direction:alternate-reverse;
-            animation-duration:4s;
-            }
-
-        .bg3 {
-            animation-duration:5s;
-            }
-            @keyframes slide {
-            0% {
-                transform:translateX(-25%);
-            }
-            100% {
-                transform:translateX(25%);
-            }
-            }
+       
         #pause-btn {
           position: absolute; /* Keeps it positioned correctly */
           background-color: rgba(129, 125, 125, 0.7);
@@ -521,10 +484,10 @@
   </a>
   <nav class="main-nav" id="main-nav" aria-label="Main navigation">
     <ul class="nav-items">
-        <li class="nav-item"><a href="#celeb" class="nav-link">Events</a></li>
-        <li class="nav-item"><a href="#departments" class="nav-link">Departments</a></li>
-        <li class="nav-item"><a href="#upload" class="nav-link">Upload</a></li>
-        <li class="nav-item"><a href="#about" class="nav-link">About & Services</a></li>
+        <li class="nav-item"><a href="home.html#celeb" class="nav-link">Events</a></li>
+        <li class="nav-item"><a href="home.html#card-slider" class="nav-link">Departments</a></li>
+        <li class="nav-item"><a href="upload.html" class="nav-link">Upload</a></li>
+        <li class="nav-item"><a href="about.html" class="nav-link">About & Services</a></li>
     </ul>
 </nav>
 
@@ -648,10 +611,7 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("demo").innerHTML = data.map(i =>
                 `<div class="card" id="card${i.id}" style="background-image:url('${i.image}')"></div>
                  <div class="card-content" id="card-content-${i.id}">
-                     <div class="content-start"></div>
-                     <div class="content-place">${i.place}</div>
-                     <div class="content-title-1">${i.title}</div>
-                     <div class="content-title-2">${i.title2}</div>
+                     
                  </div>`).join('');
 
             // 🔹 Wait for Elements to be added before running GSAP
