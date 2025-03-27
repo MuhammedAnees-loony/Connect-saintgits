@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="logo5.svg">
+
 </head>
 
 <body>
@@ -305,7 +307,7 @@
             <label class="card" for="item-1" id="song-1">
                 <div class="card-container">
                     <a href="department.html?dept=Chemical Department">
-                        <img src="https://raw.githubusercontent.com/MuhammedAnees-loony/Connect-saintgits/refs/heads/anees/dep_logos/CH.svg" alt="Department 1">
+                        <img src="https://raw.githubusercontent.com/MuhammedAnees-loony/Connect-saintgits/refs/heads/main/dep_logos/CH.svg" alt="Department 1">
                     </a>
                     <div class="card-text">Chemical Department</div>
                 </div>
@@ -313,7 +315,7 @@
             <label class="card" for="item-2" id="song-2">
                 <div class="card-container">
                     <a href="department.html?dept=Computer Science Department">
-                        <img src="https://raw.githubusercontent.com/MuhammedAnees-loony/Connect-saintgits/refs/heads/anees/dep_logos/cs.svg" alt="Department 2">
+                        <img src="https://raw.githubusercontent.com/MuhammedAnees-loony/Connect-saintgits/refs/heads/main/dep_logos/cs.svg" alt="Department 2">
                     </a>
                     <div class="card-text">Computer Science Department</div>
                 </div>
@@ -321,7 +323,7 @@
             <label class="card" for="item-3" id="song-3">
                 <div class="card-container">
                     <a href="department.html?dept=Civil Department">
-                        <img src="https://raw.githubusercontent.com/MuhammedAnees-loony/Connect-saintgits/refs/heads/anees/dep_logos/civil.svg" alt="Department 3">
+                        <img src="https://raw.githubusercontent.com/MuhammedAnees-loony/Connect-saintgits/refs/heads/main/dep_logos/civil.svg" alt="Department 3">
                     </a>
                     <div class="card-text">Civil Department</div>
                 </div>
@@ -329,7 +331,7 @@
             <label class="card" for="item-4" id="song-4">
                 <div class="card-container">
                     <a href="department.html?dept=Electronics Department">
-                        <img src="https://raw.githubusercontent.com/MuhammedAnees-loony/Connect-saintgits/refs/heads/anees/dep_logos/ec.svg" alt="Department 4">
+                        <img src="https://raw.githubusercontent.com/MuhammedAnees-loony/Connect-saintgits/refs/heads/main/dep_logos/ec.svg" alt="Department 4">
                     </a>
                     <div class="card-text">Electronics Department</div>
                 </div>
@@ -337,7 +339,7 @@
             <label class="card" for="item-5" id="song-5">
                 <div class="card-container">
                     <a href="department.html?dept=Food Technology">
-                        <img src="https://raw.githubusercontent.com/MuhammedAnees-loony/Connect-saintgits/refs/heads/anees/dep_logos/ft.svg" alt="Department 5">
+                        <img src="https://raw.githubusercontent.com/MuhammedAnees-loony/Connect-saintgits/refs/heads/main/dep_logos/ft.svg" alt="Department 5">
                     </a>
                     <div class="card-text">Food Technology</div>
                 </div>
@@ -345,7 +347,7 @@
             <label class="card" for="item-6" id="song-6">
                 <div class="card-container">
                     <a href="department.html?dept=Mechanical Department">
-                        <img src="https://raw.githubusercontent.com/MuhammedAnees-loony/Connect-saintgits/refs/heads/anees/dep_logos/mech.svg" alt="Department 6">
+                        <img src="https://raw.githubusercontent.com/MuhammedAnees-loony/Connect-saintgits/refs/heads/main/dep_logos/mech.svg" alt="Department 6">
                     </a>
                     <div class="card-text">Mechanical Department</div>
                 </div>
@@ -355,12 +357,15 @@
         </div>
     </div>
   </div>
-  <div class="map-container">
     <h2 class="line-title" style="font-family: 'Michroma', sans-serif;">Campus Map</h2>
-    <div class="map-wrapper">
-        <img src="https://github.com/MuhammedAnees-loony/Connect-saintgits/blob/main/map.jpg?raw=true" alt="Campus Map" class="map-image">
+    <div class="map-container">
+        
+        <div class="map-wrapper">
+            <object data="map1.svg" type="image/svg+xml" id="svg-map" class="map-image"></object>
+
+        </div>
+        <div id="popup"></div>
     </div>
-</div>
   <footer class="footer">
     <!-- Saintgits Logo -->
     <div class="footer-logo">
@@ -980,48 +985,129 @@
         .filter-options.active {
             display: flex;
         }
+        /* Ensures the map container is on top */
+
+        /* Map Container - Takes half the screen width */
         .map-container {
-            text-align: center;
-            padding: 20px;
-            background: linear-gradient(132deg,#205295,#092635 ,#0A2647,#144272,#000000,#2C74B3);
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            margin: 20px auto;
-            max-width: 900px;
-        }
+                display: flex;
+                align-items: flex-start;
+                position: relative;
+                width: 100%;
+                padding: 20px;
+                
+            }
 
-        .map-title {
-            font-size: 24px;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 15px;
-        }
+            .map-title {
+                position: absolute;
+                
+                top: 10px;
+                left: 20px;
+                font-size: 24px;
+                color: #ffffff;
+                font-weight: bold;
+            }
 
-        .map-wrapper {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            border-radius: 8px;
-            background-color: #d1e6ff;
-            padding: 10px;
-        }
+            .map-wrapper {
+                flex: 1;
+                max-width: 70%;
+                background-color: #000000a7;
+                border-radius: 8px;
+            }
 
-        .map-image {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-            transition: transform 0.3s ease-in-out;
-        }
-        .map-image:hover {
-            transform: scale(15); /* Adjust zoom level */
-            cursor: zoom-in;
-        }
+            .map-image {
+                width: 100%;
+                height: auto;
+            }
+            #popup {
+                flex: 1;
+                max-width: 30%;
+                background: rgba(0, 0, 0, 0.741);
+                padding: 15px;
+                border-radius: 8px;
+                box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+                display: none; /* Initially hidden */
+                margin-left: 20px; /* Push popup to the right */
+                font-family: Arial, sans-serif;
+                transition: all 0.3s ease-in-out;
+            }
 
+            #popup h3 {
+                font-size: 1.5rem;
+                margin-bottom: 10px;
+                color: #f9f8f8;
+            }
 
-        /* Ensure visibility on all screen sizes */
+            #popup ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                color: #ffffff;
+            }
+
+            #popup li {
+                font-size: 1rem;
+                padding: 5px 0;
+                border-bottom: 1px solid #ddd;
+            }
+
+            #popup li:last-child {
+                border-bottom: none;
+            }
+
+            /* Responsive styles */
+            @media (max-width: 1024px) {
+                #popup {
+                    max-width: 40%;
+                    font-size: 0.9rem;
+                }
+
+                #popup h3 {
+                    font-size: 1.3rem;
+                }
+
+                #popup li {
+                    font-size: 0.9rem;
+                }
+            }
+
+            @media (max-width: 768px) {
+                #popup {
+                    max-width: 50%;
+                    padding: 10px;
+                }
+
+                #popup h3 {
+                    font-size: 1.2rem;
+                }
+
+                #popup li {
+                    font-size: 0.85rem;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .map-container {
+                    flex-direction: column; /* Stack map and popup vertically */
+                    align-items: center;
+                }
+
+                #popup {
+                    max-width: 90%;
+                    margin-left: 0;
+                    margin-top: 15px;
+                    padding: 8px;
+                }
+
+                #popup h3 {
+                    font-size: 1.1rem;
+                }
+
+                #popup li {
+                    font-size: 0.8rem;
+                }
+            }
+
+       /* Ensure visibility on all screen sizes */
         @media (max-width: 1024px) {
             .search-wrapper {
                 position: relative; /* Allow it to flow naturally */
@@ -1527,6 +1613,8 @@
             font-weight: 700;
             position: relative;
             text-transform: capitalize;
+            margin-left: 40px;
+            text-align: left;
         }
         h3 {
             margin: 0 0 10px;
@@ -2121,6 +2209,164 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 });
 
+
+
+// map
+      
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("DOM fully loaded and parsed.");
+
+    const map = document.getElementById("svg-map");
+    const popup = document.getElementById("popup");
+
+    // Mapping block IDs to actual block names
+    const blockNames = {
+        block1: "AB BLOCK",
+        block2: "CLC",
+        block3: "AMPHITHEATRE",
+        block4: "RB BLOCK",
+        block5: "NORTH BLOCK",
+        block6: "SOUTH BLOCK",
+        block7: "VB",
+        block8: "AMENITY",
+        block9: "MINI AUDITORIUM",
+        block10: "AK BLOCK",
+        block11: "LAB1",
+        block12: "LAB2",
+        block13: "LAB3",
+        block14: "LAB4"
+    };
+
+    map.addEventListener("load", function () {
+        console.log("SVG map loaded.");
+
+        const svgDoc = map.contentDocument || map.contentWindow.document;
+        if (!svgDoc) {
+            console.error("SVG document not loaded properly.");
+            return;
+        }
+
+        const blocks = svgDoc.querySelectorAll("[id^='block']");
+        console.log(`Found ${blocks.length} blocks.`);
+
+        blocks.forEach(block => {
+            block.style.cursor = "pointer";
+            console.log(`Added event listener for ${block.id}`);
+
+            block.addEventListener("click", async function (event) {
+                const blockId = block.id;
+                const blockName = blockNames[blockId] || "Unknown Block"; // Use mapped name or default text
+                console.log(`Block clicked: ${blockName} (${blockId})`);
+
+                try {
+                    console.log(`Fetching events for ${blockName}...`);
+                    const response = await fetch(`http://localhost:5004/api/event-venue?blockId=${blockId}`);
+
+                    if (!response.ok) {
+                        console.error(`Error fetching data: ${response.status}`);
+                        return;
+                    }
+
+                    const eventData = await response.json();
+                    console.log(`Fetched data for ${blockName}:`, eventData);
+
+                    if (eventData.length === 0) {
+                        popup.innerHTML = `<h3>No Events at ${blockName}</h3>`;
+                        console.log(`No events found for ${blockName}`);
+                    } else {
+                        popup.innerHTML = `<h3>Events at ${blockName}</h3><ul>` +
+                            eventData.map(e => `<li>${e.eventName} - ${e.eventTime} @ ${e.venue}</li>`).join("") + "</ul>";
+                        console.log(`Events displayed for ${blockName}`);
+                    }
+
+                    popup.style.display = "block";
+                } catch (error) {
+                    console.error("Error fetching events:", error);
+                }
+            });
+        });
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const map = document.getElementById("svg-map");
+
+    let isPanning = false, startX, startY, startViewBox;
+
+    map.addEventListener("load", function () {
+        const svgDoc = map.getSVGDocument();
+        const svg = svgDoc.documentElement;
+
+        // Determine the original viewBox
+        let origViewBox;
+        if (svg.hasAttribute("viewBox")) {
+            origViewBox = svg.getAttribute("viewBox").split(" ").map(Number);
+        } else {
+            // Fallback to width/height attributes if viewBox is not defined
+            let width = parseFloat(svg.getAttribute("width")) || 1000;
+            let height = parseFloat(svg.getAttribute("height")) || 1000;
+            origViewBox = [0, 0, width, height];
+        }
+
+        // Unpack the original viewBox values
+        let [ox, oy, owidth, oheight] = origViewBox;
+
+        // Set the desired initial zoom factor (2 means zoom in 2x)
+        let zoomFactor = 2;
+        let newWidth = owidth / zoomFactor;
+        let newHeight = oheight / zoomFactor;
+
+        // Calculate centered viewBox:
+        // Shift the origin so that the zoomed area is centered relative to the original viewBox.
+        let centerX = ox + (owidth - newWidth) / 2;
+        let centerY = oy + (oheight - newHeight) / 2;
+
+        // Set the viewBox to the centered zoomed values
+        svg.setAttribute("viewBox", `${centerX} ${centerY} ${newWidth} ${newHeight}`);
+        console.log(`Initial centered zoom applied: viewBox="${centerX} ${centerY} ${newWidth} ${newHeight}"`);
+
+        // Prevent page scroll while zooming inside the map
+        svg.addEventListener("wheel", function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            let viewBox = svg.getAttribute("viewBox").split(" ").map(Number);
+            // Zoom in if scrolling up, zoom out if scrolling down
+            let localZoomFactor = event.deltaY > 0 ? 1.1 : 0.9;
+            let newViewWidth = viewBox[2] * localZoomFactor;
+            let newViewHeight = viewBox[3] * localZoomFactor;
+            // Adjust the x/y so that the center remains fixed during zoom
+            let newX = viewBox[0] + (viewBox[2] - newViewWidth) / 2;
+            let newY = viewBox[1] + (viewBox[3] - newViewHeight) / 2;
+
+            svg.setAttribute("viewBox", `${newX} ${newY} ${newViewWidth} ${newViewHeight}`);
+        }, { passive: false });
+
+        // Enable panning on drag
+        svg.addEventListener("mousedown", function (event) {
+            isPanning = true;
+            startX = event.clientX;
+            startY = event.clientY;
+            startViewBox = svg.getAttribute("viewBox").split(" ").map(Number);
+        });
+
+        svg.addEventListener("mousemove", function (event) {
+            if (!isPanning) return;
+            let dx = (startX - event.clientX) * (startViewBox[2] / svg.clientWidth);
+            let dy = (startY - event.clientY) * (startViewBox[3] / svg.clientHeight);
+
+            svg.setAttribute("viewBox", `${startViewBox[0] + dx} ${startViewBox[1] + dy} ${startViewBox[2]} ${startViewBox[3]}`);
+        });
+
+        svg.addEventListener("mouseup", function () {
+            isPanning = false;
+        });
+
+        svg.addEventListener("mouseleave", function () {
+            isPanning = false;
+        });
+    });
+});
 
 
 
