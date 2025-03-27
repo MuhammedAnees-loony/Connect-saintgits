@@ -2057,7 +2057,7 @@
             }
 
             events.forEach(event => {
-                let imageUrl = event.image.startsWith("/9j/") ? `data:image/jpeg;base64,${event.image}` : event.image;
+                let imageUrl = event.image.startsWith("/9j/") ? `data:image/jpeg;base64,${event.image}` : (event.image ? event.image : "no image.jpg");
 
                 let eventCard = document.createElement("div");
                 eventCard.classList.add("item", "celeb-section-item"); 
