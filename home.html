@@ -451,6 +451,7 @@
             background-size: 400% 400%;
             animation: BackgroundGradient 20s ease infinite;
             
+            
 
         }
         @keyframes BackgroundGradient {
@@ -2047,7 +2048,7 @@
 
             if (!Array.isArray(events)) {
                 console.error("❌ API did not return an array:", events);
-                return;
+                events = []
             }
 
             eventContainer.innerHTML = ""; // Clear old events
@@ -2057,7 +2058,11 @@
             }
 
             events.forEach(event => {
-                let imageUrl = event.image.startsWith("/9j/") ? `data:image/jpeg;base64,${event.image}` : (event.image ? event.image : "no image.jpg");
+                let imageUrl = event.image
+        ? (event.image.startsWith("/9j/") 
+            ? `data:image/jpeg;base64,${event.image}` 
+            : event.image)
+        : "https://github.com/MuhammedAnees-loony/Connect-saintgits/blob/main/no%20image.jpg?raw=true"; // Default image URL
 
                 let eventCard = document.createElement("div");
                 eventCard.classList.add("item", "celeb-section-item"); 
@@ -2066,9 +2071,9 @@
 
                 eventCard.innerHTML = `
                     <div class="item-desc">
-                        <h3>${event.eventName}</h3>
-                        <p>${event.description}</p>
-                    </div>
+                    <h3>${event.eventName || "Unknown Event"}</h3>
+                    <p>${event.description || "No description available."}</p>
+                </div>
                 `;
 
                 eventContainer.appendChild(eventCard);
@@ -2093,7 +2098,24 @@
             attachEventListeners(); // Ensure click events work for new cards
         })
         .catch(error => console.error("❌ Fetch error:", error));
+        displayDefaultEvent();
     }
+    // ✅ Function to display a fallback event card
+        function displayDefaultEvent() {
+            let eventCard = document.createElement("div");
+            eventCard.classList.add("item", "celeb-section-item");
+            eventCard.style.backgroundImage = `url('https://github.com/MuhammedAnees-loony/Connect-saintgits/blob/main/no%20image.jpg?raw=true')`;
+
+            eventCard.innerHTML = `
+                <div class="item-desc">
+                    <h3>No Events Available</h3>
+                    <p>Could not load events. Please try again later.</p>
+                </div>
+            `;
+
+            eventContainer.appendChild(eventCard);
+            
+        }
 
     // Attach click events dynamically
     function attachEventListeners() {
