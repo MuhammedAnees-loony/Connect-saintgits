@@ -20,7 +20,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: url('https://github.com/MuhammedAnees-loony/Connect-saintgits/blob/anees/backgrounds/login.jpg?raw=true') no-repeat center center/cover;
+      background: url('https://github.com/MuhammedAnees-loony/Connect-saintgits/blob/main/login_background.jpg?raw=true') no-repeat center center/cover;
       height: 100vh;
       flex-direction: column;
     }
@@ -178,7 +178,7 @@
 </body>
 <script>
   document.querySelector("button").addEventListener("click", async function (event) {
-    event.preventDefault(); // Prevents default form submission
+    event.preventDefault(); // Prevent default form submission
 
     const username = document.getElementById("username").value.trim();
     const password = document.getElementById("password").value.trim();
@@ -200,7 +200,9 @@
         if (response.ok && data.token) {
             alert("✅ Login Successful!");
             localStorage.setItem("authToken", data.token); // Store token
-            window.location.href = "upload.html"; // Redirect to upload page
+            
+            // 🔀 Use dynamic redirect URL
+            window.location.href = data.redirectUrl;
         } else {
             alert(data.message || "❌ Invalid credentials.");
         }
@@ -210,5 +212,6 @@
         alert("❌ Server error. Please try again later.");
     }
 });
+
 </script>
 </html>
