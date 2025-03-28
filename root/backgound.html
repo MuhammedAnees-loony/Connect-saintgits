@@ -1,0 +1,121 @@
+<ul class="background">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+ </ul>
+<style>
+    @keyframes animate {
+    0%{
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+        border-radius: 0;
+    }
+    100%{
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+        border-radius: 50%;
+    }
+}
+
+.background {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    background: #000000;
+    overflow: hidden;
+}
+.background li {
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    animation: animate 19s linear infinite;
+}
+
+
+
+
+.background li:nth-child(0) {
+    left: 28%;
+    width: 144px;
+    height: 144px;
+    bottom: -144px;
+    animation-delay: 1s;
+}
+.background li:nth-child(1) {
+    left: 53%;
+    width: 118px;
+    height: 118px;
+    bottom: -118px;
+    animation-delay: 5s;
+}
+.background li:nth-child(2) {
+    left: 38%;
+    width: 139px;
+    height: 139px;
+    bottom: -139px;
+    animation-delay: 6s;
+}
+.background li:nth-child(3) {
+    left: 23%;
+    width: 156px;
+    height: 156px;
+    bottom: -156px;
+    animation-delay: 13s;
+}
+.background li:nth-child(4) {
+    left: 77%;
+    width: 115px;
+    height: 115px;
+    bottom: -115px;
+    animation-delay: 4s;
+}
+.background li:nth-child(5) {
+    left: 47%;
+    width: 124px;
+    height: 124px;
+    bottom: -124px;
+    animation-delay: 23s;
+}
+.background li:nth-child(6) {
+    left: 87%;
+    width: 158px;
+    height: 158px;
+    bottom: -158px;
+    animation-delay: 8s;
+}
+.background li:nth-child(7) {
+    left: 35%;
+    width: 126px;
+    height: 126px;
+    bottom: -126px;
+    animation-delay: 33s;
+}
+.background li:nth-child(8) {
+    left: 74%;
+    width: 155px;
+    height: 155px;
+    bottom: -155px;
+    animation-delay: 39s;
+}
+.background li:nth-child(9) {
+    left: 72%;
+    width: 120px;
+    height: 120px;
+    bottom: -120px;
+    animation-delay: 38s;
+}
+</style>

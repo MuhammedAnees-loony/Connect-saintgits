@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="logo5.svg">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');
+
+        body {
+            background: linear-gradient(132deg,#205295,#092635 ,#0A2647,#144272,#000000,#2C74B3);
+            background-size: 400% 400%;
+            animation: BackgroundGradient 20s ease infinite;
+            font-family: 'Michroma', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        @keyframes BackgroundGradient {
+             0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(13, 12, 12, 0.9);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 2px solid #f3f6fa;
+            height: 70px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .header-logo {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #f6f3f3;
+            margin: 0;
+        }
+
+        /* Navigation Menu */
+        .main-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-items {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-item a {
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            color: #f0e4e4;
+            padding: 8px 12px;
+            transition: all 0.3s ease-in-out;
+            border-radius: 5px;
+        }
+
+        .nav-item a:hover {
+            background: #07aef0;
+            color: black;
+        }
+
+        /* Event Container */
+        .event-container {
+            display: flex;
+            max-width: 1200px;
+            margin: 100px auto;
+            margin-top: 10%;
+            background: linear-gradient(to right, #101011, #162688);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
+            align-items: center;
+        }
+
+        .event-container img {
+            
+            width: 400px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .event-info {
+            flex: 1;
+            padding: 20px;
+            color: #c3c6cb;
+        }
+
+        h2, h3 {
+            color: #ffffff;
+            font-weight: bold;
+            
+            
+        }
+        h2 {
+    font-size: 28px;  /* Increase size for h2 */
+}
+
+h3 {
+    font-size: 24px;  /* Increase size for h3 */
+}
+
+        p, ul {
+            font-size: 18px;
+        }
+
+        .back-button {
+            display: block;
+            text-align: center;
+            margin: 20px auto;
+            width: 200px;
+            padding: 12px;
+            background: linear-gradient(to right, #0851e1, #1880bd);
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .back-button:hover {
+            background: linear-gradient(to right, #10afcb, #0994f7);
+        }
+    </style>
+</head>
+<body>
+    <ul class="background">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        
+  </ul>
+    <style>
+        @keyframes animate {
+        0%{
+            transform: translateY(0) rotate(0deg);
+            opacity: 1;
+            border-radius: 0;
+        }
+        100%{
+            transform: translateY(-1000px) rotate(720deg);
+            opacity: 0;
+            border-radius: 50%;
+        }
+    }
+    
+    .background {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        margin: 0;
+        padding: 0;
+        
+        overflow: hidden;
+    }
+    .background li {
+        position: absolute;
+        display: block;
+        list-style: none;
+        width: 20px;
+        height: 20px;
+        background: rgba(255, 255, 255, 0.2);
+        animation: animate 19s linear infinite;
+    }
+    .background li:nth-child(1) {
+        left: 53%;
+        width: 118px;
+        height: 118px;
+        bottom: -118px;
+        animation-delay: 5s;
+    }
+    .background li:nth-child(2) {
+        left: 38%;
+        width: 139px;
+        height: 139px;
+        bottom: -139px;
+        animation-delay: 6s;
+    }
+    .background li:nth-child(3) {
+        left: 23%;
+        width: 156px;
+        height: 156px;
+        bottom: -156px;
+        animation-delay: 13s;
+    }
+    .background li:nth-child(4) {
+        left: 77%;
+        width: 115px;
+        height: 115px;
+        bottom: -115px;
+        animation-delay: 4s;
+    }
+    .background li:nth-child(5) {
+        left: 47%;
+        width: 124px;
+        height: 124px;
+        bottom: -124px;
+        animation-delay: 23s;
+    }
+    .background li:nth-child(6) {
+        left: 87%;
+        width: 158px;
+        height: 158px;
+        bottom: -158px;
+        animation-delay: 8s;
+    }
+    .background li:nth-child(7) {
+        left: 35%;
+        width: 126px;
+        height: 126px;
+        bottom: -126px;
+        animation-delay: 33s;
+    }
+    .background li:nth-child(8) {
+        left: 74%;
+        width: 155px;
+        height: 155px;
+        bottom: -155px;
+        animation-delay: 39s;
+    }
+    .background li:nth-child(9) {
+        left: 72%;
+        width: 120px;
+        height: 120px;
+        bottom: -120px;
+        animation-delay: 38s;
+    }
+    .background li:nth-child(10) {
+        left: 28%;
+        width: 144px;
+        height: 144px;
+        bottom: -144px;
+        animation-delay: 1s;
+    }
+    .background li:nth-child(11) {
+        left: 53%;
+        width: 118px;
+        height: 118px;
+        bottom: -118px;
+        animation-delay: 5s;
+    }
+    .background li:nth-child(12) {
+        left: 38%;
+        width: 139px;
+        height: 139px;
+        bottom: -139px;
+        animation-delay: 6s;
+    }
+    .background li:nth-child(13) {
+        left: 23%;
+        width: 156px;
+        height: 156px;
+        bottom: -156px;
+        animation-delay: 13s;
+    }
+    .background li:nth-child(14) {
+        left: 77%;
+        width: 115px;
+        height: 115px;
+        bottom: -115px;
+        animation-delay: 4s;
+    }
+    .background li:nth-child(15) {
+        left: 47%;
+        width: 124px;
+        height: 124px;
+        bottom: -124px;
+        animation-delay: 23s;
+    }
+    .background li:nth-child(16) {
+        left: 87%;
+        width: 158px;
+        height: 158px;
+        bottom: -158px;
+        animation-delay: 8s;
+    }
+    .background li:nth-child(17) {
+        left: 35%;
+        width: 126px;
+        height: 126px;
+        bottom: -126px;
+        animation-delay: 33s;
+    }
+    .background li:nth-child(18) {
+        left: 74%;
+        width: 155px;
+        height: 155px;
+        bottom: -155px;
+        animation-delay: 39s;
+    }
+    .background li:nth-child(19) {
+        left: 72%;
+        width: 120px;
+        height: 120px;
+        bottom: -120px;
+        animation-delay: 38s;
+    }
+    </style>
+
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo-container">
+            <img src="logo5.svg" alt="Logo" class="header-logo">
+            <span class="logo">Connect@Saintgits</span>
+        </a>
+        
+        <nav class="main-nav">
+            <ul class="nav-items">
+                <li class="nav-item"><a href="new1.html#celeb">Events</a></li>
+                <li class="nav-item"><a href="new1.html#card-slider">Departments</a></li>
+                <li class="nav-item"><a href="login.html">Upload</a></li>
+                <li class="nav-item"><a href="#about">About & Services</a></li>
+            </ul>
+        </nav>
+    </header>
+
+     <!-- Event Details -->
+     <main>
+        <div class="event-container" id="event-container">
+            <img id="event-image" src="" alt="Event Image">
+            <div class="event-info">
+                <h2 id="event-title">Event Name</h2>
+                <h3>Description</h3>
+                <p id="event-description">Event details will appear here.</p>
+                <h3>Date & Time</h3>
+                <p id="event-date">TBA</p>
+                <h3>Location</h3>
+                <p id="event-location">Venue</p>
+                <h3>Organizers</h3>
+                <ul id="event-organizers"></ul>
+                <h3>Prizes</h3>
+                <p id="event-prizes">No prizes listed.</p>
+            </div>
+        </div>
+        
+    </main>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    console.log("🚀 Event details page loaded");
+
+    const params = new URLSearchParams(window.location.search);
+    const eventId = params.get("id");
+
+    console.log("🔍 Extracted Event ID:", eventId);
+
+    if (!eventId) {
+        console.error("❌ No event ID found in URL.");
+        const eventContainer = document.getElementById("event-container");
+        if (eventContainer) eventContainer.style.display = "none";
+        return;
+    }
+
+    // Show a loading message
+    const eventTitle = document.getElementById("event-title");
+    if (eventTitle) eventTitle.textContent = "Loading event details...";
+
+    // Fetch event details from the backend
+    fetch(`http://localhost:5004/api/events/${eventId}`)
+        .then(response => response.json())
+        .then(event => {
+            console.log("✅ Event data received:", event);
+
+            if (!event || Object.keys(event).length === 0) {
+                console.error("❌ Event not found.");
+                const eventContainer = document.getElementById("event-container");
+                if (eventContainer) eventContainer.innerHTML = "<p>Event not found.</p>";
+                return;
+            }
+
+            // ✅ Safely update elements only if they exist
+            if (eventTitle) eventTitle.textContent = event.eventName || "Event Name";
+            
+            const eventDesc = document.getElementById("event-description");
+            if (eventDesc) eventDesc.textContent = event.description || "Event details here.";
+
+            const eventDate = document.getElementById("event-date");
+            if (eventDate) eventDate.textContent = `${event.eventDate || "TBA"} at ${event.eventTime || "TBA"}`;
+
+            const eventVenue = document.getElementById("event-location");
+            if (eventVenue) eventVenue.textContent = event.eventVenue || "Venue";
+
+            const eventPrizes = document.getElementById("event-prizes");
+            if (eventPrizes) eventPrizes.textContent = event.prizes || "No prizes listed.";
+
+            // ✅ Handle image safely
+            const eventImage = document.getElementById("event-image");
+            if (eventImage) {
+                if (event.image && event.image.startsWith("/9j/")) {
+                    eventImage.src = `data:image/jpeg;base64,${event.image}`;
+                } else {
+                    eventImage.src = event.image || "default.jpg";
+                }
+            }
+
+            // ✅ Handle organizers safely
+            const organizerList = document.getElementById("event-organizers");
+            if (organizerList) {
+                if (event.organizer) {
+                    organizerList.innerHTML = `<li>${event.organizer}</li>`;
+                } else {
+                    organizerList.innerHTML = "<li>No organizers listed</li>";
+                }
+            }
+
+            console.log("🎉 Event details updated on UI");
+        })
+        .catch(error => {
+            console.error("❌ Error fetching event details:", error);
+            const eventContainer = document.getElementById("event-container");
+            if (eventContainer) eventContainer.innerHTML = "<p>Failed to load event details. Please try again later.</p>";
+        });
+});
+
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="icon" type="image/svg+xml" href="logo5.svg">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
+        body {
+            font-family: 'Michroma', sans-serif;
+            margin: 0;
+            background: #121212;
+            color: white;
+        }
+        .navbar {
+            background: #1E1E1E;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .navbar h1 {
+            color: #4A90E2;
+            margin: 0;
+            font-weight: 600;
+            font-family: 'Michroma', sans-serif;
+        }
+        .header-container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .header-logo{
+            width: 100px;
+            height: auto;
+        }
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 15px 0;
+        }
+        .nav-links button {
+            background: #2A2A2A;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+            color: white;
+            font-size: 16px;
+            font-family: 'Michroma', sans-serif;
+        }
+        .nav-links button.active, .nav-links button:hover {
+            background: #4A90E2;
+        }
+        .main-content {
+            padding: 40px;
+            text-align: center;
+        }
+        .tabs span {
+            padding: 10px 15px;
+            cursor: pointer;
+            margin: 0 5px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .tabs span.active, .tabs span:hover {
+            background: #4A90E2;
+        }
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .card {
+            background: #1E1E1E;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 300px;
+            transition: 0.3s;
+            box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+        }
+        .card img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        .card .view-details {
+            background: #4A90E2;
+            color: white;
+            padding: 10px;
+            border: none;
+            width: 100%;
+            font-size: 14px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-family: 'Michroma', sans-serif;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .approve, .reject {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            width: 48%;
+            font-family: 'Michroma', sans-serif;
+        }
+        .approve {
+            background: #27AE60;
+            color: white;
+        }
+        .reject {
+            background: #E74C3C;
+            color: white;
+        }
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 200px;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 9999;
+        }
+
+        .modal-box {
+            background: #000000;
+            width: 50%;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .modal-box img {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 25px;
+            cursor: pointer;
+            color: #e5e4e4;
+        }
+        /* Darkened background overlay */
+        .modal-overlay {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        /* Popup Styling */
+        .modal-content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+            max-width: 80%;
+        }
+
+        /* Close button */
+        .modal-close {
+            color: red; 
+            font-size: 20px;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            cursor: pointer;
+        }
+
+        
+
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="header-container">
+            <img src="logo5.svg" alt="Logo" class="header-logo">
+            <h1>Connect@Saintgits</h1>
+        </div>
+        <div class="nav-links">
+            <button class="active">All</button>
+            <button>CH</button>
+            <button>CE</button>
+            <button>CSE</button>
+            <button>EEE</button>
+            <button>ECE</button>
+            <button>FT</button>
+            <button>ME</button>
+            <button>RB</button>
+            
+        </div>
+    </div>
+    <div class="main-content">
+        
+        <div class="main-content">
+            <div class="tabs">
+                <span class="active">Requests</span>
+                <span>Approved</span>
+                <span>Rejected</span>
+            </div>
+            <div class="cards" id="event-cards">
+                <!-- Events will be loaded here dynamically -->
+            </div>
+        </div>
+    </div>
+    <!-- Event Details Modal -->
+<div id="event-modal" class="modal">
+    <div class="modal-box" id="modal-content">
+        <!-- Dynamic event details will be inserted here -->
+    </div>
+</div>
+
+    <script>
+       document.addEventListener("DOMContentLoaded", () => {
+    fetchEvents(); // Fetch all events on page load
+    setupFilters();
+    setupTabs();
+});
+
+// Fetch All Events and Filter by Status
+async function fetchEvents(department = "All") {
+    try {
+        let apiUrl = "http://localhost:5004/api/ad_notices";
+        if (department !== "All") {
+            apiUrl += `?department=${encodeURIComponent(department.trim())}`;
+        }
+
+        const response = await fetch(apiUrl);
+const events = await response.json(); // Read JSON once
+cachedEvents = events; // Store in cache
+
+        console.log(`✅ All Events Fetched (${department}):`, events);
+
+        if (!Array.isArray(events)) {
+            console.error("❌ Error: Invalid event data", events);
+            return;
+        }
+
+        displayEvents(events); // Call function to filter and display
+    } catch (error) {
+        console.error("❌ Error fetching events:", error);
+    }
+}
+
+// Display Events Based on Selected Tab
+function displayEvents(events) {
+    const eventCardsContainer = document.getElementById("event-cards");
+    eventCardsContainer.innerHTML = "";
+
+    const selectedStatus = getCurrentStatusTab(); // Get the active status filter
+
+    const filteredEvents = events.filter(event => event.status === selectedStatus);
+
+    console.log(`🎯 Displaying ${filteredEvents.length} events for Status: ${selectedStatus}`);
+
+    if (filteredEvents.length === 0) {
+        eventCardsContainer.innerHTML = "<p>No events found.</p>";
+        return;
+    }
+
+    filteredEvents.forEach(event => {
+        const card = document.createElement("div");
+        card.classList.add("card");
+
+        const eventImage = event.image
+            ? `data:image/png;base64,${event.image}`
+            : "placeholder.jpg";
+
+        let actionButtons = "";
+        if (event.status === 0) { // Pending
+            actionButtons = `
+                <button class="approve">Approve</button>
+                <button class="reject">Reject</button>
+            `;
+        } else if (event.status === 1) { // Approved
+            actionButtons = `<button class="approved" disabled>Approved ✅</button>`;
+        } else if (event.status === 2) { // Rejected
+            actionButtons = `<button class="rejected" disabled>Rejected ❌</button>`;
+        }
+
+        card.innerHTML = `
+            <img src="${eventImage}" alt="${event.eventName}">
+            <h3>${event.eventName}</h3>
+            <p>${event.description || "No description available."}</p>
+            <p><strong>Date:</strong> ${event.eventDate} | <strong>Time:</strong> ${event.eventTime}</p>
+            <p><strong>Venue:</strong> ${event.eventVenue}</p>
+            <button class="view-details" onclick="viewDetails('${event._id}')">View Details</button>
+            <div class="buttons">${actionButtons}</div>
+        `;
+
+        eventCardsContainer.appendChild(card);
+
+        if (event.status === 0) { // Attach event listeners for pending events
+            const approveBtn = card.querySelector(".approve");
+            const rejectBtn = card.querySelector(".reject");
+
+            approveBtn.addEventListener("click", () => {
+                approveBtn.textContent = "Approved ✅";
+                approveBtn.disabled = true;
+                rejectBtn.disabled = true;
+                updateStatus(event._id, 1);
+            });
+
+            rejectBtn.addEventListener("click", () => {
+                rejectBtn.textContent = "Rejected ❌";
+                rejectBtn.disabled = true;
+                approveBtn.disabled = true;
+                updateStatus(event._id, 2);
+            });
+        }
+    });
+}
+
+// Set up Filters (Department)
+function setupFilters() {
+    document.querySelectorAll(".nav-links button").forEach(button => {
+        button.addEventListener("click", () => {
+            document.querySelector(".nav-links .active").classList.remove("active");
+            button.classList.add("active");
+            fetchEvents(button.innerText.trim());
+        });
+    });
+}
+
+// Set up Tabs (Requests, Approved, Rejected)
+function setupTabs() {
+    document.querySelectorAll(".tabs span").forEach(tab => {
+        tab.addEventListener("click", () => {
+            document.querySelector(".tabs .active").classList.remove("active");
+            tab.classList.add("active");
+            fetchEvents(getCurrentDepartment()); // Fetch all events, then filter
+        });
+    });
+}
+
+// Get Current Department
+function getCurrentDepartment() {
+    return document.querySelector(".nav-links .active")?.innerText.trim() || "All";
+}
+
+// Get Current Status from Selected Tab
+function getCurrentStatusTab() {
+    const activeTab = document.querySelector(".tabs .active")?.innerText;
+    if (activeTab === "Approved") return 1;
+    if (activeTab === "Rejected") return 2;
+    return 0; // Default to "Requests" (Pending)
+}
+
+// Update Event Status
+async function updateStatus(eventId, status) {
+    console.log(`🟢 Updating event ${eventId} to status ${status}`);
+
+    try {
+        const response = await fetch(`http://localhost:5004/api/notices/${eventId}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ status })
+        });
+
+        if (response.ok) {
+            console.log(`✅ Event ${eventId} updated successfully to status ${status}`);
+            fetchEvents(getCurrentDepartment()); // Fetch all events again, then filter
+        } else {
+            console.error(`❌ Failed to update event ${eventId}`);
+        }
+    } catch (error) {
+        console.error("❌ Error updating event:", error);
+    }
+}
+// Show Event Details in a Popup (Uses Cached Data)
+function viewDetails(eventId) {
+    const event = cachedEvents.find(e => e._id === eventId);
+    if (!event) {
+        console.error("❌ Error: Event not found in cache.");
+        return;
+    }
+
+    const modal = document.getElementById("event-modal");
+    const modalContent = document.getElementById("modal-content");
+
+    const eventImage = event.image
+        ? `data:image/png;base64,${event.image}`
+        : "placeholder.jpg";
+
+    const statusText = event.status === 1 ? "Approved ✅" : event.status === 2 ? "Rejected ❌" : "Pending ⏳";
+
+    modalContent.innerHTML = `
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <img src="${eventImage}" alt="${event.eventName}">
+        <h2>${event.eventName}</h2>
+        <p><strong>Description:</strong> ${event.description || "No description available."}</p>
+        <p><strong>Date:</strong> ${event.eventDate} | <strong>Time:</strong> ${event.eventTime}</p>
+        <p><strong>Venue:</strong> ${event.eventVenue}</p>
+        <p><strong>Department:</strong> ${event.department || "N/A"}</p>
+        <p><strong>Status:</strong> <span class="status">${statusText}</span></p>
+    `;
+
+    modal.style.display = "block";
+}
+
+// Close Modal
+function closeModal() {
+    document.getElementById("event-modal").style.display = "none";
+}
+
+    </script>
+</body>
+</html>
