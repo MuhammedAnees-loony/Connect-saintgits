@@ -794,7 +794,8 @@ header {
 </style>
 <script>
         document.addEventListener("DOMContentLoaded", function () {
-    const token = localStorage.getItem("authToken");
+    const token = sessionStorage.getItem("authToken");
+    console.log(token)
     if (!token) {
         alert("❌ Unauthorized! Please log in.");
         window.location.href = "login.html"; // Redirect back to login page
@@ -840,7 +841,14 @@ header {
     
     // Fetch and display notices
     async function fetchNotices() {
-        const response = await fetch("http://localhost:5004/api/notices");
+        const token = sessionStorage.getItem("authToken"); // ✅ Get token
+
+    const response = await fetch("http://localhost:5004/api/notices", {
+        method: "GET",
+        headers: {
+            "Authorization": `Bearer ${token}`, // ✅ Send token in header
+        },
+    });
         const notices = await response.json();
         const noticesList = document.getElementById("notices-list");
     
@@ -908,12 +916,17 @@ header {
         event.preventDefault();
     
         const formData = new FormData(this);
+        const token = sessionStorage.getItem("authToken");
         
     
         try {
             const response = await fetch("http://localhost:5004/api/notices/upload", {
                 method: "POST",
+                headers: {
+                "Authorization": `Bearer ${token}`, // ✅ Attach token in headers
+            },
                 body: formData,
+                
             });
     
             if (!response.ok) {
