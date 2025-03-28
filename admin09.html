@@ -238,7 +238,7 @@
 // Fetch All Events and Filter by Status
 async function fetchEvents(department = "All") {
     try {
-        let apiUrl = "http://localhost:5004/api/notices";
+        let apiUrl = "http://localhost:5004/api/ad_notices";
         if (department !== "All") {
             apiUrl += `?department=${encodeURIComponent(department.trim())}`;
         }

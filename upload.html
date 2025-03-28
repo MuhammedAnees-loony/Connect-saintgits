@@ -54,7 +54,7 @@
         left: 0;
         margin: 0;
         padding: 0;
-        
+        z-index: 50px;
         overflow: hidden;
     }
     .background li {
@@ -246,7 +246,17 @@
                     <option value="Competition">Competition</option>
                     <option value="other">Other</option>
                 </select>
-                <input type="text" name="clubDepartmentName" placeholder="Enter Department/Club Name" required>
+                <select name="clubDepartmentName" id="clubDepartmentName" required>
+                    <option value="" disabled selected>Choose a Department/Club</option>
+                    <option value="CH">CH</option>
+                    <option value="CE">CE</option>
+                    <option value="CSE">CSE</option>
+                    <option value="EEE">EEE</option>
+                    <option value="ECE">ECE</option>
+                    <option value="FT">FT</option>
+                    <option value="ME">ME</option>
+                    <option value="RB">RB</option>
+                </select>
                 <textarea name="description" placeholder="Event Description" required></textarea>
                 <input type="url" name="registrationLink" placeholder="Registration Link (Optional)">
                 <input type="file" name="image" accept="image/*" required>
@@ -692,6 +702,7 @@ header {
         border-radius: 16px;
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         backdrop-filter: blur(10px);
+        
     }
 
     .form-container {
@@ -749,10 +760,11 @@ header {
     .notices-container {
         background:linear-gradient(132deg,#205295,#092635 ,#0A2647,#144272,#000000,#2C74B3);
         width: 60%;
-        max-height: 500px;
+        max-height: 900px;
         overflow-y: auto;
         padding:20px;
         border-radius: 10px;
+        z-index: 100;
     }
 
     #notices-list {
