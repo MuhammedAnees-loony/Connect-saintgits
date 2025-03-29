@@ -2410,11 +2410,11 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
-
 document.addEventListener("DOMContentLoaded", function () {
     const map = document.getElementById("svg-map");
 
     let isPanning = false, startX, startY, startViewBox;
+    let minZoom = 0.5, maxZoom = 3; // Define min and max zoom levels
 
     map.addEventListener("load", function () {
         const svgDoc = map.getSVGDocument();
@@ -2425,47 +2425,44 @@ document.addEventListener("DOMContentLoaded", function () {
         if (svg.hasAttribute("viewBox")) {
             origViewBox = svg.getAttribute("viewBox").split(" ").map(Number);
         } else {
-            // Fallback to width/height attributes if viewBox is not defined
             let width = parseFloat(svg.getAttribute("width")) || 1000;
             let height = parseFloat(svg.getAttribute("height")) || 1000;
             origViewBox = [0, 0, width, height];
         }
 
-        // Unpack the original viewBox values
         let [ox, oy, owidth, oheight] = origViewBox;
 
-        // Set the desired initial zoom factor (2 means zoom in 2x)
         let zoomFactor = 2;
         let newWidth = owidth / zoomFactor;
         let newHeight = oheight / zoomFactor;
 
-        // Calculate centered viewBox:
-        // Shift the origin so that the zoomed area is centered relative to the original viewBox.
         let centerX = ox + (owidth - newWidth) / 2;
         let centerY = oy + (oheight - newHeight) / 2;
 
-        // Set the viewBox to the centered zoomed values
         svg.setAttribute("viewBox", `${centerX} ${centerY} ${newWidth} ${newHeight}`);
-        console.log(`Initial centered zoom applied: viewBox="${centerX} ${centerY} ${newWidth} ${newHeight}"`);
 
-        // Prevent page scroll while zooming inside the map
+        let currentZoom = owidth / newWidth; // Track zoom level
+
         svg.addEventListener("wheel", function (event) {
             event.preventDefault();
             event.stopPropagation();
 
             let viewBox = svg.getAttribute("viewBox").split(" ").map(Number);
-            // Zoom in if scrolling up, zoom out if scrolling down
-            let localZoomFactor = event.deltaY > 0 ? 1.1 : 0.9;
-            let newViewWidth = viewBox[2] * localZoomFactor;
-            let newViewHeight = viewBox[3] * localZoomFactor;
-            // Adjust the x/y so that the center remains fixed during zoom
-            let newX = viewBox[0] + (viewBox[2] - newViewWidth) / 2;
-            let newY = viewBox[1] + (viewBox[3] - newViewHeight) / 2;
+            let zoomAmount = event.deltaY > 0 ? 1.1 : 0.9;
+            let newWidth = viewBox[2] * zoomAmount;
+            let newHeight = viewBox[3] * zoomAmount;
 
-            svg.setAttribute("viewBox", `${newX} ${newY} ${newViewWidth} ${newViewHeight}`);
+            let newZoom = owidth / newWidth;
+
+            if (newZoom > maxZoom || newZoom < minZoom) return; // Restrict zoom range
+
+            let newX = viewBox[0] + (viewBox[2] - newWidth) / 2;
+            let newY = viewBox[1] + (viewBox[3] - newHeight) / 2;
+
+            svg.setAttribute("viewBox", `${newX} ${newY} ${newWidth} ${newHeight}`);
+            currentZoom = newZoom;
         }, { passive: false });
 
-        // Enable panning on drag
         svg.addEventListener("mousedown", function (event) {
             isPanning = true;
             startX = event.clientX;
@@ -2481,13 +2478,8 @@ document.addEventListener("DOMContentLoaded", function () {
             svg.setAttribute("viewBox", `${startViewBox[0] + dx} ${startViewBox[1] + dy} ${startViewBox[2]} ${startViewBox[3]}`);
         });
 
-        svg.addEventListener("mouseup", function () {
-            isPanning = false;
-        });
-
-        svg.addEventListener("mouseleave", function () {
-            isPanning = false;
-        });
+        svg.addEventListener("mouseup", function () { isPanning = false; });
+        svg.addEventListener("mouseleave", function () { isPanning = false; });
     });
 });
 
