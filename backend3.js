@@ -8,7 +8,9 @@ const jwt = require("jsonwebtoken"); // Import crypto for generating short ID
 const { type } = require('os');
 const session = require("express-session");
 require('dotenv').config();
+const os = require("os");
 
+const PORT = process.env.PORT || 5004;
 
 const app = express();
 app.use(cors());
@@ -588,4 +590,21 @@ app.get('/api/events/today', async (req, res) => {
 */
 
 // ✅ Start Server
-app.listen(5004, () => console.log("🚀 Server running on http://localhost:5004"));
+// ✅ Define `getLocalIP` function
+function getLocalIP() {
+    const interfaces = os.networkInterfaces();
+    for (const name in interfaces) {
+        for (const net of interfaces[name]) {
+            if (net.family === "IPv4" && !net.internal) {
+                return net.address;  // Returns the first non-internal IPv4 address
+            }
+        }
+    }
+    return "127.0.0.1"; // Fallback to localhost
+}
+
+// ✅ Start Server
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`✅ Server running at http://${getLocalIP()}:${PORT}`);
+});
+

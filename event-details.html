@@ -16,29 +16,32 @@
             font-family: 'Michroma', sans-serif;
             margin: 0;
             padding: 0;
+            
         }
         @keyframes BackgroundGradient {
              0% {background-position: 0% 50%;}
             50% {background-position: 100% 50%;}
             100% {background-position: 0% 50%;}
         }
-        /* Header Styles */
-        header {
+                /* Base Header Styles */
+                header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(13, 12, 12, 0.9);
+            background: #0d0c0c;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            padding: 15px 40px;
+            
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
             border-bottom: 2px solid #f3f6fa;
             height: 70px;
+            
         }
 
+        /* Logo and Branding */
         .logo-container {
             display: flex;
             align-items: center;
@@ -47,14 +50,16 @@
 
         .header-logo {
             height: 50px;
-            margin-right: 10px;
+            transition: 0.3s ease-in-out;
         }
 
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
+            font-family: "Michroma", sans-serif;
             color: #f6f3f3;
-            margin: 0;
+            margin-left: 10px;
+            transition: 0.3s ease-in-out;
         }
 
         /* Navigation Menu */
@@ -72,6 +77,7 @@
         .nav-item a {
             text-decoration: none;
             font-size: 16px;
+            font-family: "Michroma", sans-serif;
             font-weight: 500;
             color: #f0e4e4;
             padding: 8px 12px;
@@ -79,15 +85,263 @@
             border-radius: 5px;
         }
 
-        .nav-item a:hover {
-            background: #07aef0;
-            color: black;
+        .nav-item a:hover,
+        .nav-item a:focus {
+            background: #606265;
+            color: rgb(21, 18, 18);
         }
 
+        /* Notifications Button */
+        .button {
+            background: transparent;
+            border: none;
+            font-family: "Michroma", sans-serif;
+            cursor: pointer;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            padding: 8px 12px;
+            transition: 0.3s ease;
+        }
+        .bell {
+            width: 20px;
+            height: 20px;
+        }
+        .button:hover {
+            color: #f0e4e4;
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 40px;
+            right: 0;
+            background: #222;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            width: 250px;
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 1000;
+            padding: 10px;
+        }
+
+        .dropdown.active {
+            display: block;
+        }
+
+        .notification-item {
+            padding: 10px;
+            border-bottom: 1px solid #444;
+            color: white;
+            font-size: 12px;
+        }
+
+        .notification-item:last-child {
+            border-bottom: none;
+        }
+
+        .notification-item span {
+            font-weight: bold;
+            display: block;
+        }
+
+        /* Notification Badge */
+        .badge {
+            background: red;
+            color: white;
+            font-size: 10px;
+            border-radius: 50%;
+            padding: 4px 6px;
+            position: absolute;
+            top: 5px;
+            right: -5px;
+            display: none;
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 70px;
+            right: 10px;
+            background: rgb(7, 78, 137);
+            border-radius: 5px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            padding: 10px;
+            z-index: 1000;
+        }
+
+ 
+        /* Show dropdown when button is clicked */
+        .button:hover + .dropdown {
+            display: block;
+        }
+
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+            z-index: 1001;
+        }
+
+        .menu-toggle .menu-icon {
+            width: 35px;
+            height: 3px;
+            background: #fff;
+            display: block;
+            position: relative;
+            border-radius: 3px;
+            transition: 0.3s ease-in-out;
+        }
+
+        .menu-toggle .menu-icon::before,
+        .menu-toggle .menu-icon::after {
+            content: '';
+            position: absolute;
+            width: 35px;
+            height: 3px;
+            background: #fff;
+            border-radius: 3px;
+            transition: 0.3s ease-in-out;
+        }
+
+        .menu-toggle .menu-icon::before {
+            top: -10px;
+        }
+
+        .menu-toggle .menu-icon::after {
+            top: 10px;
+        }
+
+        /* Active State for Menu Toggle */
+        .menu-toggle.active .menu-icon {
+            background: transparent;
+        }
+
+        .menu-toggle.active .menu-icon::before {
+            top: 0;
+            transform: rotate(45deg);
+        }
+
+        .menu-toggle.active .menu-icon::after {
+            top: 0;
+            transform: rotate(-45deg);
+        }
+        @media (max-width: 768px) {
+    /* Adjust Header */
+    header {
+        padding: 10px 15px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        width: 100vw; /* Make sure it covers only the viewport width */
+    max-width: 100%; /* Prevents it from overflowing */
+    
+    }
+
+    /* Adjust Logo */
+    .header-logo {
+        height: 40px;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+        margin-left: 5px;
+    }
+
+      
+    .menu-toggle {
+                display: block;
+                background: none;
+                border: none;
+                font-size: 24px;
+                cursor: pointer;
+                color: white;
+                position: absolute;
+                right: 35px;
+                top: 50%;
+                margin-left: 200px;
+                transform: translateY(-50%);
+                z-index: 1001;
+                 /* Ensure menu toggle icon is visible */
+            }
+    /* Hide Navigation by Default */
+    .main-nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: #0d0c0c;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+        text-align: center;
+    }
+
+    /* Show Menu when Active */
+    .main-nav.active {
+        display: flex;
+        background-color: #000;
+    }
+
+    /* Adjust Navigation Items */
+    .nav-items {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px 0;
+        background-color: #000;
+    }
+
+    .nav-item a {
+        font-size: 16px;
+        display: block;
+        padding: 12px;
+        background-color: #000;
+    }
+
+    .nav-item a:hover {
+    background: linear-gradient(90deg, #a3a2a2, #666564);
+    color: white;
+}
+
+
+    /* Fix Notification Button */
+    .button {
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+
+    /* Fix Dropdown Position */
+    .dropdown {
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+    }
+
+    /* Fix Badge Position */
+    #notificationBadge {
+        top: 2px;
+        right: 5px;
+    }
+}
+
+ 
         /* Event Container */
         .event-container {
             display: flex;
             max-width: 1200px;
+            flex-wrap: wrap; /* Allows wrapping */
             margin: 100px auto;
             margin-top: 10%;
             background: linear-gradient(to right, #101011, #162688);
@@ -145,6 +399,77 @@ h3 {
         .back-button:hover {
             background: linear-gradient(to right, #10afcb, #0994f7);
         }
+
+        /* Responsive Design */
+@media (max-width: 768px) { /* Tablet & Mobile */
+    .event-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .event-container img {
+        margin-top: 10%;
+        max-width: 90%; /* Adjust image size */
+        margin-bottom: 15px; /* Space below image */
+    }
+
+    .event-info {
+        text-align: center; /* Center-align text */
+        padding: 10px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    p, ul {
+        font-size: 16px;
+    }
+
+    .back-button {
+        width: 180px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) { /* Mobile View */
+    .event-container {
+        padding: 10px;
+    }
+
+    .event-container img {
+        max-width: 100%; /* Full width */
+        margin-bottom: 10px;
+    }
+
+    .event-info {
+        padding: 8px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+
+    p, ul {
+        font-size: 14px;
+    }
+
+    .back-button {
+        width: 160px;
+        padding: 8px;
+        font-size: 14px;
+    }
+}
     </style>
 </head>
 <body>
@@ -191,7 +516,7 @@ h3 {
         left: 0;
         margin: 0;
         padding: 0;
-        
+        z-index: -100;
         overflow: hidden;
     }
     .background li {
@@ -345,14 +670,21 @@ h3 {
             <span class="logo">Connect@Saintgits</span>
         </a>
         
-        <nav class="main-nav">
+        <button class="menu-toggle" aria-controls="main-nav" aria-expanded="false">
+            ☰
+        </button>
+        <nav class="main-nav" id="main-nav" aria-label="Main navigation">
             <ul class="nav-items">
-                <li class="nav-item"><a href="new1.html#celeb">Events</a></li>
-                <li class="nav-item"><a href="new1.html#card-slider">Departments</a></li>
-                <li class="nav-item"><a href="login.html">Upload</a></li>
-                <li class="nav-item"><a href="#about">About & Services</a></li>
+                <li class="nav-item"><a href="home.html#celeb" class="nav-link">Events</a></li>
+                <li class="nav-item"><a href="home.html#card-slider" class="nav-link">Departments</a></li>
+                <li class="nav-item"><a href="login.html" class="nav-link">Upload</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About & Services</a></li>
             </ul>
+            
+
         </nav>
+        
+       
     </header>
 
      <!-- Event Details -->
@@ -370,7 +702,10 @@ h3 {
                 <h3>Organizers</h3>
                 <ul id="event-organizers"></ul>
                 <h3>Prizes</h3>
-                <p id="event-prizes">No prizes listed.</p>
+                <p id="event-prizes">No prizes listed</p>
+                <h3>Registration Link</h3>
+                <p id="registration-link"></p>
+
             </div>
         </div>
         
@@ -425,6 +760,11 @@ h3 {
             const eventPrizes = document.getElementById("event-prizes");
             if (eventPrizes) eventPrizes.textContent = event.prizes || "No prizes listed.";
 
+            const registrationLinkElement = document.getElementById("registration-link");
+            if (event.registrationLink) {
+                registrationLinkElement.innerHTML = `<a href="${event.registrationLink}" target="_blank">${event.registrationLink}</a>`;
+            }
+
             // ✅ Handle image safely
             const eventImage = document.getElementById("event-image");
             if (eventImage) {
@@ -453,6 +793,24 @@ h3 {
             if (eventContainer) eventContainer.innerHTML = "<p>Failed to load event details. Please try again later.</p>";
         });
 });
+document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.querySelector(".menu-toggle");
+        const mainNav = document.querySelector(".main-nav");
+
+        menuToggle.addEventListener("click", function () {
+            mainNav.classList.toggle("active"); // Toggles menu visibility
+            menuToggle.classList.toggle("active"); // Changes menu icon
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener("click", function (event) {
+            if (!menuToggle.contains(event.target) && !mainNav.contains(event.target)) {
+                mainNav.classList.remove("active");
+                menuToggle.classList.remove("active");
+            }
+        });
+    });
+
 
 
 

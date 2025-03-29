@@ -483,6 +483,7 @@
             z-index: 1000;
             border-bottom: 2px solid #f3f6fa;
             height: 70px;
+            
         }
 
         /* Logo and Branding */
@@ -701,87 +702,130 @@
             top: 0;
             transform: rotate(-45deg);
         }
-
-
-        /* Adjust Header for Mobile */
         @media (max-width: 768px) {
-            .logo-container {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                width: 20%;
-                
-            }
-                .logo {
-                font-size: 1rem; /* Reduce font size */
-                white-space: nowrap; /* Prevent wrapping */
-            }
+    /* Adjust Header */
+    header {
+        padding: 10px 15px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        width: 100vw; /* Make sure it covers only the viewport width */
+    max-width: 100%; /* Prevents it from overflowing */
+    
+    }
 
-            .header-logo {
-                height: 40px; /* Reduce logo size */
-            }
-            
-            .main-nav {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 60px; /* Adjust based on header height */
-                left: 0;
-                width: 100%;
-                background: rgb(226, 224, 224) !important; /* Force black */
-                color: rgb(253, 253, 253) !important; /* Ensure text is visible */
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                padding: 10px;
-                z-index: 1000;
-            }
+    /* Adjust Logo */
+    .header-logo {
+        height: 40px;
+    }
 
-            .main-nav.active {
-                display: flex;
-            }
+    .logo {
+        font-size: 1.2rem;
+        margin-left: 5px;
+    }
 
-            .nav-items {
-                flex-direction: column;
-                padding: 0;
-                width: 100%;
-                text-align: center;
-            }
-
-            .nav-item {
-                padding: 10px;
-            }
-
-            .nav-item a {
-                color: black !important; /* Change text color to black for visibility */
-            }
-
-            .nav-item a:hover,
-            .nav-item a:focus {
-                background: #606265;
-                color: white; /* Ensure hover effect is visible */
-            }
-
-            .button {
-                display: block;
-                width: 100%;
-                text-align: center;
-                margin-top: 10px;
-                color: black !important; /* Change text color to black */
-            }
-
-            .menu-toggle {
+      
+    .menu-toggle {
                 display: block;
                 background: none;
                 border: none;
                 font-size: 24px;
                 cursor: pointer;
                 color: white;
-                position: relative;
-                right: 0;
+                position: absolute;
+                right: 6px;
+                top: 50%;
                 margin-left: 200px;
+                transform: translateY(-50%);
                 z-index: 1001;
                  /* Ensure menu toggle icon is visible */
             }
-        }
+    /* Hide Navigation by Default */
+    .main-nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: #0d0c0c;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+        text-align: center;
+    }
+
+    /* Show Menu when Active */
+    .main-nav.active {
+        display: flex;
+        background-color: #000;
+    }
+
+    /* Adjust Navigation Items */
+    .nav-items {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px 0;
+        background-color: #000;
+    }
+
+    .nav-item a {
+        font-size: 16px;
+        display: block;
+        padding: 12px;
+        background-color: #000;
+    }
+
+    .nav-item a:hover {
+    background: linear-gradient(90deg, #a3a2a2, #666564);
+    color: white;
+}
+
+
+    /* Fix Notification Button */
+    .button {
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+
+    /* Fix Dropdown Position */
+    .dropdown {
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+    }
+
+    /* Fix Badge Position */
+    #notificationBadge {
+        top: 2px;
+        right: 5px;
+    }
+}
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            
+                    
+
+                
+                .video-container {
+                height: 100vh;
+            }
+
+            .video-container video {
+                width: auto;
+                height: 100vh;
+            }
+
+            .hero-title {
+                font-size: 23px;
+            }
+
+            .hero-subtitle {
+                font-size: 16px;
+            }
+                }
+       
 
 
         /* Video Container */
@@ -1658,6 +1702,23 @@
             width: 32px;
             background: #f0efef;
         }
+        @media (max-width: 768px) { /* Tablets and smaller screens */
+                .line-title {
+                    max-width: 300px; /* Reduce the max width */
+                }
+                .line-title::after {
+                    width: 24px; /* Make the accent line smaller */
+                }
+            }
+
+            @media (max-width: 480px) { /* Mobile screens */
+                .line-title {
+                    max-width: 300px; /* Reduce further for smaller screens */
+                }
+                .line-title::after {
+                    width: 16px; /* Adjust accent line accordingly */
+                }
+            }
         /* Info Icon Styling */
         .info-icon {
             font-size: 18px;
@@ -1919,54 +1980,31 @@
                 
         
                 /* Responsive Design */
-                @media (max-width: 768px) {
-                    header {
-                        padding: 15px 20px;
-                    }
-
-                    .main-nav {
-                        display: none;
-                        position: absolute;
-                        top: 70px;
-                        left: 0;
-                        width: 100%;
-                        background: rgb(217, 26, 26);
-                        flex-direction: column;
-                        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-                    }
-
-                    .nav-items {
-                        flex-direction: column;
-                        text-align: center;
-                        padding: 20px 0;
-                    }
-
-                    .nav-item a {
-                        display: block;
-                        padding: 12px;
-                        font-size: 18px;
-                    }
-
+        @media (max-width: 768px) {
+         
+            
                     
 
                 
-                    .video-container {
-        height: 100vh;
-    }
+                .video-container {
+                height: 100vh;
+            }
 
-    .video-container video {
-        width: auto;
-        height: 100vh;
-    }
+            .video-container video {
+                width: auto;
+                height: 100vh;
+            }
 
-    .hero-title {
-        font-size: 23px;
-    }
+            .hero-title {
+                font-size: 23px;
+            }
 
-    .hero-subtitle {
-        font-size: 16px;
-    }
+            .hero-subtitle {
+                font-size: 16px;
+            }
                 }
+                /* Adjust Header for Mobile */
+       
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
@@ -2372,10 +2410,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+
 document.addEventListener("DOMContentLoaded", function () {
     const map = document.getElementById("svg-map");
 
     let isPanning = false, startX, startY, startViewBox;
+    let minZoom = 0.5, maxZoom = 3; // Define min and max zoom levels
 
     map.addEventListener("load", function () {
         const svgDoc = map.getSVGDocument();
@@ -2386,47 +2426,44 @@ document.addEventListener("DOMContentLoaded", function () {
         if (svg.hasAttribute("viewBox")) {
             origViewBox = svg.getAttribute("viewBox").split(" ").map(Number);
         } else {
-            // Fallback to width/height attributes if viewBox is not defined
             let width = parseFloat(svg.getAttribute("width")) || 1000;
             let height = parseFloat(svg.getAttribute("height")) || 1000;
             origViewBox = [0, 0, width, height];
         }
 
-        // Unpack the original viewBox values
         let [ox, oy, owidth, oheight] = origViewBox;
 
-        // Set the desired initial zoom factor (2 means zoom in 2x)
         let zoomFactor = 2;
         let newWidth = owidth / zoomFactor;
         let newHeight = oheight / zoomFactor;
 
-        // Calculate centered viewBox:
-        // Shift the origin so that the zoomed area is centered relative to the original viewBox.
         let centerX = ox + (owidth - newWidth) / 2;
         let centerY = oy + (oheight - newHeight) / 2;
 
-        // Set the viewBox to the centered zoomed values
         svg.setAttribute("viewBox", `${centerX} ${centerY} ${newWidth} ${newHeight}`);
-        console.log(`Initial centered zoom applied: viewBox="${centerX} ${centerY} ${newWidth} ${newHeight}"`);
 
-        // Prevent page scroll while zooming inside the map
+        let currentZoom = owidth / newWidth; // Track zoom level
+
         svg.addEventListener("wheel", function (event) {
             event.preventDefault();
             event.stopPropagation();
 
             let viewBox = svg.getAttribute("viewBox").split(" ").map(Number);
-            // Zoom in if scrolling up, zoom out if scrolling down
-            let localZoomFactor = event.deltaY > 0 ? 1.1 : 0.9;
-            let newViewWidth = viewBox[2] * localZoomFactor;
-            let newViewHeight = viewBox[3] * localZoomFactor;
-            // Adjust the x/y so that the center remains fixed during zoom
-            let newX = viewBox[0] + (viewBox[2] - newViewWidth) / 2;
-            let newY = viewBox[1] + (viewBox[3] - newViewHeight) / 2;
+            let zoomAmount = event.deltaY > 0 ? 1.1 : 0.9;
+            let newWidth = viewBox[2] * zoomAmount;
+            let newHeight = viewBox[3] * zoomAmount;
 
-            svg.setAttribute("viewBox", `${newX} ${newY} ${newViewWidth} ${newViewHeight}`);
+            let newZoom = owidth / newWidth;
+
+            if (newZoom > maxZoom || newZoom < minZoom) return; // Restrict zoom range
+
+            let newX = viewBox[0] + (viewBox[2] - newWidth) / 2;
+            let newY = viewBox[1] + (viewBox[3] - newHeight) / 2;
+
+            svg.setAttribute("viewBox", `${newX} ${newY} ${newWidth} ${newHeight}`);
+            currentZoom = newZoom;
         }, { passive: false });
 
-        // Enable panning on drag
         svg.addEventListener("mousedown", function (event) {
             isPanning = true;
             startX = event.clientX;
@@ -2442,13 +2479,8 @@ document.addEventListener("DOMContentLoaded", function () {
             svg.setAttribute("viewBox", `${startViewBox[0] + dx} ${startViewBox[1] + dy} ${startViewBox[2]} ${startViewBox[3]}`);
         });
 
-        svg.addEventListener("mouseup", function () {
-            isPanning = false;
-        });
-
-        svg.addEventListener("mouseleave", function () {
-            isPanning = false;
-        });
+        svg.addEventListener("mouseup", function () { isPanning = false; });
+        svg.addEventListener("mouseleave", function () { isPanning = false; });
     });
 });
 
