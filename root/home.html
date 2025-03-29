@@ -393,9 +393,9 @@
         <div class="footer-section footer-links">
             <h4>Quick Links</h4>
             <ul>
-                <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                <li><a href="terms-of-service.html">Terms of Service</a></li>
-                <li><a href="faqs.html">FAQs</a></li>
+                <li><a href="about.html">Privacy Policy</a></li>
+                <li><a href="about.html">Terms of Service</a></li>
+                <li><a href="about.html">FAQs</a></li>
             </ul>
         </div>
 
@@ -437,7 +437,33 @@
         });
     });
 
+    document.querySelector(".newsletter-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    
+    const emailInput = document.querySelector(".newsletter-input");
+    const email = emailInput.value.trim();
 
+    if (!email) {
+        alert("Please enter a valid email!");
+        return;
+    }
+
+    try {
+        const response = await fetch("http://localhost:5004/subscribe", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email })
+        });
+
+        const data = await response.json();
+        alert(data.message);
+        if (response.ok) {
+            emailInput.value = ""; // Clear input on success
+        }
+    } catch (error) {
+        alert("Error subscribing. Please try again.");
+    }
+});
     
 
     </script>
@@ -1702,7 +1728,8 @@
             width: 32px;
             background: #f0efef;
         }
-        @media (max-width: 768px) { /* Tablets and smaller screens */
+        /* Responsive Design */
+            @media (max-width: 768px) { /* Tablets and smaller screens */
                 .line-title {
                     max-width: 300px; /* Reduce the max width */
                 }
@@ -2409,8 +2436,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
-
-
 document.addEventListener("DOMContentLoaded", function () {
     const map = document.getElementById("svg-map");
 
