@@ -57,7 +57,7 @@
         left: 0;
         margin: 0;
         padding: 0;
-        
+        z-index: -100;
         overflow: hidden;
     }
     .background li {
@@ -437,7 +437,33 @@
         });
     });
 
+    document.querySelector(".newsletter-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    
+    const emailInput = document.querySelector(".newsletter-input");
+    const email = emailInput.value.trim();
 
+    if (!email) {
+        alert("Please enter a valid email!");
+        return;
+    }
+
+    try {
+        const response = await fetch("http://localhost:5004/subscribe", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email })
+        });
+
+        const data = await response.json();
+        alert(data.message);
+        if (response.ok) {
+            emailInput.value = ""; // Clear input on success
+        }
+    } catch (error) {
+        alert("Error subscribing. Please try again.");
+    }
+});
     
 
     </script>
