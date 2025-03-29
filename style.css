@@ -71,3 +71,41 @@ body {
   margin-left: 20px;
   font-weight: bolder;
 }
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  #svg {
+    height: 320px;
+    width: 320px;
+    stroke-width: 2px;
+  }
+
+  .logo-name {
+    font-size: 16px;
+    letter-spacing: 8px;
+    margin-left: 10px;
+  }
+
+  .loading-page {
+    gap: 1rem;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #svg {
+    height: 250px;
+    width: 250px;
+    stroke-width: 2px;
+  }
+
+  .logo-name {
+    font-size: 14px;
+    letter-spacing: 6px;
+    margin-left: 5px;
+  }
+
+  .loading-page {
+    gap: 0.8rem;
+    padding: 0.5rem;
+  }
+}
