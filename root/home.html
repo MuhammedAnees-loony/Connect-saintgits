@@ -483,6 +483,7 @@
             z-index: 1000;
             border-bottom: 2px solid #f3f6fa;
             height: 70px;
+            
         }
 
         /* Logo and Branding */
@@ -701,87 +702,130 @@
             top: 0;
             transform: rotate(-45deg);
         }
-
-
-        /* Adjust Header for Mobile */
         @media (max-width: 768px) {
-            .logo-container {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                width: 20%;
-                
-            }
-                .logo {
-                font-size: 1rem; /* Reduce font size */
-                white-space: nowrap; /* Prevent wrapping */
-            }
+    /* Adjust Header */
+    header {
+        padding: 10px 15px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        width: 100vw; /* Make sure it covers only the viewport width */
+    max-width: 100%; /* Prevents it from overflowing */
+    
+    }
 
-            .header-logo {
-                height: 40px; /* Reduce logo size */
-            }
-            
-            .main-nav {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 60px; /* Adjust based on header height */
-                left: 0;
-                width: 100%;
-                background: rgb(226, 224, 224) !important; /* Force black */
-                color: rgb(253, 253, 253) !important; /* Ensure text is visible */
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                padding: 10px;
-                z-index: 1000;
-            }
+    /* Adjust Logo */
+    .header-logo {
+        height: 40px;
+    }
 
-            .main-nav.active {
-                display: flex;
-            }
+    .logo {
+        font-size: 1.2rem;
+        margin-left: 5px;
+    }
 
-            .nav-items {
-                flex-direction: column;
-                padding: 0;
-                width: 100%;
-                text-align: center;
-            }
-
-            .nav-item {
-                padding: 10px;
-            }
-
-            .nav-item a {
-                color: black !important; /* Change text color to black for visibility */
-            }
-
-            .nav-item a:hover,
-            .nav-item a:focus {
-                background: #606265;
-                color: white; /* Ensure hover effect is visible */
-            }
-
-            .button {
-                display: block;
-                width: 100%;
-                text-align: center;
-                margin-top: 10px;
-                color: black !important; /* Change text color to black */
-            }
-
-            .menu-toggle {
+      
+    .menu-toggle {
                 display: block;
                 background: none;
                 border: none;
                 font-size: 24px;
                 cursor: pointer;
                 color: white;
-                position: relative;
-                right: 0;
+                position: absolute;
+                right: 6px;
+                top: 50%;
                 margin-left: 200px;
+                transform: translateY(-50%);
                 z-index: 1001;
                  /* Ensure menu toggle icon is visible */
             }
-        }
+    /* Hide Navigation by Default */
+    .main-nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: #0d0c0c;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+        text-align: center;
+    }
+
+    /* Show Menu when Active */
+    .main-nav.active {
+        display: flex;
+        background-color: #000;
+    }
+
+    /* Adjust Navigation Items */
+    .nav-items {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px 0;
+        background-color: #000;
+    }
+
+    .nav-item a {
+        font-size: 16px;
+        display: block;
+        padding: 12px;
+        background-color: #000;
+    }
+
+    .nav-item a:hover {
+    background: linear-gradient(90deg, #a3a2a2, #666564);
+    color: white;
+}
+
+
+    /* Fix Notification Button */
+    .button {
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+
+    /* Fix Dropdown Position */
+    .dropdown {
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+    }
+
+    /* Fix Badge Position */
+    #notificationBadge {
+        top: 2px;
+        right: 5px;
+    }
+}
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            
+                    
+
+                
+                .video-container {
+                height: 100vh;
+            }
+
+            .video-container video {
+                width: auto;
+                height: 100vh;
+            }
+
+            .hero-title {
+                font-size: 23px;
+            }
+
+            .hero-subtitle {
+                font-size: 16px;
+            }
+                }
+       
 
 
         /* Video Container */
@@ -1919,54 +1963,31 @@
                 
         
                 /* Responsive Design */
-                @media (max-width: 768px) {
-                    header {
-                        padding: 15px 20px;
-                    }
-
-                    .main-nav {
-                        display: none;
-                        position: absolute;
-                        top: 70px;
-                        left: 0;
-                        width: 100%;
-                        background: rgb(217, 26, 26);
-                        flex-direction: column;
-                        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-                    }
-
-                    .nav-items {
-                        flex-direction: column;
-                        text-align: center;
-                        padding: 20px 0;
-                    }
-
-                    .nav-item a {
-                        display: block;
-                        padding: 12px;
-                        font-size: 18px;
-                    }
-
+        @media (max-width: 768px) {
+         
+            
                     
 
                 
-                    .video-container {
-        height: 100vh;
-    }
+                .video-container {
+                height: 100vh;
+            }
 
-    .video-container video {
-        width: auto;
-        height: 100vh;
-    }
+            .video-container video {
+                width: auto;
+                height: 100vh;
+            }
 
-    .hero-title {
-        font-size: 23px;
-    }
+            .hero-title {
+                font-size: 23px;
+            }
 
-    .hero-subtitle {
-        font-size: 16px;
-    }
+            .hero-subtitle {
+                font-size: 16px;
+            }
                 }
+                /* Adjust Header for Mobile */
+       
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
