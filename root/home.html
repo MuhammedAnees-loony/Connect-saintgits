@@ -1702,6 +1702,23 @@
             width: 32px;
             background: #f0efef;
         }
+        @media (max-width: 768px) { /* Tablets and smaller screens */
+                .line-title {
+                    max-width: 300px; /* Reduce the max width */
+                }
+                .line-title::after {
+                    width: 24px; /* Make the accent line smaller */
+                }
+            }
+
+            @media (max-width: 480px) { /* Mobile screens */
+                .line-title {
+                    max-width: 300px; /* Reduce further for smaller screens */
+                }
+                .line-title::after {
+                    width: 16px; /* Adjust accent line accordingly */
+                }
+            }
         /* Info Icon Styling */
         .info-icon {
             font-size: 18px;
