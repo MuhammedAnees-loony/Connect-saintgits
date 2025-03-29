@@ -6,6 +6,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="logo5.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <style media="screen">
     @import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
     *,
@@ -151,6 +153,52 @@
     .social div:hover {
       background: rgba(255, 255, 255, 0.4);
     }
+    /* MOBILE VIEW */
+@media  (max-width: 768px) {
+  body {
+    height: auto;
+    padding-top: 100px;
+  }
+
+  header {
+    font-size: 18px;
+    padding: 10px 15px;
+  }
+
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  form {
+    width: 90%;
+    padding: 30px;
+    margin: 0;
+  }
+
+  form h3 {
+    font-size: 24px;
+  }
+
+  input {
+    height: 45px;
+    font-size: 14px;
+  }
+
+  button {
+    font-size: 16px;
+    padding: 12px 0;
+  }
+
+  .social {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .social div {
+    width: 100%;
+  }
+}
   </style>
 </head>
 <body>

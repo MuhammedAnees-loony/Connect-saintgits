@@ -1,217 +1,820 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Glassmorphism Login Form</title>
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/svg+xml" href="logo5.svg">
-  <style media="screen">
-    @import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
-    *,
-    *:before,
-    *:after {
-      padding: 0;
-      margin: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="logo5.svg">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');
 
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: url('https://github.com/MuhammedAnees-loony/Connect-saintgits/blob/main/login_background.jpg?raw=true') no-repeat center center/cover;
-      height: 100vh;
-      flex-direction: column;
-    }
+        body {
+            background: linear-gradient(132deg,#205295,#092635 ,#0A2647,#144272,#000000,#2C74B3);
+            background-size: 400% 400%;
+            animation: BackgroundGradient 20s ease infinite;
+            font-family: 'Michroma', sans-serif;
+            margin: 0;
+            padding: 0;
+            
+        }
+        @keyframes BackgroundGradient {
+             0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+                /* Base Header Styles */
+                header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #0d0c0c;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 2px solid #f3f6fa;
+            height: 70px;
+            
+        }
 
+        /* Logo and Branding */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .header-logo {
+            height: 50px;
+            transition: 0.3s ease-in-out;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: "Michroma", sans-serif;
+            color: #f6f3f3;
+            margin-left: 10px;
+            transition: 0.3s ease-in-out;
+        }
+
+        /* Navigation Menu */
+        .main-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-items {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-item a {
+            text-decoration: none;
+            font-size: 16px;
+            font-family: "Michroma", sans-serif;
+            font-weight: 500;
+            color: #f0e4e4;
+            padding: 8px 12px;
+            transition: all 0.3s ease-in-out;
+            border-radius: 5px;
+        }
+
+        .nav-item a:hover,
+        .nav-item a:focus {
+            background: #606265;
+            color: rgb(21, 18, 18);
+        }
+
+        /* Notifications Button */
+        .button {
+            background: transparent;
+            border: none;
+            font-family: "Michroma", sans-serif;
+            cursor: pointer;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            padding: 8px 12px;
+            transition: 0.3s ease;
+        }
+        .bell {
+            width: 20px;
+            height: 20px;
+        }
+        .button:hover {
+            color: #f0e4e4;
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 40px;
+            right: 0;
+            background: #222;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            width: 250px;
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 1000;
+            padding: 10px;
+        }
+
+        .dropdown.active {
+            display: block;
+        }
+
+        .notification-item {
+            padding: 10px;
+            border-bottom: 1px solid #444;
+            color: white;
+            font-size: 12px;
+        }
+
+        .notification-item:last-child {
+            border-bottom: none;
+        }
+
+        .notification-item span {
+            font-weight: bold;
+            display: block;
+        }
+
+        /* Notification Badge */
+        .badge {
+            background: red;
+            color: white;
+            font-size: 10px;
+            border-radius: 50%;
+            padding: 4px 6px;
+            position: absolute;
+            top: 5px;
+            right: -5px;
+            display: none;
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 70px;
+            right: 10px;
+            background: rgb(7, 78, 137);
+            border-radius: 5px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            padding: 10px;
+            z-index: 1000;
+        }
+
+ 
+        /* Show dropdown when button is clicked */
+        .button:hover + .dropdown {
+            display: block;
+        }
+
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+            z-index: 1001;
+        }
+
+        .menu-toggle .menu-icon {
+            width: 35px;
+            height: 3px;
+            background: #fff;
+            display: block;
+            position: relative;
+            border-radius: 3px;
+            transition: 0.3s ease-in-out;
+        }
+
+        .menu-toggle .menu-icon::before,
+        .menu-toggle .menu-icon::after {
+            content: '';
+            position: absolute;
+            width: 35px;
+            height: 3px;
+            background: #fff;
+            border-radius: 3px;
+            transition: 0.3s ease-in-out;
+        }
+
+        .menu-toggle .menu-icon::before {
+            top: -10px;
+        }
+
+        .menu-toggle .menu-icon::after {
+            top: 10px;
+        }
+
+        /* Active State for Menu Toggle */
+        .menu-toggle.active .menu-icon {
+            background: transparent;
+        }
+
+        .menu-toggle.active .menu-icon::before {
+            top: 0;
+            transform: rotate(45deg);
+        }
+
+        .menu-toggle.active .menu-icon::after {
+            top: 0;
+            transform: rotate(-45deg);
+        }
+        @media (max-width: 768px) {
+    /* Adjust Header */
     header {
-      text-align: left;
-      color: #ffffff;
-      padding: 20px;
-      font-family: "Michroma", sans-serif;
-      font-size: 24px;
-      font-weight: bold;
-      background-color: rgba(255, 255, 255, 0.1);
-      border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 10;
+        padding: 10px 15px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        width: 100vw; /* Make sure it covers only the viewport width */
+    max-width: 100%; /* Prevents it from overflowing */
+    
     }
 
-    .container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      max-width: 90%;
-      margin-top: 80px;
+    /* Adjust Logo */
+    .header-logo {
+        height: 40px;
     }
 
-    .about-link {
-      text-decoration: none;
-      font-size: 16px;
-      color: #ffffff;
-      font-weight: 500;
-      transition: color 0.3s;
+    .logo {
+        font-size: 1.2rem;
+        margin-left: 5px;
     }
 
-    .about-link:hover {
-      color: #07b756;
+      
+    .menu-toggle {
+                display: block;
+                background: none;
+                border: none;
+                font-size: 24px;
+                cursor: pointer;
+                color: white;
+                position: absolute;
+                right: 35px;
+                top: 50%;
+                margin-left: 200px;
+                transform: translateY(-50%);
+                z-index: 1001;
+                 /* Ensure menu toggle icon is visible */
+            }
+    /* Hide Navigation by Default */
+    .main-nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: #0d0c0c;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+        text-align: center;
     }
 
-    form {
-      height: 520px;
-      width: 400px;
-      background:rgba(248, 248, 246, 0.716) ;
-      border-radius: 10px;
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      box-shadow: 0 0 40px rgba(170, 125, 21, 0.6);
-      padding: 50px 35px;
-      margin-left: auto;
+    /* Show Menu when Active */
+    .main-nav.active {
+        display: flex;
+        background-color: #000;
     }
 
-    form * {
-      font-family: 'Poppins', sans-serif;
-      color: #10100f;
-      letter-spacing: 0.5px;
-      outline: none;
-      border: none;
+    /* Adjust Navigation Items */
+    .nav-items {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px 0;
+        background-color: #000;
     }
 
-    form h3 {
-      font-size: 32px;
-      font-weight: 500;
-      line-height: 42px;
+    .nav-item a {
+        font-size: 16px;
+        display: block;
+        padding: 12px;
+        background-color: #000;
     }
 
-    label {
-      display: block;
-      margin-top: 30px;
-      font-size: 16px;
-      font-weight: 500;
+    .nav-item a:hover {
+    background: linear-gradient(90deg, #a3a2a2, #666564);
+    color: white;
+}
+
+
+    /* Fix Notification Button */
+    .button {
+        font-size: 14px;
+        padding: 6px 10px;
     }
 
-    input {
-      display: block;
-      height: 50px;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.80);
-      border-radius: 5px;
-      padding: 0 10px;
-      margin-top: 8px;
-      font-size: 14px;
-      font-weight: 300;
+    /* Fix Dropdown Position */
+    .dropdown {
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
     }
 
-    ::placeholder {
-      color: #b3a61a;
+    /* Fix Badge Position */
+    #notificationBadge {
+        top: 2px;
+        right: 5px;
+    }
+}
+
+ 
+        /* Event Container */
+        .event-container {
+            display: flex;
+            max-width: 1200px;
+            flex-wrap: wrap; /* Allows wrapping */
+            margin: 100px auto;
+            margin-top: 10%;
+            background: linear-gradient(to right, #101011, #162688);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
+            align-items: center;
+        }
+
+        .event-container img {
+            
+            width: 400px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .event-info {
+            flex: 1;
+            padding: 20px;
+            color: #c3c6cb;
+        }
+
+        h2, h3 {
+            color: #ffffff;
+            font-weight: bold;
+            
+            
+        }
+        h2 {
+    font-size: 28px;  /* Increase size for h2 */
+}
+
+h3 {
+    font-size: 24px;  /* Increase size for h3 */
+}
+
+        p, ul {
+            font-size: 18px;
+        }
+
+        .back-button {
+            display: block;
+            text-align: center;
+            margin: 20px auto;
+            width: 200px;
+            padding: 12px;
+            background: linear-gradient(to right, #0851e1, #1880bd);
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .back-button:hover {
+            background: linear-gradient(to right, #10afcb, #0994f7);
+        }
+
+        /* Responsive Design */
+@media (max-width: 768px) { /* Tablet & Mobile */
+    .event-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 15px;
     }
 
-    button {
-      margin-top: 50px;
-      width: 100%;
-      background-color: rgba(106, 94, 4, 0.3);
-      color: #ffffff;
-      padding: 15px 0;
-      font-size: 18px;
-      font-weight: 600;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s;
+    .event-container img {
+        margin-top: 10%;
+        max-width: 90%; /* Adjust image size */
+        margin-bottom: 15px; /* Space below image */
     }
 
-    button:hover {
-      background-color: rgba(255, 255, 255, 0.5);
+    .event-info {
+        text-align: center; /* Center-align text */
+        padding: 10px;
     }
 
-    .social {
-      margin-top: 30px;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
+    h2 {
+        font-size: 24px;
     }
 
-    .social div {
-      width: 140px;
-      padding: 10px;
-      border-radius: 5px;
-      background: rgba(255, 255, 255, 0.2);
-      color: #1a1919;
-      text-align: center;
-      cursor: pointer;
-      transition: background 0.3s;
+    h3 {
+        font-size: 20px;
     }
 
-    .social div:hover {
-      background: rgba(255, 255, 255, 0.4);
+    p, ul {
+        font-size: 16px;
     }
-  </style>
+
+    .back-button {
+        width: 180px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) { /* Mobile View */
+    .event-container {
+        padding: 10px;
+    }
+
+    .event-container img {
+        max-width: 100%; /* Full width */
+        margin-bottom: 10px;
+    }
+
+    .event-info {
+        padding: 8px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+
+    p, ul {
+        font-size: 14px;
+    }
+
+    .back-button {
+        width: 160px;
+        padding: 8px;
+        font-size: 14px;
+    }
+}
+    </style>
 </head>
 <body>
-  <header>
-    Connect@Saintgits
-    <a href="home.html" class="about-link">Home</a>
-  </header>
-  <div class="container">
-    <form>
-      <h3>Login Here</h3>
+    <ul class="background">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        
+  </ul>
+    <style>
+        @keyframes animate {
+        0%{
+            transform: translateY(0) rotate(0deg);
+            opacity: 1;
+            border-radius: 0;
+        }
+        100%{
+            transform: translateY(-1000px) rotate(720deg);
+            opacity: 0;
+            border-radius: 50%;
+        }
+    }
+    
+    .background {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        margin: 0;
+        padding: 0;
+        z-index: -100;
+        overflow: hidden;
+    }
+    .background li {
+        position: absolute;
+        display: block;
+        list-style: none;
+        width: 20px;
+        height: 20px;
+        background: rgba(255, 255, 255, 0.2);
+        animation: animate 19s linear infinite;
+    }
+    .background li:nth-child(1) {
+        left: 53%;
+        width: 118px;
+        height: 118px;
+        bottom: -118px;
+        animation-delay: 5s;
+    }
+    .background li:nth-child(2) {
+        left: 38%;
+        width: 139px;
+        height: 139px;
+        bottom: -139px;
+        animation-delay: 6s;
+    }
+    .background li:nth-child(3) {
+        left: 23%;
+        width: 156px;
+        height: 156px;
+        bottom: -156px;
+        animation-delay: 13s;
+    }
+    .background li:nth-child(4) {
+        left: 77%;
+        width: 115px;
+        height: 115px;
+        bottom: -115px;
+        animation-delay: 4s;
+    }
+    .background li:nth-child(5) {
+        left: 47%;
+        width: 124px;
+        height: 124px;
+        bottom: -124px;
+        animation-delay: 23s;
+    }
+    .background li:nth-child(6) {
+        left: 87%;
+        width: 158px;
+        height: 158px;
+        bottom: -158px;
+        animation-delay: 8s;
+    }
+    .background li:nth-child(7) {
+        left: 35%;
+        width: 126px;
+        height: 126px;
+        bottom: -126px;
+        animation-delay: 33s;
+    }
+    .background li:nth-child(8) {
+        left: 74%;
+        width: 155px;
+        height: 155px;
+        bottom: -155px;
+        animation-delay: 39s;
+    }
+    .background li:nth-child(9) {
+        left: 72%;
+        width: 120px;
+        height: 120px;
+        bottom: -120px;
+        animation-delay: 38s;
+    }
+    .background li:nth-child(10) {
+        left: 28%;
+        width: 144px;
+        height: 144px;
+        bottom: -144px;
+        animation-delay: 1s;
+    }
+    .background li:nth-child(11) {
+        left: 53%;
+        width: 118px;
+        height: 118px;
+        bottom: -118px;
+        animation-delay: 5s;
+    }
+    .background li:nth-child(12) {
+        left: 38%;
+        width: 139px;
+        height: 139px;
+        bottom: -139px;
+        animation-delay: 6s;
+    }
+    .background li:nth-child(13) {
+        left: 23%;
+        width: 156px;
+        height: 156px;
+        bottom: -156px;
+        animation-delay: 13s;
+    }
+    .background li:nth-child(14) {
+        left: 77%;
+        width: 115px;
+        height: 115px;
+        bottom: -115px;
+        animation-delay: 4s;
+    }
+    .background li:nth-child(15) {
+        left: 47%;
+        width: 124px;
+        height: 124px;
+        bottom: -124px;
+        animation-delay: 23s;
+    }
+    .background li:nth-child(16) {
+        left: 87%;
+        width: 158px;
+        height: 158px;
+        bottom: -158px;
+        animation-delay: 8s;
+    }
+    .background li:nth-child(17) {
+        left: 35%;
+        width: 126px;
+        height: 126px;
+        bottom: -126px;
+        animation-delay: 33s;
+    }
+    .background li:nth-child(18) {
+        left: 74%;
+        width: 155px;
+        height: 155px;
+        bottom: -155px;
+        animation-delay: 39s;
+    }
+    .background li:nth-child(19) {
+        left: 72%;
+        width: 120px;
+        height: 120px;
+        bottom: -120px;
+        animation-delay: 38s;
+    }
+    </style>
 
-      <label for="username">Username</label>
-      <input type="text" placeholder="Email or Phone" id="username">
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo-container">
+            <img src="logo5.svg" alt="Logo" class="header-logo">
+            <span class="logo">Connect@Saintgits</span>
+        </a>
+        
+        <button class="menu-toggle" aria-controls="main-nav" aria-expanded="false">
+            ☰
+        </button>
+        <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+            <ul class="nav-items">
+                <li class="nav-item"><a href="home.html#celeb" class="nav-link">Events</a></li>
+                <li class="nav-item"><a href="home.html#card-slider" class="nav-link">Departments</a></li>
+                <li class="nav-item"><a href="login.html" class="nav-link">Upload</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About & Services</a></li>
+            </ul>
+            
 
-      <label for="password">Password</label>
-      <input type="password" placeholder="Password" id="password">
+        </nav>
+        
+       
+    </header>
 
-      <button>Log In</button>
-      <div class="social">
-        <div class="go"><i class="fab fa-google"></i> Google</div>
-        <div class="fb"><i class="fab fa-facebook"></i> Facebook</div>
-      </div>
-    </form>
-  </div>
-</body>
-<script>
-  document.querySelector("button").addEventListener("click", async function (event) {
-    event.preventDefault(); // Prevent default form submission
+     <!-- Event Details -->
+     <main>
+        <div class="event-container" id="event-container">
+            <img id="event-image" src="" alt="Event Image">
+            <div class="event-info">
+                <h2 id="event-title">Event Name</h2>
+                <h3>Description</h3>
+                <p id="event-description">Event details will appear here.</p>
+                <h3>Date & Time</h3>
+                <p id="event-date">TBA</p>
+                <h3>Location</h3>
+                <p id="event-location">Venue</p>
+                <h3>Organizers</h3>
+                <ul id="event-organizers"></ul>
+                <h3>Prizes</h3>
+                <p id="event-prizes">No prizes listed</p>
+                <h3>Registration Link</h3>
+                <p id="registration-link"></p>
 
-    const username = document.getElementById("username").value.trim();
-    const password = document.getElementById("password").value.trim();
+            </div>
+        </div>
+        
+    </main>
 
-    if (!username || !password) {
-        alert("❌ Please enter both username and password.");
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    console.log("🚀 Event details page loaded");
+
+    const params = new URLSearchParams(window.location.search);
+    const eventId = params.get("id");
+
+    console.log("🔍 Extracted Event ID:", eventId);
+
+    if (!eventId) {
+        console.error("❌ No event ID found in URL.");
+        const eventContainer = document.getElementById("event-container");
+        if (eventContainer) eventContainer.style.display = "none";
         return;
     }
 
-    try {
-        const response = await fetch("http://localhost:5004/login", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ user_id: username, password })
+    // Show a loading message
+    const eventTitle = document.getElementById("event-title");
+    if (eventTitle) eventTitle.textContent = "Loading event details...";
+
+    // Fetch event details from the backend
+    fetch(`http://localhost:5004/api/events/${eventId}`)
+        .then(response => response.json())
+        .then(event => {
+            console.log("✅ Event data received:", event);
+
+            if (!event || Object.keys(event).length === 0) {
+                console.error("❌ Event not found.");
+                const eventContainer = document.getElementById("event-container");
+                if (eventContainer) eventContainer.innerHTML = "<p>Event not found.</p>";
+                return;
+            }
+
+            // ✅ Safely update elements only if they exist
+            if (eventTitle) eventTitle.textContent = event.eventName || "Event Name";
+            
+            const eventDesc = document.getElementById("event-description");
+            if (eventDesc) eventDesc.textContent = event.description || "Event details here.";
+
+            const eventDate = document.getElementById("event-date");
+            if (eventDate) eventDate.textContent = `${event.eventDate || "TBA"} at ${event.eventTime || "TBA"}`;
+
+            const eventVenue = document.getElementById("event-location");
+            if (eventVenue) eventVenue.textContent = event.eventVenue || "Venue";
+
+            const eventPrizes = document.getElementById("event-prizes");
+            if (eventPrizes) eventPrizes.textContent = event.prizes || "No prizes listed.";
+
+            const registrationLinkElement = document.getElementById("registration-link");
+            if (event.registrationLink) {
+                registrationLinkElement.innerHTML = `<a href="${event.registrationLink}" target="_blank">${event.registrationLink}</a>`;
+            }
+
+            // ✅ Handle image safely
+            const eventImage = document.getElementById("event-image");
+            if (eventImage) {
+                if (event.image && event.image.startsWith("/9j/")) {
+                    eventImage.src = `data:image/jpeg;base64,${event.image}`;
+                } else {
+                    eventImage.src = event.image || "default.jpg";
+                }
+            }
+
+            // ✅ Handle organizers safely
+            const organizerList = document.getElementById("event-organizers");
+            if (organizerList) {
+                if (event.organizer) {
+                    organizerList.innerHTML = `<li>${event.organizer}</li>`;
+                } else {
+                    organizerList.innerHTML = "<li>No organizers listed</li>";
+                }
+            }
+
+            console.log("🎉 Event details updated on UI");
+        })
+        .catch(error => {
+            console.error("❌ Error fetching event details:", error);
+            const eventContainer = document.getElementById("event-container");
+            if (eventContainer) eventContainer.innerHTML = "<p>Failed to load event details. Please try again later.</p>";
+        });
+});
+document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.querySelector(".menu-toggle");
+        const mainNav = document.querySelector(".main-nav");
+
+        menuToggle.addEventListener("click", function () {
+            mainNav.classList.toggle("active"); // Toggles menu visibility
+            menuToggle.classList.toggle("active"); // Changes menu icon
         });
 
-        const data = await response.json();
+        // Close menu when clicking outside
+        document.addEventListener("click", function (event) {
+            if (!menuToggle.contains(event.target) && !mainNav.contains(event.target)) {
+                mainNav.classList.remove("active");
+                menuToggle.classList.remove("active");
+            }
+        });
+    });
 
-        if (response.ok && data.token) {
-            alert("✅ Login Successful!");
-            sessionStorage.setItem("authToken", data.token); // Store token
-            
-            // 🔀 Use dynamic redirect URL
-            window.location.href = data.redirectUrl;
-        } else {
-            alert(data.message || "❌ Invalid credentials.");
-        }
 
-    } catch (error) {
-        console.error("❌ Login Error:", error);
-        alert("❌ Server error. Please try again later.");
-    }
-});
 
-</script>
+
+    </script>
+
+</body>
 </html>
