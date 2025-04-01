@@ -23,14 +23,10 @@
         <nav class="main-nav" id="main-nav" aria-label="Main navigation">
             <ul class="nav-items">
                 <li class="nav-item"><a href="home.html" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="home.html" class="nav-link">Departments</a></li>
+                <li class="nav-item"><a href="home.html#cards-slider" class="nav-link">Departments</a></li>
                 <li class="nav-item"><a href="login.html" class="nav-link">Upload</a></li>
             </ul>
-            <button class="button">
-                <svg class="bell" viewBox="0 0 448 512"><path d="M224 0c-17.7 0-32 14.3-32 32V49.9C119.5 61.4 64 124.2 64 200v33.4c0 45.4-15.5 89.5-43.8 124.9L5.3 377c-5.8 7.2-6.9 17.1-2.9 25.4S14.8 416 24 416H424c9.2 0 17.6-5.3 21.6-13.6s2.9-18.2-2.9-25.4l-14.9-18.6C399.5 322.9 384 278.8 384 233.4V200c0-75.8-55.5-138.6-128-150.1V32c0-17.7-14.3-32-32-32zm0 96h8c57.4 0 104 46.6 104 104v33.4c0 47.9 13.9 94.6 39.7 134.6H72.3C98.1 328 112 281.3 112 233.4V200c0-57.4 46.6-104 104-104h8zm64 352H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7s18.7-28.3 18.7-45.3z"></path></svg>
-               Notifications
-               <div class="arrow"></div>
-             </button>
+            
             
         </nav>
         
@@ -74,9 +70,9 @@
             <div class="footer-section footer-links">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                    <li><a href="terms-of-service.html">Terms of Service</a></li>
-                    <li><a href="faqs.html">FAQs</a></li>
+                    <li><a href="about.html">Privacy Policy</a></li>
+                    <li><a href="about.html">Terms of Service</a></li>
+                    <li><a href="about.html">FAQs</a></li>
                 </ul>
             </div>
     
@@ -120,198 +116,340 @@ body {
     50% {background-position: 100% 50%;}
     100% {background-position: 0% 50%;}
 }
-
-/* Base Header Styles */
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #0d0c0c;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    padding: 15px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1000;
-    border-bottom: 2px solid #f3f6fa;
-    height: 70px;
-}
-
-/* Logo and Branding */
-.logo-container {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-}
-
-.header-logo {
-    height: 50px;
-    transition: 0.3s ease-in-out;
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    font-family: "Michroma", sans-serif;
-    color: #f6f3f3;
-    margin-left: 10px;
-    transition: 0.3s ease-in-out;
-}
-
-/* Navigation Menu */
-.main-nav {
-    display: flex;
-    align-items: center;
-}
-
-.nav-items {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-.nav-item a {
-    text-decoration: none;
-    font-size: 16px;
-    font-family: "Michroma", sans-serif;
-    font-weight: 500;
-    color: #f0e4e4;
-    padding: 8px 12px;
-    transition: all 0.3s ease-in-out;
-    border-radius: 5px;
-}
-
-.nav-item a:hover,
-.nav-item a:focus {
-    background: #606265;
-    color: rgb(21, 18, 18);
-}
-
-/* Notifications Button */
-.button {
-    background: transparent;
-    border: none;
-    font-family: "Michroma", sans-serif;
-    cursor: pointer;
-    color: white;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 14px;
-    padding: 8px 12px;
-    transition: 0.3s ease;
-}
-.bell {
-    width: 20px;
-    height: 20px;
-}
-.button:hover {
-    color: #f0e4e4;
-}
-
-/* Mobile Menu Toggle */
-.menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    position: relative;
-    align-items: center;
-    justify-content: center;
-    z-index: 1001;
-}
-
-.menu-toggle .menu-icon {
-    width: 35px;
-    height: 3px;
-    background: #fff;
-    display: block;
-    position: relative;
-    border-radius: 3px;
-    transition: 0.3s ease-in-out;
-}
-
-.menu-toggle .menu-icon::before,
-.menu-toggle .menu-icon::after {
-    content: '';
-    position: absolute;
-    width: 35px;
-    height: 3px;
-    background: #fff;
-    border-radius: 3px;
-    transition: 0.3s ease-in-out;
-}
-
-.menu-toggle .menu-icon::before {
-    top: -10px;
-}
-
-.menu-toggle .menu-icon::after {
-    top: 10px;
-}
-
-/* Active State for Menu Toggle */
-.menu-toggle.active .menu-icon {
-    background: transparent;
-}
-
-.menu-toggle.active .menu-icon::before {
-    top: 0;
-    transform: rotate(45deg);
-}
-
-.menu-toggle.active .menu-icon::after {
-    top: 0;
-    transform: rotate(-45deg);
-}
-.button {
-        width: 200px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 10px;
-        padding: 0px 15px;
-        background-color: rgb(66, 66, 66);
-        border-radius: 10px;
-        font-family: "Michroma", sans-serif;
-        color: white;
-        border: none;
-        position: relative;
-        cursor: pointer;
-        transition-duration: .2s;
+        /* Base Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #0d0c0c;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 2px solid #f3f6fa;
+            height: 70px;
+            
         }
 
+        /* Logo and Branding */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .header-logo {
+            height: 50px;
+            transition: 0.3s ease-in-out;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: "Michroma", sans-serif;
+            color: #f6f3f3;
+            margin-left: 10px;
+            transition: 0.3s ease-in-out;
+        }
+
+        /* Navigation Menu */
+        .main-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-items {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-item a {
+            text-decoration: none;
+            font-size: 16px;
+            font-family: "Michroma", sans-serif;
+            font-weight: 500;
+            color: #f0e4e4;
+            padding: 8px 12px;
+            transition: all 0.3s ease-in-out;
+            border-radius: 5px;
+        }
+
+        .nav-item a:hover,
+        .nav-item a:focus {
+            background: #606265;
+            color: rgb(21, 18, 18);
+        }
+
+        /* Notifications Button */
+        .button {
+            background: transparent;
+            border: none;
+            font-family: "Michroma", sans-serif;
+            cursor: pointer;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            padding: 8px 12px;
+            transition: 0.3s ease;
+        }
         .bell {
-        width: 13px;
+            width: 20px;
+            height: 20px;
+        }
+        .button:hover {
+            color: #f0e4e4;
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 40px;
+            right: 0;
+            background: #222;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            width: 250px;
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 1000;
+            padding: 10px;
         }
 
-        .bell path {
-        fill: rgb(0, 206, 62);
+        .dropdown.active {
+            display: block;
         }
 
-        .arrow {
-        position: absolute;
-        right: 0;
-        width: 30px;
-        height: 100%;
-        font-size: 18px;
+        .notification-item {
+            padding: 10px;
+            border-bottom: 1px solid #444;
+            color: white;
+            font-size: 12px;
+        }
+
+        .notification-item:last-child {
+            border-bottom: none;
+        }
+
+        .notification-item span {
+            font-weight: bold;
+            display: block;
+        }
+
+        /* Notification Badge */
+        .badge {
+            background: red;
+            color: white;
+            font-size: 10px;
+            border-radius: 50%;
+            padding: 4px 6px;
+            position: absolute;
+            top: 5px;
+            right: -5px;
+            display: none;
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 70px;
+            right: 10px;
+            background: rgb(7, 78, 137);
+            border-radius: 5px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            padding: 10px;
+            z-index: 1000;
+        }
+
+        .notification-item {
+            padding: 10px;
+            border-bottom: 1px solid #1b1a1a;
+            font-size: 14px;
+            color: #e7e5e5;
+        }
+        #notificationBadge {
+            background: rgb(0, 255, 17);
+            color: rgb(27, 27, 27);
+            font-size: 12px;
+            border-radius: 50%;
+            padding: 4px 8px;
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            display: none; /* Hide by default */
+        }
+
+        .notification-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Show dropdown when button is clicked */
+        .button:hover + .dropdown {
+            display: block;
+        }
+
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+            z-index: 1001;
+        }
+
+        .menu-toggle .menu-icon {
+            width: 35px;
+            height: 3px;
+            background: #fff;
+            display: block;
+            position: relative;
+            border-radius: 3px;
+            transition: 0.3s ease-in-out;
+        }
+
+        .menu-toggle .menu-icon::before,
+        .menu-toggle .menu-icon::after {
+            content: '';
+            position: absolute;
+            width: 35px;
+            height: 3px;
+            background: #fff;
+            border-radius: 3px;
+            transition: 0.3s ease-in-out;
+        }
+
+        .menu-toggle .menu-icon::before {
+            top: -10px;
+        }
+
+        .menu-toggle .menu-icon::after {
+            top: 10px;
+        }
+
+        /* Active State for Menu Toggle */
+        .menu-toggle.active .menu-icon {
+            background: transparent;
+        }
+
+        .menu-toggle.active .menu-icon::before {
+            top: 0;
+            transform: rotate(45deg);
+        }
+
+        .menu-toggle.active .menu-icon::after {
+            top: 0;
+            transform: rotate(-45deg);
+        }
+        @media (max-width: 768px) {
+    /* Adjust Header */
+    header {
+        padding: 10px 15px;
+        height: 60px;
         display: flex;
         align-items: center;
-        justify-content: center;
-        }
+        width: 100vw; /* Make sure it covers only the viewport width */
+    max-width: 100%; /* Prevents it from overflowing */
+    
+    }
 
-        .button:hover {
-        background-color: rgb(77, 77, 77);
-        transition-duration: .2s;
-        }
+    /* Adjust Logo */
+    .header-logo {
+        height: 40px;
+    }
 
-        .button:hover .arrow {
-        animation: slide-right .6s ease-out both;
-        }
+    .logo {
+        font-size: 1.2rem;
+        margin-left: 5px;
+    }
+
+      
+    .menu-toggle {
+                display: block;
+                background: none;
+                border: none;
+                font-size: 24px;
+                cursor: pointer;
+                color: white;
+                position: absolute;
+                right: 6px;
+                top: 50%;
+                margin-left: 200px;
+                transform: translateY(-50%);
+                z-index: 1001;
+                 /* Ensure menu toggle icon is visible */
+            }
+    /* Hide Navigation by Default */
+    .main-nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: #0d0c0c;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+        text-align: center;
+    }
+
+    /* Show Menu when Active */
+    .main-nav.active {
+        display: flex;
+        background-color: #000;
+    }
+
+    /* Adjust Navigation Items */
+    .nav-items {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px 0;
+        background-color: #000;
+    }
+
+    .nav-item a {
+        font-size: 16px;
+        display: block;
+        padding: 12px;
+        background-color: #000;
+    }
+
+    .nav-item a:hover {
+    background: linear-gradient(90deg, #a3a2a2, #666564);
+    color: white;
+}
+
+
+    /* Fix Notification Button */
+    .button {
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+
+    /* Fix Dropdown Position */
+    .dropdown {
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+    }
+
+    /* Fix Badge Position */
+    #notificationBadge {
+        top: 2px;
+        right: 5px;
+    }
+}
+
         .footer {
             background-color: #0A2647;
             color: #d1e6ff;
@@ -554,85 +692,6 @@ header {
             outline: none !important;
         }
 
-/* Adjust Header for Mobile */
-@media (max-width: 768px) {
-    .logo-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 20%;
-        
-    }
-        .logo {
-        font-size: 1rem; /* Reduce font size */
-        white-space: nowrap; /* Prevent wrapping */
-    }
-
-    .header-logo {
-        height: 40px; /* Reduce logo size */
-    }
-    
-    .main-nav {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px; /* Adjust based on header height */
-        left: 0;
-        width: 100%;
-        background: rgb(226, 224, 224) !important; /* Force black */
-        color: rgb(253, 253, 253) !important; /* Ensure text is visible */
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        padding: 10px;
-        z-index: 1000;
-    }
-
-    .main-nav.active {
-        display: flex;
-    }
-
-    .nav-items {
-        flex-direction: column;
-        padding: 0;
-        width: 100%;
-        text-align: center;
-    }
-
-    .nav-item {
-        padding: 10px;
-    }
-
-    .nav-item a {
-        color: black !important; /* Change text color to black for visibility */
-    }
-
-    .nav-item a:hover,
-    .nav-item a:focus {
-        background: #606265;
-        color: white; /* Ensure hover effect is visible */
-    }
-
-    .button {
-        display: block;
-        width: 100%;
-        text-align: center;
-        margin-top: 10px;
-        color: black !important; /* Change text color to black */
-    }
-
-    .menu-toggle {
-        display: block;
-        background: none;
-        border: none;
-        font-size: 24px;
-        cursor: pointer;
-        color: white;
-        position: relative;
-        right: 0;
-        margin-left: 200px;
-        z-index: 1001;
-         /* Ensure menu toggle icon is visible */
-    }
-}
 
 
     </style>
