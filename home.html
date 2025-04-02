@@ -224,7 +224,7 @@
                Notifications
                <div class="arrow"></div>
                <span class="badge" id="notificationBadge">0</span>
-             </button>
+            </button>
              <div class="dropdown" id="notificationDropdown"></div>
 
         </nav>
@@ -464,7 +464,14 @@
         alert("Error subscribing. Please try again.");
     }
 });
-    
+const dropdown = document.getElementById("notificationDropdown");
+const button = document.querySelector(".button");
+
+button.addEventListener("wheel", function (event) {
+    dropdown.scrollTop += event.deltaY; // Scroll the dropdown when hovering over the button
+    event.preventDefault(); // Prevent page scrolling
+});
+
 
     </script>
     <style>
@@ -588,6 +595,7 @@
             position: absolute;
             top: 40px;
             right: 0;
+            overflow-y: auto;
             background: #222;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
             border-radius: 5px;
