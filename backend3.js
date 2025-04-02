@@ -7,10 +7,10 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken"); // Import crypto for generating short ID
 const { type } = require('os');
 const session = require("express-session");
+const cron = require('node-cron');
+const nodemailer = require('nodemailer');
 require('dotenv').config();
-const os = require("os");
 
-const PORT = process.env.PORT || 5004;
 
 const app = express();
 app.use(cors());
@@ -39,7 +39,7 @@ mongoose.connect(process.env.MONGO_URI, {
 // ✅ Define Schema for Requests Collection
 const eventSchema = new mongoose.Schema({
     event_id: { type: String, unique: true },
-    user_id: { type: String, unique: true, required: true },  // Short Unique event ID
+    user_id: { type: String,  required: true },  // Short Unique event ID
     eventName: String,
     eventDate: String,
     eventTime: String,
@@ -71,6 +71,16 @@ const EventVenueSchema = new mongoose.Schema({
     eventDate:{ type: String, required: true },
 });
 
+const News = mongoose.model("News", new mongoose.Schema({
+    email: { type: String, unique: true, required: true }
+}));
+const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+        user: process.env.SMTP_EMAIL,
+        pass: process.env.SMTP_PASSWORD
+    }
+})
 const EventVenue = mongoose.model('venue', EventVenueSchema);
 
 // ✅ Use "users" collection in MongoDB
@@ -493,6 +503,24 @@ app.get('/api/event-venue', async (req, res) => {
     }
 });
 
+
+
+// Route to handle newsletter subscriptions
+app.post("/subscribe", async (req, res) => {
+    try {
+        const { email } = req.body;
+        if (!email) return res.status(400).json({ message: "Email is required!" });
+
+        const existingUser = await News.findOne({ email });
+        if (existingUser) return res.status(400).json({ message: "You are already subscribed!" });
+
+        await News.create({ email });
+        res.json({ message: "Successfully subscribed!" });
+    } catch (error) {
+        res.status(500).json({ message: "Server error. Please try again." });
+    }
+});
+
 async function syncVenues() {
     try {
         console.log("🔄 Syncing event venues...");
@@ -555,6 +583,74 @@ async function syncVenues() {
         console.error("❌ Error syncing venues:", error);
     }
 }
+// Function to Send Daily Event Emails
+const sendDailyEventEmails = async () => {
+    try {
+        const today = new Date().toISOString().split("T")[0]; // Get today's date in YYYY-MM-DD format
+
+        // Fetch only today's approved (status: 1) events
+        const events = await Event.find({ eventDate: today, status: 1 }, "eventName eventTime eventVenue");
+
+        if (events.length === 0) {
+            console.log("No approved events scheduled for today.");
+            return;
+        }
+
+        // Fetch all user emails from `news` collection
+        const users = await News.find({}, "email");
+
+        if (users.length === 0) {
+            console.log("No users found to send emails.");
+            return;
+        }
+
+        // Format event details
+        const eventDetails = events.map(event => `
+            <p><strong>${event.eventName}</strong></p>
+            <p>⏰ Time: ${event.eventTime}</p>
+            <p>📍 Venue: ${event.eventVenue}</p>
+            <hr>
+        `).join("");
+
+        // Email Content
+        const message = `
+            <h2>Today's Scheduled Events</h2>
+            ${eventDetails}
+            <p>Stay updated with the latest events!</p>
+        `;
+
+        // Send Email to All Users
+        for (let user of users) {
+            await transporter.sendMail({
+                from: `"Event Updates" <${process.env.SMTP_EMAIL}>`,
+                to: user.email,
+                subject: "Today's Events Update",
+                html: message
+            });
+        }
+
+        console.log("Daily event update emails sent successfully.");
+    } catch (error) {
+        console.error("Error sending daily event emails:", error);
+    }
+};
+
+// Schedule Job to Run Every Day at 8 AM
+cron.schedule("0 6 * * *", () => {
+    console.log("Running daily event email job...");
+    sendDailyEventEmails();
+}, {
+    timezone: "Asia/Kolkata" // Adjust timezone as needed
+});
+
+app.get("/test-send-email", async (req, res) => {
+    try {
+        await sendDailyEventEmails();
+        res.json({ message: "Test email sent successfully!" });
+    } catch (error) {
+        res.status(500).json({ message: "Error sending test email." });
+    }
+});
 
 // 🔹 API to get events happening today
 /*
@@ -589,22 +685,6 @@ app.get('/api/events/today', async (req, res) => {
 });
 */
 
-// ✅ Start Server
-// ✅ Define `getLocalIP` function
-function getLocalIP() {
-    const interfaces = os.networkInterfaces();
-    for (const name in interfaces) {
-        for (const net of interfaces[name]) {
-            if (net.family === "IPv4" && !net.internal) {
-                return net.address;  // Returns the first non-internal IPv4 address
-            }
-        }
-    }
-    return "127.0.0.1"; // Fallback to localhost
-}
 
 // ✅ Start Server
-app.listen(PORT, "0.0.0.0", () => {
-    console.log(`✅ Server running at http://${getLocalIP()}:${PORT}`);
-});
-
+app.listen(5004, () => console.log("🚀 Server running on http://localhost:5004"));
