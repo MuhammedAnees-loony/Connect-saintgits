@@ -1,9 +1,9 @@
 {
   "name": "connect-backend",
   "version": "1.0.0",
-  "main": "backen3.js",
+  "main": "backend3.js",
   "scripts": {
-    "start": "node backen3.js"
+    "start": "node backend3.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
