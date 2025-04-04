@@ -263,12 +263,27 @@
                 <button type="submit">Upload Event</button>
             </form>
         </div>
-        
+        <div class="notices-container">
+            <h2>Upcoming Events</h2>
+            <div class="filter-buttons">
+                <button onclick="fetchNotices()">All</button>
+                <button onclick="fetchNotices(1)">Approved</button>
+                <button onclick="fetchNotices(2)">Rejected</button>
+            </div>
+            <div id="notices-list"></div>
+        </div>
     </div>
-    <div class="notices-container">
-        <h2>Upcoming Events</h2>
-        <div id="notices-list"></div>
+    
+    
+    <!-- Remarks Modal (Initially Hidden) -->
+    <div id="remarks-modal" class="remarks-modal" style="display: none;">
+        <div class="modal-box">
+            <h2>Rejection Remarks</h2>
+            <p id="remarks-text"></p>
+            <button onclick="closeRemarksModal()">Close</button>
+        </div>
     </div>
+    
     <style>
          @import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
 
@@ -526,6 +541,76 @@ body {
             top: 0;
             transform: rotate(-45deg);
         }
+        /* Modal Background */
+.remarks-modal {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Dark overlay */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Modal Box */
+.modal-box {
+    background: #fff;
+    padding: 20px;
+    width: 350px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Modal Heading */
+.modal-box h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Remarks Text */
+#remarks-text {
+    font-size: 16px;
+    color: #555;
+    background: #f5f5f5;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+/* Close Button */
+.modal-box button {
+    background: #007BFF;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.modal-box button:hover {
+    background: #0056b3;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
         @media (max-width: 768px) {
     /* Adjust Header */
     header {
@@ -685,7 +770,7 @@ body {
         }
         a {
             text-decoration: none;
-            color: inherit;
+            color: white;
             outline: none;
             transition: all 0.4s ease-in-out;
         }
@@ -704,7 +789,7 @@ body {
             line-height: 28px;
             font-weight: 700;
             position: relative;
-            color: #ffffff; /* Changed to white for better visibility */
+            color: #f9f9f9; /* Changed to white for better visibility */
             text-transform: capitalize;
             text-align: center;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adds a shadow for better readability */
@@ -714,12 +799,15 @@ body {
             margin: 0 0 10px;
             font-size: 28px;
             line-height: 36px;
+            color: #ffffff;
         }
         button {
             outline: none !important;
         }
 
-
+        p{
+            color: #ffffff;
+        }
 
     </style>
     <script>
@@ -755,22 +843,24 @@ body {
     }
 
     .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 50%;
-        max-width: 1400px;
-        padding: 30px;
-        background: rgba(255, 255, 255, 0.15);
-        border-radius: 16px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        backdrop-filter: blur(10px);
-        
-    }
+    display: flex; /* Horizontal layout */
+    flex-direction: row; /* side-by-side */
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1400px;
+    gap: 30px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+}
+
 
     .form-container {
         background:linear-gradient(132deg,#205295,#092635 ,#0A2647,#144272,#000000,#2C74B3);
-        width: 90%;
+        width: 45%;
         padding: 25px;
         border-radius: 12px;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -805,8 +895,8 @@ body {
 
     button {
         padding: 12px;
-        background: #3498db;
-        color: white;
+        background: #4086cc;
+        color: rgb(1, 1, 1);
         font-weight: bold;
         border: none;
         border-radius: 8px;
@@ -816,7 +906,7 @@ body {
     }
 
     button:hover {
-        background: linear-gradient(90deg, #1a6fad, #483d8b);
+        background: linear-gradient(90deg, #078be9, #060606);
         box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
     }
 
@@ -838,10 +928,10 @@ body {
     }
 
     .notice-card {
-        background: #e3e3e3;
+        background: #123459;
         padding: 15px;
         border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 10px rgb(0, 0, 0);
         text-align: center;
     }
 
@@ -869,15 +959,20 @@ body {
 
     @media screen and (max-width: 768px) {
     body {
+        display: flex;
         flex-direction: column; /* Stack elements vertically */
         align-items: center; /* Center everything */
         padding: 10px;
     }
 
     .container {
-        margin-top: 400px;
+        margin-top: 50px;
         width: 100%; /* Full width for mobile */
         padding: 15px;
+        min-height: 100vh; 
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;/* Prevents layout shifting */
     }
 
     .form-container {
@@ -890,28 +985,47 @@ body {
         width: 100%; /* Full width */
         padding: 15px;
         max-height: none; /* Allow full scroll */
-        overflow-y: visible; /* No need for a fixed height */
+        overflow-y: visible; /* No fixed height */
     }
 
     #notices-list {
-        grid-template-columns: 1fr; /* Single-column layout */
+        display: flex;
+        flex-direction: column; /* Stack notices */
         gap: 15px;
     }
 
     .notice-card {
-        padding: 10px;
+        padding: 12px;
         font-size: 14px;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
 
     .notice-card img {
-        height: 120px; /* Adjust image size */
+        width: 100%; /* Make image responsive */
+        height: auto;
+        max-height: 140px; /* Prevents oversized images */
+        object-fit: cover;
+        border-radius: 6px;
     }
 
     input, select, textarea, button {
-        font-size: 14px; /* Adjust text size for readability */
-        padding: 10px;
+        font-size: 15px; /* Slightly larger for better readability */
+        padding: 12px;
+        border-radius: 6px;
+    }
+
+    button {
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    button:hover {
+        background: #0b72cd; /* Slight darkening effect */
+        color: #fff;
     }
 }
+
 
 </style>
 <script>
@@ -961,78 +1075,103 @@ body {
         }
     });
     
-    // Fetch and display notices
-    async function fetchNotices() {
-        const token = sessionStorage.getItem("authToken"); // ✅ Get token
+    async function fetchNotices(filterStatus = null) {
+    const token = sessionStorage.getItem("authToken");
 
     const response = await fetch("http://localhost:5004/api/notices", {
         method: "GET",
         headers: {
-            "Authorization": `Bearer ${token}`, // ✅ Send token in header
+            "Authorization": `Bearer ${token}`,
         },
     });
-        const notices = await response.json();
-        const noticesList = document.getElementById("notices-list");
-    
-        noticesList.innerHTML = "";
-    
-        notices.forEach(notice => {
-            const noticeDiv = document.createElement("div");
-            noticeDiv.classList.add("notice-card");
-    
-            const noticeName = document.createElement("h3");
-            noticeName.textContent = notice.eventName;
-    
-            const noticeDate = document.createElement("p");
-            noticeDate.textContent = `📅 ${notice.eventDate} 🕒 ${notice.eventTime}`;
-    
-            const noticeVenue = document.createElement("p");
-            noticeVenue.textContent = `📍 ${notice.eventVenue}`;
-    
-            const noticeOrganizer = document.createElement("p");
-            noticeOrganizer.textContent = `🎤 Organized by: ${notice.organizer}`;
-    
-            const noticeCategory = document.createElement("p");
-            noticeCategory.textContent = `🏢 Category: ${notice.category}`;
-    
-            const noticeDescription = document.createElement("p");
-            noticeDescription.textContent = notice.description;
-    
-            const noticeImage = document.createElement("img");
-            noticeImage.src = `data:image/jpeg;base64,${notice.image}`;
-            noticeImage.alt = notice.eventName;
-    
-            if (notice.registrationLink) {
-                const regLink = document.createElement("a");
-                regLink.href = notice.registrationLink;
-                regLink.textContent = "🔗 Register Here";
-                regLink.target = "_blank";
-                regLink.style.display = "block";
-                regLink.style.marginTop = "10px";
-                noticeDiv.appendChild(regLink);
-            }
-    
-            const deleteButton = document.createElement("button");
-            deleteButton.textContent = "Delete";
-            deleteButton.classList.add("delete-btn");
-            deleteButton.addEventListener("click", async () => {
-                await fetch(`http://localhost:5004/api/notices/${notice._id}`, { method: "DELETE" });
-                fetchNotices();
-            });
-            
-            noticeDiv.appendChild(noticeName);
-            noticeDiv.appendChild(noticeImage);
-            noticeDiv.appendChild(noticeDate);
-            noticeDiv.appendChild(noticeVenue);
-            noticeDiv.appendChild(noticeOrganizer);
-            noticeDiv.appendChild(noticeCategory);
-            noticeDiv.appendChild(noticeDescription);
-            noticeDiv.appendChild(deleteButton);
-            noticesList.appendChild(noticeDiv);
+
+    const notices = await response.json();
+    const noticesList = document.getElementById("notices-list");
+
+    noticesList.innerHTML = "";
+
+    // Filter events based on status if filterStatus is provided
+    const filteredNotices = filterStatus !== null ? notices.filter(n => n.status === filterStatus) : notices;
+
+    filteredNotices.forEach(notice => {
+        const noticeDiv = document.createElement("div");
+        noticeDiv.classList.add("notice-card");
+
+        const noticeName = document.createElement("h3");
+        noticeName.textContent = notice.eventName;
+
+        const noticeDate = document.createElement("p");
+        noticeDate.textContent = `📅 ${notice.eventDate} 🕒 ${notice.eventTime}`;
+
+        const noticeVenue = document.createElement("p");
+        noticeVenue.textContent = `📍 ${notice.eventVenue}`;
+
+        const noticeOrganizer = document.createElement("p");
+        noticeOrganizer.textContent = `🎤 Organized by: ${notice.organizer}`;
+
+        const noticeCategory = document.createElement("p");
+        noticeCategory.textContent = `🏢 Category: ${notice.category}`;
+
+        
+
+        const noticeImage = document.createElement("img");
+        noticeImage.src = `data:image/jpeg;base64,${notice.image}`;
+        noticeImage.alt = notice.eventName;
+
+        if (notice.registrationLink) {
+            const regLink = document.createElement("a");
+            regLink.href = notice.registrationLink;
+            regLink.textContent = "🔗 Register Here";
+            regLink.target = "_blank";
+            regLink.style.display = "block";
+            regLink.style.marginTop = "10px";
+            noticeDiv.appendChild(regLink);
+        }
+
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+        deleteButton.classList.add("delete-btn");
+        deleteButton.addEventListener("click", async () => {
+            await fetch(`http://localhost:5004/api/notices/${notice._id}`, { method: "DELETE" });
+            fetchNotices();
         });
-    }
-    
-    fetchNotices();
+
+        noticeDiv.appendChild(noticeName);
+        noticeDiv.appendChild(noticeImage);
+        noticeDiv.appendChild(noticeDate);
+        noticeDiv.appendChild(noticeVenue);
+        noticeDiv.appendChild(noticeOrganizer);
+        noticeDiv.appendChild(noticeCategory);
+        
+
+        // ✅ Show "View Remarks" button for rejected events
+        if (notice.status === 2 && notice.remarks) {
+            const remarksButton = document.createElement("button");
+            remarksButton.textContent = "View Remarks";
+            remarksButton.classList.add("remarks-btn");
+            remarksButton.addEventListener("click", () => showRemarksModal(notice.remarks));
+            noticeDiv.appendChild(remarksButton);
+        }
+
+        noticeDiv.appendChild(deleteButton);
+        noticesList.appendChild(noticeDiv);
+    });
+}
+
+// Function to Show Remarks Modal
+function showRemarksModal(remarks) {
+    document.getElementById("remarks-text").textContent = remarks;
+    document.getElementById("remarks-modal").style.display = "flex";
+}
+
+// Function to Close Remarks Modal
+function closeRemarksModal() {
+    document.getElementById("remarks-modal").style.display = "none";
+}
+
+// Fetch all notices on page load
+fetchNotices();
+
     
     document.getElementById("upload-form").addEventListener("submit", async function(event) {
         event.preventDefault();

@@ -147,18 +147,18 @@
 
         .modal-box img {
             width: 100%;
-            max-height: 300px;
+            height: 100%;
             object-fit: cover;
             border-radius: 8px;
         }
 
         .close-btn {
             position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 25px;
+            top: 12px;
+            right: 25px;
+            font-size: 35px;
             cursor: pointer;
-            color: #e5e4e4;
+            color: #f40202;
         }
         /* Darkened background overlay */
         .modal-overlay {
@@ -183,8 +183,92 @@
             right: 15px;
             cursor: pointer;
         }
+        .remarks-modal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    backdrop-filter: blur(10px); /* Glassmorphism effect */
+}
 
-        
+.remarks-modal .modal-box {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+}
+
+.remarks-modal h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.remarks-modal textarea {
+    width: 100%;
+    height: 80px;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    resize: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.remarks-modal textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.remarks-modal .modal-buttons {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.remarks-modal .modal-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.remarks-modal .modal-buttons .submit-btn {
+    background: #ff4b4b;
+    color: white;
+}
+
+.remarks-modal .modal-buttons .submit-btn:hover {
+    background: #ff1a1a;
+}
+
+.remarks-modal .modal-buttons .cancel-btn {
+    background: #333;
+    color: white;
+}
+
+.remarks-modal .modal-buttons .cancel-btn:hover {
+    background: #555;
+}
+
 
 
     </style>
@@ -227,7 +311,16 @@
         <!-- Dynamic event details will be inserted here -->
     </div>
 </div>
-
+<div id="remarksModal" class="remarks-modal" style="display:none;">
+    <div class="modal-box">
+      <h3>Enter reason for rejection</h3>
+      <textarea id="remarksInput" rows="4" placeholder="Type remarks here..."></textarea>
+      <div class="modal-buttons">
+        <button id="submitRemarks">Submit</button>
+        <button id="cancelRemarks">Cancel</button>
+      </div>
+    </div>
+  </div>
     <script>
        document.addEventListener("DOMContentLoaded", () => {
     fetchEvents(); // Fetch all events on page load
@@ -320,11 +413,10 @@ function displayEvents(events) {
             });
 
             rejectBtn.addEventListener("click", () => {
-                rejectBtn.textContent = "Rejected ❌";
-                rejectBtn.disabled = true;
-                approveBtn.disabled = true;
-                updateStatus(event._id, 2);
-            });
+    showRemarksModal(event._id, rejectBtn, approveBtn);
+});
+
+
         }
     });
 }
@@ -364,20 +456,25 @@ function getCurrentStatusTab() {
     return 0; // Default to "Requests" (Pending)
 }
 
-// Update Event Status
-async function updateStatus(eventId, status) {
+// Update Event Status (with optional remarks)
+async function updateStatus(eventId, status, remarks = "") {
     console.log(`🟢 Updating event ${eventId} to status ${status}`);
 
     try {
+        const payload = { status };
+        if (status === 2 && remarks) {
+            payload.remarks = remarks;
+        }
+
         const response = await fetch(`http://localhost:5004/api/notices/${eventId}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ status })
+            body: JSON.stringify(payload)
         });
 
         if (response.ok) {
             console.log(`✅ Event ${eventId} updated successfully to status ${status}`);
-            fetchEvents(getCurrentDepartment()); // Fetch all events again, then filter
+            fetchEvents(getCurrentDepartment());
         } else {
             console.error(`❌ Failed to update event ${eventId}`);
         }
@@ -385,6 +482,7 @@ async function updateStatus(eventId, status) {
         console.error("❌ Error updating event:", error);
     }
 }
+
 // Show Event Details in a Popup (Uses Cached Data)
 function viewDetails(eventId) {
     const event = cachedEvents.find(e => e._id === eventId);
@@ -420,7 +518,41 @@ function viewDetails(eventId) {
 function closeModal() {
     document.getElementById("event-modal").style.display = "none";
 }
+let currentRejectEventId = null;
+  let currentRejectButton = null;
+  let currentApproveButton = null;
 
+  function showRemarksModal(eventId, rejectBtn, approveBtn) {
+      currentRejectEventId = eventId;
+      currentRejectButton = rejectBtn;
+      currentApproveButton = approveBtn;
+      document.getElementById("remarksInput").value = "";
+      document.getElementById("remarksModal").style.display = "flex";
+  }
+
+  document.getElementById("submitRemarks").addEventListener("click", () => {
+      const remarks = document.getElementById("remarksInput").value.trim();
+
+      if (!remarks) {
+          alert("Please enter a reason for rejection.");
+          return;
+      }
+
+      // Disable buttons and update UI
+      currentRejectButton.textContent = "Rejected ❌";
+      currentRejectButton.disabled = true;
+      currentApproveButton.disabled = true;
+
+      // Call backend update
+      updateStatus(currentRejectEventId, 2, remarks);
+
+      // Close modal
+      document.getElementById("remarksModal").style.display = "none";
+  });
+
+  document.getElementById("cancelRemarks").addEventListener("click", () => {
+      document.getElementById("remarksModal").style.display = "none";
+  });
     </script>
 </body>
 </html>

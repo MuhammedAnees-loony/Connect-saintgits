@@ -81,7 +81,7 @@ const transporter = nodemailer.createTransport({
         pass: process.env.SMTP_PASSWORD
     }
 })
-const EventVenue = mongoose.model('venue', EventVenueSchema);
+const EventVenue = mongoose.model('venues', EventVenueSchema);
 
 // ✅ Use "users" collection in MongoDB
 const User = mongoose.model("users", UserSchema);
@@ -318,15 +318,23 @@ app.get("/api/notices", async (req, res) => {
             query.clubDepartmentName = { $regex: new RegExp(`^${department}$`, "i") };
         }
 
-        const events = await Event.find(query);
-        console.log(`✅ Sending ${events.length} events for user: ${user_id}, department: ${department || "All"}`);
+        const events = await Event.find(query).select("eventName eventDate eventTime eventVenue organizer category description image status remarks");
 
-        res.json(events);
+        // 🔹 Include remarks ONLY if status is "Rejected" (2)
+        const formattedEvents = events.map(event => ({
+            ...event.toObject(),
+            remarks: event.status === 2 ? event.remarks : undefined // Send remarks only for rejected events
+        }));
+
+        console.log(`✅ Sending ${formattedEvents.length} events (Remarks included for rejected)`);
+
+        res.json(formattedEvents);
     } catch (error) {
         console.error("❌ Error fetching events:", error);
         res.status(500).json({ message: "Server Error", error });
     }
 });
+
 
 
 app.put("/api/notices/:eventId", async (req, res) => {
@@ -419,24 +427,29 @@ app.get("/api/getEvents", async (req, res) => {
             "Computer Science Department": "CSE",
             "Chemical Department": "CH",
             "Civil Department": "CE",
-            "Electronics Department": "EC",
+            "Electronics Department": "EEE",
             "Food Technology": "FT",
             "Mechanical Department": "ME"
         };
 
-        const department = req.query.department; // Get department from frontend
+        const department = req.query.department;
+        console.log(department) // Get department from frontend
         let query = { status: 1 }; // Only fetch approved events
 
         if (department) {
             const shortForm = departmentMappings[department];
+            console.log(shortForm)
             if (shortForm) {
                 query.clubDepartmentName = shortForm; // Filter by department short form
             } else {
                 return res.status(400).json({ error: "Invalid department name" });
             }
         }
-
+        
         const events = await Event.find(query);
+        
+        console.log(events)
+        console.log("Generated Query:", query);
 
         // Transform data to match frontend format
         const mappedData = events.map(event => ({
@@ -473,7 +486,8 @@ app.get("/api/events/:id", async (req, res) => {
 
 app.get('/api/event-venue', async (req, res) => {
     const { blockId } = req.query;
-    const today = new Date().toISOString().split('T')[0];
+    const today = new Date().toLocaleDateString('en-CA');
+    console.log(today)
     console.log(`📩 Received request for blockId: ${blockId}`);
 
     if (!blockId) {
