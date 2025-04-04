@@ -1172,6 +1172,7 @@ function closeRemarksModal() {
 // Fetch all notices on page load
 fetchNotices();
 
+
     
     document.getElementById("upload-form").addEventListener("submit", async function(event) {
         event.preventDefault();
@@ -1189,18 +1190,22 @@ fetchNotices();
                 body: formData,
                 
             });
+            
     
-            if (!response.ok) {
-                throw new Error(`Server Error: ${response.status} - ${response.statusText}`);
-            }
+            
     
             const result = await response.json();
+            if (!response.ok) {
+                alert(result.message || "Something went wrong.");
+                return;
+            }
             console.log("✅ Upload successful:", result);
             alert(result.message);
             fetchNotices();
+            document.getElementById("upload-form").reset();
         } catch (error) {
-            console.error("❌ Upload failed:", error);
-            alert("Upload failed. Check console for details.");
+            alert("Something went wrong: " + error.message);
+            
         }
     });
     </script>

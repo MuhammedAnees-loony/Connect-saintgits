@@ -40,7 +40,7 @@ mongoose.connect(process.env.MONGO_URI, {
 const eventSchema = new mongoose.Schema({
     event_id: { type: String, unique: true },
     user_id: { type: String,  required: true },  // Short Unique event ID
-    eventName: String,
+    eventName: { type: String, unique: true },
     eventDate: String,
     eventTime: String,
     eventVenue: String,
