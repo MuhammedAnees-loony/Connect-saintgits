@@ -322,6 +322,20 @@
     </div>
   </div>
     <script>
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const token = sessionStorage.getItem("authToken");
+    console.log(token)
+    if (!token) {
+        alert("❌ Unauthorized! Please log in.");
+        window.location.href = "login.html"; // Redirect back to login page
+    }
+});
+window.addEventListener("beforeunload", function () {
+    sessionStorage.removeItem("authToken");
+    console.log("🗑️ Auth token cleared on page exit");
+});
        document.addEventListener("DOMContentLoaded", () => {
     fetchEvents(); // Fetch all events on page load
     setupFilters();

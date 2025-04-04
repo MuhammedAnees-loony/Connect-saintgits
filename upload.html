@@ -1037,6 +1037,10 @@ body {
         window.location.href = "login.html"; // Redirect back to login page
     }
 });
+window.addEventListener("beforeunload", function () {
+    sessionStorage.removeItem("authToken");
+    console.log("🗑️ Auth token cleared on page exit");
+});
     document.getElementById("eventDate").min = new Date().toISOString().split("T")[0];
     
     document.getElementById("upload-form").addEventListener("submit", function (event) {
